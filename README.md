@@ -71,3 +71,6 @@ You need to "push" your files to GitHub.
 - If stuck, ask for help!
 
 Enjoy your new website! 🚀
+
+git remote set-url origin git@github-a:aaryanjpatel/portfolio.git
+git push -u origin main
