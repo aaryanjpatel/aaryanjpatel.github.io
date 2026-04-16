@@ -1,0 +1,13 @@
+source "https://rubygems.org"
+
+gem "csv"
+gem "base64"
+gem "logger"
+gem "bigdecimal"
+gem "securerandom"
+gem "pathname"
+gem "ostruct"
+gem "jekyll", "~> 4.3.3"
+gem "jekyll-feed", "~> 0.12"
+gem "jekyll-sitemap"
+gem "jekyll-seo-tag"
