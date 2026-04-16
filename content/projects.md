@@ -1,11 +1,11 @@
 # Projects
 
-## Project 1
-Short description of project 1.
+## Portfolio Website
+A simple portfolio site built with Jekyll, featuring animations and dark mode.
 
-[View Project](https://github.com/yourusername/project1)
+[View Project](https://github.com/aaryanjpatel/portfolio)
 
-## Project 2
-Short description of project 2.
+## AI Chatbot
+An AI-powered chatbot using Python and TensorFlow for natural language processing.
 
-[View Project](https://github.com/yourusername/project2)
+[View Project](https://github.com/aaryanjpatel/ai-chatbot)
