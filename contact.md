@@ -14,7 +14,20 @@ title: Contact
         </div>
 
         <div class="prose prose-lg prose-invert max-w-none">
-          {% include_relative content/contact.md %}
+          # Contact
+
+          ## Get In Touch
+
+          Feel free to reach out! I'm always interested in new opportunities, collaborations, and connecting with fellow tech enthusiasts.
+
+          ### Contact Information
+          - **Email:** [patel.aaryan.j@gmail.com](mailto:patel.aaryan.j@gmail.com)
+          - **Location:** [Your Location]
+
+          ### Let's Connect
+          Whether you have questions about my projects, want to discuss technology, or are interested in potential collaborations, I'd love to hear from you!
+
+          Drop me a message and I'll get back to you as soon as possible.
         </div>
       </div>
     </div>
