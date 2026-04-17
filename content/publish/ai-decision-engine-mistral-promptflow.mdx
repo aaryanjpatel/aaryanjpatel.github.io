@@ -1,104 +1,111 @@
 ---
-title: "Building an AI Decision Engine with Mistral, FastAPI & PromptFlow"
-slug: "ai-decision-engine-mistral-promptflow"
-date: "2026-04-06"
-description: "I built a dynamic decision engine that evaluates user data against JSON-defined rules and provides AI-driven reasoning using Mistral-7B-OpenOrca via GPT4All — with PromptFlow for workflow orchestration, human-readable PDF reports, and a full CI/CD pipeline on Azure App Services."
-tags: ["Python", "FastAPI", "Mistral", "PromptFlow", "GPT4All", "MLOps", "AI", "Bicep", "CI/CD", "Infrastructure as Code", "Azure", "Local LLM", "Decision Engine", "PDF Reports"]
-feature_image: "/images/ai-decision-engine-mistral-promptflow.png"
+title: "Selective Entry Preparation 2026"
+slug: "selective-entry-preparation-2026"
+date: "2026-04-17"
+description: "Comprehensive guide for selective entry preparation across all subjects in 2026."
+tags: ["Education", "Selective Entry", "Preparation", "2026", "Study Guide", "Exams", "Subjects"]
+feature_image: "/images/selective-entry-preparation-2026.png"
 ---
 
-Rules-based systems are powerful but brittle — they tell you the outcome, not the *why*. AI reasoning systems are flexible but opaque. What if you combined both?
+Preparing for selective entry exams requires a structured approach across all subjects. This guide provides strategies, resources, and tips to help students excel in 2026.
 
-I built a **dynamic decision engine** that evaluates user data against rules defined in JSON and adds AI-powered reasoning to explain the result in plain language. No black-box decisions — every outcome comes with a human-readable explanation.
+## 📚 Subjects Covered
 
-## 💡 What It Does
+- **Mathematics**: Problem-solving, algebra, geometry, and advanced topics.
+- **English**: Reading comprehension, essay writing, and vocabulary.
+- **Science**: Physics, chemistry, biology, and scientific reasoning.
+- **General Ability**: Logical reasoning, pattern recognition, and critical thinking.
 
-- Loads decision **rules from JSON** — no code changes needed to update logic
-- Evaluates user-submitted data against those rules at runtime
-- Passes matched rule context to **Mistral-7B-OpenOrca via GPT4All** for natural language reasoning
-- Returns structured decisions with AI-generated explanations
-- Produces **HTML and PDF reports** for each evaluation
-- Orchestrates the full workflow with **PromptFlow**
+## 📝 Study Plan
 
-## ⚙️ Tech Stack
+### 1. Mathematics
+Focus on mastering core concepts and practicing past exam papers. Use online resources like Khan Academy and selective entry preparation books.
 
-| Layer | Technology |
-|---|---|
-| API server | FastAPI + Uvicorn |
-| Rule engine | JSON-based DSL (custom) |
-| Local LLM reasoning | Mistral-7B-OpenOrca via GPT4All |
-| Workflow orchestration | PromptFlow |
-| Report generation | Jinja2 + WeasyPrint |
-| Infrastructure | Azure App Services (GPU-enabled) |
-| IaC | Bicep |
-| CI/CD | GitHub Actions |
+### 2. English
+Improve reading comprehension by analyzing articles and essays. Practice writing under timed conditions to enhance clarity and structure.
 
-## 🔧 How It Works
+### 3. Science
+Conduct experiments and review foundational concepts. Use interactive tools like simulations to understand complex topics.
 
-### 1. Rules as JSON
+### 4. General Ability
+Solve puzzles and logical reasoning questions daily. Familiarize yourself with common question types in selective entry exams.
 
-Decision logic lives in structured JSON files — no hard-coded conditionals. Rules define conditions, thresholds, and outcomes. This makes the engine **configurable without redeployment**.
+## 🔑 Key Strategies
 
-```json
-{
-  "rule_id": "income-check",
-  "condition": "annual_income < 30000",
-  "outcome": "ineligible",
-  "reason_prompt": "Explain why this applicant does not meet the income threshold."
-}
-```
+- **Time Management**: Allocate specific time slots for each subject.
+- **Mock Exams**: Simulate exam conditions to build confidence.
+- **Review Mistakes**: Analyze errors to avoid repeating them.
+- **Seek Help**: Join study groups or hire a tutor for challenging areas.
 
-### 2. FastAPI Endpoints
+## 📘 Resources
 
-Multiple endpoints handle different entry points:
+- **Books**: Selective entry preparation guides for each subject.
+- **Online Platforms**: Websites and apps offering practice questions and tutorials.
+- **Workshops**: Attend seminars and coaching sessions tailored for selective entry exams.
 
-- `POST /evaluate` — JSON API for programmatic evaluation
-- `POST /evaluate/form` — HTML form submission for human users
-- `GET /report/{id}` — retrieve a generated HTML or PDF report
+## 🏆 Success Tips
 
-### 3. AI Reasoning with Mistral
+- Stay consistent with your study schedule.
+- Take regular breaks to avoid burnout.
+- Stay positive and believe in your abilities.
 
-Once a rule matches, the engine constructs a prompt with the rule context and the user's data, then calls **Mistral-7B-OpenOrca** locally via GPT4All. The model returns a concise, plain-English explanation of the decision.
+> Success in selective entry exams comes from a combination of hard work, smart strategies, and self-confidence. Start preparing today to achieve your goals in 2026.
 
-Running the LLM locally keeps sensitive applicant data entirely on-premises — no external API calls, no data transmitted.
+---
+title: "My Selective Entry Journey"
+slug: "my-selective-entry-journey"
+date: "2026-04-17"
+description: "A personal account of my journey preparing for selective entry exams."
+tags: ["Journey", "Selective Entry", "Personal Story", "2026", "Exams", "Practice"]
+feature_image: "/images/my-selective-entry-journey.png"
+---
 
-### 4. PromptFlow Orchestration
+Preparing for selective entry exams was one of the most challenging yet rewarding experiences of my life. This is not a guide, but rather a reflection on my journey — the struggles, the breakthroughs, and everything in between.
 
-PromptFlow ties the steps together — rule evaluation, LLM reasoning, report generation — as a traceable, debuggable workflow. This makes it easy to replay, inspect, and improve individual steps without running the full pipeline.
+## 📖 Reading Comprehension
 
-### 5. PDF Reports
+Reading comprehension was a subject I initially struggled with. I found it difficult to analyze passages quickly and extract key information. To improve, I:
 
-Each evaluation generates a branded HTML report rendered to PDF with **WeasyPrint**. Reports include the decision outcome, matched rules, AI reasoning, and a timestamp — ready for auditing or end-user delivery.
+- Read articles and essays daily, focusing on understanding the main idea and tone.
+- Practiced summarizing paragraphs in my own words.
+- Timed myself while answering practice questions to build speed.
 
-## ☁️ Deployment
+Over time, I noticed significant improvement in my ability to identify themes and answer questions accurately under time pressure.
 
-The engine is deployed on **Azure App Services** with GPU support for the LLM inference step. Infrastructure is defined entirely in **Bicep**, making environment provisioning reproducible and version-controlled.
+## 🧮 Quantitative Ability (QA)
 
-The **GitHub Actions CI/CD pipeline** handles:
-- Lint and unit tests on PR
-- Docker build and push to ACR on merge
-- Automated deployment to App Service
+Quantitative Ability was both a challenge and a joy. I loved solving puzzles and equations, but some topics, like probability and geometry, required extra effort. My approach included:
 
-## 📘 What I Learned
+- Breaking down complex problems into smaller, manageable steps.
+- Practicing a variety of question types to build confidence.
+- Reviewing mistakes thoroughly to understand where I went wrong.
 
-### Rule-based logic + AI reasoning is a strong pattern
+The satisfaction of solving a tough problem was unmatched, and it kept me motivated to push through the harder topics.
 
-Pure rule engines are fast and auditable but can't explain nuance. Pure LLMs are flexible but hard to constrain. Combining them gives you the best of both: deterministic outcomes with intelligible reasoning.
+## 🔬 Science
 
-### PromptFlow adds real observability to LLM workflows
+Science was a subject I enjoyed, but selective entry exams required a deeper understanding of concepts and their applications. I focused on:
 
-Rather than chaining calls in ad-hoc Python, PromptFlow structures each step as a node with inputs, outputs, and traces. This made debugging and iteration significantly faster.
+- Conducting small experiments at home to reinforce theoretical knowledge.
+- Watching videos and using interactive tools to visualize complex topics.
+- Practicing scientific reasoning questions to improve my analytical skills.
 
-### GPU-backed App Services close the gap between prototype and production
+This hands-on approach made learning science both fun and effective.
 
-Running a 7B parameter model in a cloud environment with GPU support made latency viable for real user-facing use cases — without needing to manage Kubernetes or custom VM infrastructure.
+## 🧠 General Ability
 
-> The combination of rule-based certainty and AI-generated reasoning makes decisions more transparent and defensible — critical for any system that affects real people.
+General Ability was perhaps the most unpredictable subject. Logical reasoning and pattern recognition required me to think outside the box. My strategy involved:
 
-## Related Topics
+- Solving puzzles and brainteasers daily.
+- Familiarizing myself with common question types in past exams.
+- Staying calm and focused during practice sessions to avoid overthinking.
 
-- **PromptFlow** — Microsoft's LLM workflow orchestration framework for Azure AI
-- **GPT4All** — cross-platform runtime for running open-source LLMs locally
-- **Mistral-7B** — efficient open-source LLM well-suited for reasoning tasks
-- **Azure App Service (GPU)** — managed hosting with GPU support for ML workloads
-- **Bicep** — Azure-native IaC language for declarative resource provisioning
+While it was challenging, I found that consistent practice made a big difference in my performance.
+
+## 🌟 Reflections
+
+Looking back, my selective entry journey was as much about personal growth as it was about academic preparation. I learned the value of discipline, resilience, and a positive mindset. Each small victory — whether it was mastering a tricky concept or improving my speed — brought me closer to my goal.
+
+> "Success is the sum of small efforts, repeated day in and day out." — Robert Collier
+
+For anyone embarking on a similar journey, remember that progress takes time. Celebrate your achievements, no matter how small, and keep moving forward.
