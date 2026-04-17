@@ -2,8 +2,7 @@
 // Each node has id, label, weight, skills, summary, projects, etc.
 
 export const nodes = [
-  [
-  {
+{
     id: "jag",
     label: "Aaryan Patel",
     type: "central",
@@ -110,8 +109,7 @@ export const nodes = [
     skills: ["Interests", "Background"],
     summary: "About me and what I like to learn.",
     projects: [],
-  }
-]
+  },
 ];
 
 export const edges = [
