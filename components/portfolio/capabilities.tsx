@@ -1,40 +1,40 @@
 const capabilities = [
-  {
-    title: 'AI/ML Platforms',
-    description:
-      'Designing and delivering end-to-end AI/ML systems that move seamlessly from experimentation to production. Focused on building scalable, reliable, and production-grade solutions — from model development to deployment, monitoring, and continuous improvement.',
-    icon: '🧠',
-  },
-  {
-    title: 'Data & Intelligent Pipelines',
-    description:
-      'Architecting robust data pipelines across batch and real-time systems, enabling high-quality data flow, feature engineering, and reproducible machine learning workflows at scale.',
-    icon: '⚡',
-  },
-  {
-    title: 'Cloud Architecture',
-    description:
-      'Building cloud-native platforms across Azure, AWS, and GCP, leveraging containerisation, serverless patterns, and distributed systems to ensure scalability, resilience, and cost efficiency.',
-    icon: '☁️',
-  },
-  {
-    title: 'MLOps & DevOps',
-    description:
-      'Establishing production-ready MLOps practices, including CI/CD for machine learning, model versioning, automated testing, and end-to-end observability for reliable and maintainable systems.',
-    icon: '🔁',
-  },
-  {
-    title: 'Security & Governance',
-    description:
-      'Embedding security and compliance into AI/ML systems by design — implementing access control, data protection, and governance frameworks aligned with enterprise-grade standards.',
-    icon: '🔐',
-  },
-  {
-    title: 'Automation & Platform Engineering',
-    description:
-      'Developing reusable frameworks, APIs, and platform components that accelerate delivery, standardise engineering practices, and enable teams to build and scale AI solutions efficiently.',
-    icon: '⚙️',
-  },
+{
+  title: 'AI & Machine Learning',
+  description:
+    'Exploring how computers can learn from data and make predictions. Building simple AI projects and learning how models work in real-world applications.',
+  icon: '🧠',
+},
+{
+  title: 'Data & Projects',
+  description:
+    'Working with data to create small projects, understand patterns, and improve problem-solving skills through coding and logical thinking.',
+  icon: '⚡',
+},
+{
+  title: 'Cloud & Technology',
+  description:
+    'Learning how modern apps and websites run on cloud platforms and exploring tools used to build and deploy projects online.',
+  icon: '☁️',
+},
+{
+  title: 'Coding & Development',
+  description:
+    'Practicing programming and building projects step by step, focusing on writing clean code and improving development skills.',
+  icon: '🔁',
+},
+{
+  title: 'Digital Safety',
+  description:
+    'Understanding the importance of online safety, protecting data, and following good practices when working with technology.',
+  icon: '🔐',
+},
+{
+  title: 'Building & Creating',
+  description:
+    'Creating fun and useful projects, learning how to turn ideas into real applications, and exploring how technology can solve problems.',
+  icon: '⚙️',
+}
 ]
 
 export function Capabilities() {
