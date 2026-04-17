@@ -38,7 +38,7 @@ export function Nav() {
           href="/"
           className="font-mono font-bold text-lg text-foreground hover:text-primary transition-colors"
         >
-          <span className="text-primary">{">"}</span> Jag Patel
+          <span className="text-primary">{">"}</span> Aaryan Patel
         </Link>
 
         {/* Desktop nav */}

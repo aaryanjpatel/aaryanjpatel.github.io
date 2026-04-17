@@ -15,7 +15,7 @@ if (!fs.existsSync(RSS_DIR)) {
 }
 
 const siteUrl = "https://jagdishkumarpatel.github.io";
-const siteTitle = "Jag Patel — Blog";
+const siteTitle = "Aaryan Patel — Blog";
 const siteDescription = "AI/ML engineering, MLOps, cloud architecture, and platform insights.";
 
 function toAbsUrl(p) {

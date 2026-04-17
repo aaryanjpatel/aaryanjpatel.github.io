@@ -8,7 +8,7 @@ export function Footer() {
         {/* Identity */}
         <div className="text-center md:text-left">
           <p className="font-mono font-semibold text-foreground">
-            <span className="text-primary">{">"}</span> Jag Patel
+            <span className="text-primary">{">"}</span> Aaryan Patel
           </p>
           <p className="text-xs text-muted-foreground mt-0.5">Principal AI/ML Engineer</p>
         </div>
@@ -58,7 +58,7 @@ export function Footer() {
             </a>
           </div>
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Jag Patel
+            © {new Date().getFullYear()} Aaryan Patel
           </p>
         </div>
       </div>

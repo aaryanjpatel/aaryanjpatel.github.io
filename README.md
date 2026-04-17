@@ -1,4 +1,4 @@
-# Jag Patel — Portfolio
+# Aaryan Patel — Portfolio
 
 Personal portfolio and technical blog for **Jagdishkumar (Jag) Patel**, Principal AI/ML Engineer with 18+ years designing and delivering scalable, secure, production-grade systems across AI/ML engineering, machine learning, MLOps, cloud architecture, DevSecOps, and platform engineering.
 
@@ -190,7 +190,7 @@ Follows [Conventional Commits](https://www.conventionalcommits.org/) — Semanti
 
 ## Contact
 
-**Jag Patel**
+**Aaryan Patel**
 - LinkedIn: [linkedin.com/in/jagjpatel](https://www.linkedin.com/in/jagjpatel/)
 - GitHub: [github.com/JagdishkumarPatel](https://github.com/JagdishkumarPatel)
 - Site: [jagdishkumarpatel.github.io](https://jagdishkumarpatel.github.io)

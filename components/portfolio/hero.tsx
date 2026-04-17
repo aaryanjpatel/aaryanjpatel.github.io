@@ -65,7 +65,7 @@ export function Hero() {
           <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-2 ring-primary/30 ring-offset-4 ring-offset-background">
             <Image
               src="/avatar/headshot.jpg"
-              alt="Jag Patel"
+              alt="Aaryan Patel"
               fill
               priority
               className="object-cover"
@@ -76,7 +76,7 @@ export function Hero() {
         {/* Name + role */}
         <div className="space-y-3">
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight gradient-heading">
-            Jag Patel
+            Aaryan Patel
           </h1>
           <p className="font-mono text-lg md:text-xl text-primary">
             {">"} Principal AI/ML Engineer

@@ -32,7 +32,7 @@
     "excerpt": "Over the last few days, I've built a lightweight, plug-and-play logging SDK for Python that standardizes observability across AI/ML, backend, and distributed systems. ## 🎯 The Problem One of the most overlooked problems in engineering teams — **inconsistent logging across servic…",
     "feature_image": "/images/Logging_SDK.png",
     "tags": [
-      "Jag Patel",
+      "Aaryan Patel",
       "Python",
       "Logging",
       "Observability",

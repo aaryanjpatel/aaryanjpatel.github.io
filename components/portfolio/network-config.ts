@@ -4,7 +4,7 @@
 export const nodes = [
   {
     id: "jag",
-    label: "Jag Patel",
+    label: "Aaryan Patel",
     type: "central",
     weight: "strong",
     skills: ["AI/ML", "Cloud", "MLOps", "APIs", "Data Engineering"],

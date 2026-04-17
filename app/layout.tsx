@@ -10,12 +10,12 @@ import { Footer } from '@/components/layout/footer'
 export const metadata: Metadata = {
   metadataBase: new URL('https://jagdishkumarpatel.github.io'),
   title: {
-    default: 'Jag Patel — Principal AI/ML Engineer, MLOps & Cloud',
-    template: '%s | Jag Patel',
+    default: 'Aaryan Patel — Principal AI/ML Engineer, MLOps & Cloud',
+    template: '%s | Aaryan Patel',
   },
-  description: 'Jag Patel — Principal AI/ML Engineer. 18+ years in AI/ML, LLMs, PromptFlow, DevSecOps, and cloud automation. Building transparent, production-grade AI systems and secure platforms.',
+  description: 'Aaryan Patel — Principal AI/ML Engineer. 18+ years in AI/ML, LLMs, PromptFlow, DevSecOps, and cloud automation. Building transparent, production-grade AI systems and secure platforms.',
   keywords: [
-    'Jag Patel',
+    'Aaryan Patel',
     'Jagdishkumar Patel',
     'AI Engineer',
     'AI/ML Engineer',
@@ -48,10 +48,10 @@ export const metadata: Metadata = {
     'Leadership',
   ],
   openGraph: {
-    siteName: 'Jag Patel',
+    siteName: 'Aaryan Patel',
     type: 'profile',
     locale: 'en_AU',
-    title: 'Jag Patel — Principal AI/ML Engineer, MLOps & Cloud',
+    title: 'Aaryan Patel — Principal AI/ML Engineer, MLOps & Cloud',
     description: 'Principal AI/ML Engineer with 18+ years in AI, MLOps, PromptFlow, DevSecOps, and cloud automation.',
     url: 'https://jagdishkumarpatel.github.io',
     images: [
@@ -59,13 +59,13 @@ export const metadata: Metadata = {
         url: '/images/avatar.jpg',
         width: 800,
         height: 800,
-        alt: 'Jag Patel — Principal AI/ML Engineer',
+        alt: 'Aaryan Patel — Principal AI/ML Engineer',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Jag Patel — Principal AI/ML Engineer',
+    title: 'Aaryan Patel — Principal AI/ML Engineer',
     description: '18+ years in AI/ML, LLMs, PromptFlow, DevSecOps, and cloud automation.',
     images: ['/images/avatar.jpg'],
   },
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
 export const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: 'Jag Patel',
+  name: 'Aaryan Patel',
   jobTitle: 'Principal AI/ML Engineer',
   url: 'https://jagdishkumarpatel.github.io',
   sameAs: [

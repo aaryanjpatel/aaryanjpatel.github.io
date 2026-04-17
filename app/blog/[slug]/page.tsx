@@ -20,22 +20,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const url = `https://jagdishkumarpatel.github.io/blog/${post.slug}`
   const description = post.description || post.excerpt
   return {
-    title: post.title.startsWith('Jag Patel') ? post.title : `${post.title} | Jag Patel`,
+    title: post.title.startsWith('Aaryan Patel') ? post.title : `${post.title} | Aaryan Patel`,
     description,
     keywords: (post as any).keywords ?? post.tags ?? [],
-    authors: [{ name: 'Jag Patel', url: 'https://jagdishkumarpatel.github.io' }],
+    authors: [{ name: 'Aaryan Patel', url: 'https://jagdishkumarpatel.github.io' }],
     alternates: { canonical: url },
     openGraph: {
       title: post.title,
       description,
       url,
-      siteName: 'Jag Patel',
+      siteName: 'Aaryan Patel',
       images: post.feature_image
         ? [{ url: post.feature_image, width: 1400, height: 788, alt: post.title }]
         : [],
       type: 'article',
       publishedTime: post.date,
-      authors: ['Jag Patel'],
+      authors: ['Aaryan Patel'],
       tags: post.tags ?? [],
     },
     twitter: {

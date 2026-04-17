@@ -157,14 +157,14 @@
 
 ### Bug Fixes
 
-* remove Jag Patel prefix from post title and description ([2d06700](https://github.com/JagdishkumarPatel/JagdishkumarPatel.github.io/commit/2d0670023d0bd4f14f6fccc4bbf0cf28cf09d922))
+* remove Aaryan Patel prefix from post title and description ([2d06700](https://github.com/JagdishkumarPatel/JagdishkumarPatel.github.io/commit/2d0670023d0bd4f14f6fccc4bbf0cf28cf09d922))
 
 # [1.3.0](https://github.com/JagdishkumarPatel/JagdishkumarPatel.github.io/compare/v1.2.1...v1.3.0) (2026-04-10)
 
 
 ### Features
 
-* add Python Logging SDK post with SEO optimisation for Jag Patel keyword ([a751418](https://github.com/JagdishkumarPatel/JagdishkumarPatel.github.io/commit/a7514187184e04aaaec1e0e1e03ac96f819328bb))
+* add Python Logging SDK post with SEO optimisation for Aaryan Patel keyword ([a751418](https://github.com/JagdishkumarPatel/JagdishkumarPatel.github.io/commit/a7514187184e04aaaec1e0e1e03ac96f819328bb))
 
 ## [1.2.1](https://github.com/JagdishkumarPatel/JagdishkumarPatel.github.io/compare/v1.2.0...v1.2.1) (2026-04-06)
 
@@ -212,6 +212,6 @@
 ### Features
 
 * add multi-theme system and dynamic blog/slug pages ([e4ea34a](https://github.com/JagdishkumarPatel/JagdishkumarPatel.github.io/commit/e4ea34ada98a7979784a4ec7061d940c93008071))
-* add personalized content for Jag Patel's portfolio ([a33d7bb](https://github.com/JagdishkumarPatel/JagdishkumarPatel.github.io/commit/a33d7bb5d8887a1888ec41c1a31261cec1ad19df))
+* add personalized content for Aaryan Patel's portfolio ([a33d7bb](https://github.com/JagdishkumarPatel/JagdishkumarPatel.github.io/commit/a33d7bb5d8887a1888ec41c1a31261cec1ad19df))
 * add sticky nav, hero with avatar, footer, horizontal blog cards, blog TOC ([2699efc](https://github.com/JagdishkumarPatel/JagdishkumarPatel.github.io/commit/2699efc4220d7c7c80e3abb59115cbeeea54937d))
 * implement clean Next.js structure with semantic release and deployment ([f5001e2](https://github.com/JagdishkumarPatel/JagdishkumarPatel.github.io/commit/f5001e219ee87ec4edcdef030e4c6fba27f5f0b1))
