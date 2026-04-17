@@ -8,19 +8,19 @@ import { Contact } from '@/components/portfolio/contact'
 import { HomeEntry } from '@/components/portfolio/home-entry'
 
 export const metadata: Metadata = {
-  title: 'Aaryan Patel — Principal AI/ML Engineer | Machine Learning, MLOps & Cloud',
-  description: 'Aaryan Patel (Jagdishkumar Patel) — Principal AI/ML Engineer with 18+ years across AI/ML Engineering, Machine Learning, Data Science, MLOps, Cloud Engineering, Cloud DevOps, and DevSecOps. Based in Australia.',
+  title: 'Aaryan Patel — Future Tech Entrepreneur | Machine Learning, MLOps & Cloud',
+  description: 'Aaryan Patel (Jagdishkumar Patel) — Future Tech Entrepreneur with 18+ years across AI/ML Engineering, Machine Learning, Data Science, MLOps, Cloud Engineering, Cloud DevOps, and DevSecOps. Based in Australia.',
   keywords: [
     'Aaryan Patel', 'Jagdishkumar Patel', 'AI Engineer', 'AI/ML Engineer', 'AI/ML Engineering',
-    'Principal AI/ML Engineer', 'Machine Learning Engineer', 'Data Science Engineer',
+    'Future Tech Entrepreneur', 'Machine Learning Engineer', 'Data Science Engineer',
     'MLOps Engineer', 'Cloud Engineer', 'Cloud Engineering', 'Cloud DevOps Engineer',
     'Cloud DevSecOps Engineer', 'DevSecOps', 'LLM', 'Ollama', 'Azure', 'AWS',
     'Platform Engineering', 'Python',
   ],
   alternates: { canonical: 'https://aaryanjpatel.github.io' },
   openGraph: {
-    title: 'Aaryan Patel — Principal AI/ML Engineer',
-    description: 'Principal AI/ML Engineer with 18+ years in AI/ML Engineering, Machine Learning, MLOps, Cloud Engineering, and DevSecOps.',
+    title: 'Aaryan Patel — Future Tech Entrepreneur',
+    description: 'Future Tech Entrepreneur with 18+ years in AI/ML Engineering, Machine Learning, MLOps, Cloud Engineering, and DevSecOps.',
     url: 'https://aaryanjpatel.github.io',
     siteName: 'Aaryan Patel',
     type: 'profile',

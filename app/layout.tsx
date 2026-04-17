@@ -10,17 +10,17 @@ import { Footer } from '@/components/layout/footer'
 export const metadata: Metadata = {
   metadataBase: new URL('https://aaryanjpatel.github.io'),
   title: {
-    default: 'Aaryan Patel — Principal AI/ML Engineer, MLOps & Cloud',
+    default: 'Aaryan Patel — Future Tech Entrepreneur, MLOps & Cloud',
     template: '%s | Aaryan Patel',
   },
-  description: 'Aaryan Patel — Principal AI/ML Engineer. 18+ years in AI/ML, LLMs, PromptFlow, DevSecOps, and cloud automation. Building transparent, production-grade AI systems and secure platforms.',
+  description: 'Aaryan Patel — Future Tech Entrepreneur. 18+ years in AI/ML, LLMs, PromptFlow, DevSecOps, and cloud automation. Building transparent, production-grade AI systems and secure platforms.',
   keywords: [
     'Aaryan Patel',
     'Jagdishkumar Patel',
     'AI Engineer',
     'AI/ML Engineer',
     'AI/ML Engineering',
-    'Principal AI/ML Engineer',
+    'Future Tech Entrepreneur',
     'Machine Learning Engineer',
     'Data Science Engineer',
     'MLOps Engineer',
@@ -51,21 +51,21 @@ export const metadata: Metadata = {
     siteName: 'Aaryan Patel',
     type: 'profile',
     locale: 'en_AU',
-    title: 'Aaryan Patel — Principal AI/ML Engineer, MLOps & Cloud',
-    description: 'Principal AI/ML Engineer with 18+ years in AI, MLOps, PromptFlow, DevSecOps, and cloud automation.',
+    title: 'Aaryan Patel — Future Tech Entrepreneur, MLOps & Cloud',
+    description: 'Future Tech Entrepreneur with 18+ years in AI, MLOps, PromptFlow, DevSecOps, and cloud automation.',
     url: 'https://aaryanjpatel.github.io',
     images: [
       {
         url: '/images/avatar.jpg',
         width: 800,
         height: 800,
-        alt: 'Aaryan Patel — Principal AI/ML Engineer',
+        alt: 'Aaryan Patel — Future Tech Entrepreneur',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Aaryan Patel — Principal AI/ML Engineer',
+    title: 'Aaryan Patel — Future Tech Entrepreneur',
     description: '18+ years in AI/ML, LLMs, PromptFlow, DevSecOps, and cloud automation.',
     images: ['/images/avatar.jpg'],
   },
@@ -80,13 +80,13 @@ export const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Aaryan Patel',
-  jobTitle: 'Principal AI/ML Engineer',
+  jobTitle: 'Future Tech Entrepreneur',
   url: 'https://aaryanjpatel.github.io',
   sameAs: [
     'https://www.linkedin.com/in/jagjpatel/',
     'https://github.com/aaryanjpatel',
   ],
-  description: 'Principal AI/ML Engineer with 18+ years in AI, MLOps, PromptFlow, DevSecOps, and cloud automation.',
+  description: 'Future Tech Entrepreneur with 18+ years in AI, MLOps, PromptFlow, DevSecOps, and cloud automation.',
 }
 
 export default function RootLayout({

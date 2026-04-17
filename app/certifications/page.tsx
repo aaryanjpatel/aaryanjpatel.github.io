@@ -3,7 +3,7 @@ import { CertificationsPage } from '@/components/portfolio/certifications'
 
 export const metadata: Metadata = {
   title: 'Licences & Certifications | Aaryan Patel',
-  description: 'Professional certifications and licences held by Aaryan Patel — Principal AI/ML Engineer specialising in cloud, DevSecOps, and infrastructure engineering.',
+  description: 'Professional certifications and licences held by Aaryan Patel — Future Tech Entrepreneur specialising in cloud, DevSecOps, and infrastructure engineering.',
   keywords: [
     'Aaryan Patel certifications', 'Jagdishkumar Patel', 'AWS certified', 'Azure certified',
     'Terraform certified', 'DevSecOps certifications', 'cloud certifications Aaryan Patel',
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://aaryanjpatel.github.io/certifications' },
   openGraph: {
     title: 'Licences & Certifications | Aaryan Patel',
-    description: 'Industry certifications across AWS, Azure, Terraform, and more — held by Aaryan Patel, Principal AI/ML Engineer.',
+    description: 'Industry certifications across AWS, Azure, Terraform, and more — held by Aaryan Patel, Future Tech Entrepreneur.',
     url: 'https://aaryanjpatel.github.io/certifications',
     siteName: 'Aaryan Patel',
     type: 'profile',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary',
     title: 'Licences & Certifications | Aaryan Patel',
-    description: 'AWS, Azure, Terraform and more — certifications held by Aaryan Patel, Principal AI/ML Engineer.',
+    description: 'AWS, Azure, Terraform and more — certifications held by Aaryan Patel, Future Tech Entrepreneur.',
     creator: '@JagPatel',
   },
   robots: { index: true, follow: true },

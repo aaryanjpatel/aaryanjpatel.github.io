@@ -4,7 +4,7 @@ import { BlogPage } from '@/components/portfolio/blog-page'
 
 export const metadata: Metadata = {
   title: 'Blog | Aaryan Patel',
-  description: 'Articles on AI/ML engineering, platform engineering, local LLMs, DevOps, and distributed systems by Aaryan Patel — Principal AI/ML Engineer.',
+  description: 'Articles on AI/ML engineering, platform engineering, local LLMs, DevOps, and distributed systems by Aaryan Patel — Future Tech Entrepreneur.',
   keywords: [
     'Aaryan Patel blog', 'AI ML engineering blog', 'platform engineering', 'local LLM',
     'Ollama', 'FastAPI', 'RAG', 'MLOps', 'DevOps', 'Python', 'distributed systems',

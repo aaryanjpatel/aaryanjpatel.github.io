@@ -8,7 +8,7 @@ export const nodes = [
     type: "central",
     weight: "strong",
     skills: ["AI/ML", "Cloud", "MLOps", "APIs", "Data Engineering"],
-    summary: "Principal AI/ML Engineer with deep expertise in cloud, MLOps, and intelligent systems.",
+    summary: "Future Tech Entrepreneur with deep expertise in cloud, MLOps, and intelligent systems.",
     projects: ["AI Platform", "ML Monitoring", "Cloud Migration"],
   },
   {

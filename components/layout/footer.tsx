@@ -10,7 +10,7 @@ export function Footer() {
           <p className="font-mono font-semibold text-foreground">
             <span className="text-primary">{">"}</span> Aaryan Patel
           </p>
-          <p className="text-xs text-muted-foreground mt-0.5">Principal AI/ML Engineer</p>
+          <p className="text-xs text-muted-foreground mt-0.5">Future Tech Entrepreneur</p>
         </div>
 
         {/* Nav */}

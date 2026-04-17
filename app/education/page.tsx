@@ -3,7 +3,7 @@ import { EducationPage } from '@/components/portfolio/education'
 
 export const metadata: Metadata = {
   title: 'Education | Aaryan Patel',
-  description: 'Academic background and formal qualifications of Aaryan Patel — Principal AI/ML Engineer with 18+ years of experience in AI, cloud, and platform engineering.',
+  description: 'Academic background and formal qualifications of Aaryan Patel — Future Tech Entrepreneur with 18+ years of experience in AI, cloud, and platform engineering.',
   keywords: [
     'Aaryan Patel education', 'Jagdishkumar Patel', 'Aaryan Patel qualifications',
     'AI ML engineer education', 'Principal AI ML Engineer background',
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://aaryanjpatel.github.io/education' },
   openGraph: {
     title: 'Education | Aaryan Patel',
-    description: 'Academic qualifications of Aaryan Patel, Principal AI/ML Engineer.',
+    description: 'Academic qualifications of Aaryan Patel, Future Tech Entrepreneur.',
     url: 'https://aaryanjpatel.github.io/education',
     siteName: 'Aaryan Patel',
     type: 'profile',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary',
     title: 'Education | Aaryan Patel',
-    description: 'Academic background and qualifications of Aaryan Patel, Principal AI/ML Engineer.',
+    description: 'Academic background and qualifications of Aaryan Patel, Future Tech Entrepreneur.',
     creator: '@JagPatel',
   },
   robots: { index: true, follow: true },

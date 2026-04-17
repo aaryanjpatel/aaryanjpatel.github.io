@@ -4,7 +4,7 @@ import projectsData from '@/public/metadata/projects.json'
 
 export const metadata: Metadata = {
   title: 'Projects | Aaryan Patel',
-  description: 'Explore projects built by Aaryan Patel — Principal AI/ML Engineer specialising in AI/ML pipelines, distributed systems, platform engineering, and cloud automation.',
+  description: 'Explore projects built by Aaryan Patel — Future Tech Entrepreneur specialising in AI/ML pipelines, distributed systems, platform engineering, and cloud automation.',
   keywords: [
     'Aaryan Patel', 'Jagdishkumar Patel', 'Aaryan Patel projects', 'AI ML projects',
     'Principal AI ML Engineer', 'platform engineering projects', 'Python projects',
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://aaryanjpatel.github.io/projects' },
   openGraph: {
     title: 'Projects | Aaryan Patel',
-    description: 'Explore AI/ML, platform engineering, and cloud automation projects built by Aaryan Patel — Principal AI/ML Engineer.',
+    description: 'Explore AI/ML, platform engineering, and cloud automation projects built by Aaryan Patel — Future Tech Entrepreneur.',
     url: 'https://aaryanjpatel.github.io/projects',
     siteName: 'Aaryan Patel',
     type: 'profile',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Projects | Aaryan Patel',
-    description: 'AI/ML, platform engineering, and cloud automation projects by Aaryan Patel — Principal AI/ML Engineer.',
+    description: 'AI/ML, platform engineering, and cloud automation projects by Aaryan Patel — Future Tech Entrepreneur.',
     creator: '@JagPatel',
   },
   robots: { index: true, follow: true },
