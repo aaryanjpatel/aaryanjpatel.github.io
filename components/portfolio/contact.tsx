@@ -52,7 +52,7 @@ function ContactContent({ standalone = false }: { standalone?: boolean }) {
         <div className="flex flex-wrap gap-4">
           <EmailButton />
           <a
-            href="https://www.linkedin.com/in/jagjpatel/"
+            href="https://www.linkedin.com/in/aaryanjpatel/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 border border-primary text-primary px-6 py-3 rounded-lg hover:bg-primary/10 transition-colors"

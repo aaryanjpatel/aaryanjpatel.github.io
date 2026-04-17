@@ -33,7 +33,7 @@ function randomPos(spread = 150) {
 function makeInitialNodes() {
   return NODE_CONFIG.map((n) => ({
     id: n.id,
-    position: n.id === "jag" ? { x: -45, y: -45 } : randomPos(),
+    position: n.id === "aaryan" ? { x: -45, y: -45 } : randomPos(),
     data: {
       ...n,
       active: false,
@@ -61,7 +61,7 @@ const nodeTypes = { neuralNode: NeuralNetworkNode };
 
 // Node id → route mapping (outside component to keep stable reference)
 const NODE_ROUTES: Record<string, string> = {
-  jag: "/about",
+  aaryan: "/about",
   aiml: "/projects",
   mlops: "/projects",
   cloud: "/projects",
@@ -98,7 +98,7 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
   // Animation loop with pause/resume
   useEffect(() => {
     const nodeIds = NODE_CONFIG.map((n) => n.id);
-    const totalNodes = nodeIds.filter((id) => id !== "jag").length;
+    const totalNodes = nodeIds.filter((id) => id !== "aaryan").length;
     const speed = 0.00025;
     const breatheSpeed = 0.00013;
     // Fixed radius in ReactFlow coords — fitView scales to fill screen
@@ -122,10 +122,10 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
 
       setNodes((nds) =>
         nds.map((n) => {
-          if (n.id === "jag") {
+          if (n.id === "aaryan") {
             return { ...n, position: { x: -45, y: -45 }, draggable: false, data: { ...n.data, depth: 1 } };
           }
-          const idx = nodeIds.filter((id) => id !== "jag").indexOf(n.id);
+          const idx = nodeIds.filter((id) => id !== "aaryan").indexOf(n.id);
           const angle = (2 * Math.PI * idx) / totalNodes + t * speed;
           const depth = getDepth(angle);
           return {

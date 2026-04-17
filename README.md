@@ -191,7 +191,7 @@ Follows [Conventional Commits](https://www.conventionalcommits.org/) — Semanti
 ## Contact
 
 **Aaryan Patel**
-- LinkedIn: [linkedin.com/in/jagjpatel](https://www.linkedin.com/in/jagjpatel/)
+- LinkedIn: [linkedin.com/in/aaryanjpatel](https://www.linkedin.com/in/aaryanjpatel/)
 - GitHub: [github.com/aaryanjpatel](https://github.com/aaryanjpatel)
 - Site: [aaryanjpatel.github.io](https://aaryanjpatel.github.io)
 

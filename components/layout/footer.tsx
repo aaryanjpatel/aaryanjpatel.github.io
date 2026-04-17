@@ -39,7 +39,7 @@ export function Footer() {
               <Github className="h-4 w-4" />
             </a>
             <a
-              href="https://www.linkedin.com/in/jagjpatel/"
+              href="https://www.linkedin.com/in/aaryanjpatel/"
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"

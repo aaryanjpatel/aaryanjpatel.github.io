@@ -83,7 +83,7 @@ export const structuredData = {
   jobTitle: 'Future Tech Entrepreneur',
   url: 'https://aaryanjpatel.github.io',
   sameAs: [
-    'https://www.linkedin.com/in/jagjpatel/',
+    'https://www.linkedin.com/in/aaryanjpatel/',
     'https://github.com/aaryanjpatel',
   ],
   description: 'Future Tech Entrepreneur with 18+ years in AI, MLOps, PromptFlow, DevSecOps, and cloud automation.',

@@ -12,7 +12,7 @@ export default function NeuralNetworkNode({ data, selected }: NodeProps) {
   const lit: boolean = data.lit ?? false;
   const highlight = active || lit || hovered || selected;
   const weight = data.weight || getNodeWeight(data.id);
-  const isCentral = data.id === "jag";
+  const isCentral = data.id === "aaryan";
 
   // 3D depth-based visual mapping
   const depth = typeof data.depth === "number" ? data.depth : 1; // [0,1], 1=front, 0=back
