@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jagdishkumarpatel.github.io/sitemap.xml
+Sitemap: https://aaryanjpatel.github.io/sitemap.xml

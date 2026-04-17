@@ -30,7 +30,7 @@ export function Footer() {
         <div className="flex flex-col items-center md:items-end gap-2">
           <div className="flex items-center gap-4">
             <a
-              href="https://github.com/JagdishkumarPatel"
+              href="https://github.com/aaryanjpatel"
               target="_blank"
               rel="noreferrer"
               aria-label="GitHub"

@@ -103,7 +103,7 @@ export function Hero() {
             <Linkedin className="h-4 w-4" /> LinkedIn
           </a>
           <a
-            href="https://github.com/JagdishkumarPatel"
+            href="https://github.com/aaryanjpatel"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-border bg-background/50 text-foreground px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition-colors"

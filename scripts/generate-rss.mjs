@@ -14,7 +14,7 @@ if (!fs.existsSync(RSS_DIR)) {
   fs.mkdirSync(RSS_DIR, { recursive: true });
 }
 
-const siteUrl = "https://jagdishkumarpatel.github.io";
+const siteUrl = "https://aaryanjpatel.github.io";
 const siteTitle = "Aaryan Patel — Blog";
 const siteDescription = "AI/ML engineering, MLOps, cloud architecture, and platform insights.";
 

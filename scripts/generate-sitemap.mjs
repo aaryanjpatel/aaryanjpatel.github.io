@@ -19,7 +19,7 @@ if (!fs.existsSync(PUBLIC_DIR)) {
   fs.mkdirSync(PUBLIC_DIR, { recursive: true });
 }
 
-const SITE_URL = process.env.SITE_URL || 'https://jagdishkumarpatel.github.io';
+const SITE_URL = process.env.SITE_URL || 'https://aaryanjpatel.github.io';
 const STATIC_ROUTES = ['/', '/about/', '/blog/', '/projects/', '/certifications/', '/education/', '/contact/'];
 
 function isoDate(d) {

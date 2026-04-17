@@ -17,11 +17,11 @@ export const metadata: Metadata = {
     'Cloud DevSecOps Engineer', 'DevSecOps', 'LLM', 'Ollama', 'Azure', 'AWS',
     'Platform Engineering', 'Python',
   ],
-  alternates: { canonical: 'https://jagdishkumarpatel.github.io' },
+  alternates: { canonical: 'https://aaryanjpatel.github.io' },
   openGraph: {
     title: 'Aaryan Patel — Principal AI/ML Engineer',
     description: 'Principal AI/ML Engineer with 18+ years in AI/ML Engineering, Machine Learning, MLOps, Cloud Engineering, and DevSecOps.',
-    url: 'https://jagdishkumarpatel.github.io',
+    url: 'https://aaryanjpatel.github.io',
     siteName: 'Aaryan Patel',
     type: 'profile',
   },

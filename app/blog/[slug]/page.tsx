@@ -17,13 +17,13 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPostBySlug(params.slug)
   if (!post) return {}
-  const url = `https://jagdishkumarpatel.github.io/blog/${post.slug}`
+  const url = `https://aaryanjpatel.github.io/blog/${post.slug}`
   const description = post.description || post.excerpt
   return {
     title: post.title.startsWith('Aaryan Patel') ? post.title : `${post.title} | Aaryan Patel`,
     description,
     keywords: (post as any).keywords ?? post.tags ?? [],
-    authors: [{ name: 'Aaryan Patel', url: 'https://jagdishkumarpatel.github.io' }],
+    authors: [{ name: 'Aaryan Patel', url: 'https://aaryanjpatel.github.io' }],
     alternates: { canonical: url },
     openGraph: {
       title: post.title,

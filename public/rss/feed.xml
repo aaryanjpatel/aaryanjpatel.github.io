@@ -2,58 +2,58 @@
 <rss version="2.0">
   <channel>
     <title><![CDATA[Aaryan Patel — Blog]]></title>
-    <link>https://jagdishkumarpatel.github.io/blog</link>
+    <link>https://aaryanjpatel.github.io/blog</link>
     <description><![CDATA[AI/ML engineering, MLOps, cloud architecture, and platform insights.]]></description>
     <language>en</language>
     <lastBuildDate>Tue, 14 Apr 2026 21:59:43 GMT</lastBuildDate>
     
     <item>
       <title><![CDATA[Building a Local-First AI Knowledge Base — Chat with Your Files, Offline]]></title>
-      <link>https://jagdishkumarpatel.github.io/blog/local-first-ai-knowledge-base/</link>
-      <guid>https://jagdishkumarpatel.github.io/blog/local-first-ai-knowledge-base/</guid>
+      <link>https://aaryanjpatel.github.io/blog/local-first-ai-knowledge-base/</link>
+      <guid>https://aaryanjpatel.github.io/blog/local-first-ai-knowledge-base/</guid>
       <pubDate>Sun, 12 Apr 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[I built a unified local AI chat interface that lets you query PDFs, Word files, PPTs, markdown, and notes using RAG — fully on-device with Gemma 4 (2B) via Ollama, ChromaDB, and NetworkX. No cloud. No data leaves your machine.]]></description>
-      <enclosure url="https://jagdishkumarpatel.github.io/images/local-first-ai-knowledge-base.png" type="image/png" />
+      <enclosure url="https://aaryanjpatel.github.io/images/local-first-ai-knowledge-base.png" type="image/png" />
     </item>
     <item>
       <title><![CDATA[🚀 Building a Production-Grade Python Logging SDK for Distributed Observability]]></title>
-      <link>https://jagdishkumarpatel.github.io/blog/python-logging-sdk/</link>
-      <guid>https://jagdishkumarpatel.github.io/blog/python-logging-sdk/</guid>
+      <link>https://aaryanjpatel.github.io/blog/python-logging-sdk/</link>
+      <guid>https://aaryanjpatel.github.io/blog/python-logging-sdk/</guid>
       <pubDate>Fri, 10 Apr 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[A lightweight, plug-and-play Python Logging SDK that standardizes structured observability across AI/ML pipelines, distributed systems, and backend services — with automatic context injection, sensitive data redaction, and OpenTelemetry support.]]></description>
-      <enclosure url="https://jagdishkumarpatel.github.io/images/Logging_SDK.png" type="image/png" />
+      <enclosure url="https://aaryanjpatel.github.io/images/Logging_SDK.png" type="image/png" />
     </item>
     <item>
       <title><![CDATA[Building an AI Decision Engine with Mistral, FastAPI & PromptFlow]]></title>
-      <link>https://jagdishkumarpatel.github.io/blog/ai-decision-engine-mistral-promptflow/</link>
-      <guid>https://jagdishkumarpatel.github.io/blog/ai-decision-engine-mistral-promptflow/</guid>
+      <link>https://aaryanjpatel.github.io/blog/ai-decision-engine-mistral-promptflow/</link>
+      <guid>https://aaryanjpatel.github.io/blog/ai-decision-engine-mistral-promptflow/</guid>
       <pubDate>Mon, 06 Apr 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[I built a dynamic decision engine that evaluates user data against JSON-defined rules and provides AI-driven reasoning using Mistral-7B-OpenOrca via GPT4All — with PromptFlow for workflow orchestration, human-readable PDF reports, and a full CI/CD pipeline on Azure App Services.]]></description>
-      <enclosure url="https://jagdishkumarpatel.github.io/images/ai-decision-engine-mistral-promptflow.png" type="image/png" />
+      <enclosure url="https://aaryanjpatel.github.io/images/ai-decision-engine-mistral-promptflow.png" type="image/png" />
     </item>
     <item>
       <title><![CDATA[Building a Local AI Billing Chat with FastAPI and Ollama]]></title>
-      <link>https://jagdishkumarpatel.github.io/blog/local-ai-billing-chat/</link>
-      <guid>https://jagdishkumarpatel.github.io/blog/local-ai-billing-chat/</guid>
+      <link>https://aaryanjpatel.github.io/blog/local-ai-billing-chat/</link>
+      <guid>https://aaryanjpatel.github.io/blog/local-ai-billing-chat/</guid>
       <pubDate>Mon, 06 Apr 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[I built a local AI-powered billing chat that reads cloud cost CSVs (AWS, Azure) and lets you query cost changes, new services, and team breakdowns in plain language — no external APIs, fully on-device with Ollama and FastAPI.]]></description>
-      <enclosure url="https://jagdishkumarpatel.github.io/images/local-ai-billing-chat.png" type="image/png" />
+      <enclosure url="https://aaryanjpatel.github.io/images/local-ai-billing-chat.png" type="image/png" />
     </item>
     <item>
       <title><![CDATA[Building a Local MCP Server to Automate Daily DevOps Tasks]]></title>
-      <link>https://jagdishkumarpatel.github.io/blog/local-mcp-server-automation/</link>
-      <guid>https://jagdishkumarpatel.github.io/blog/local-mcp-server-automation/</guid>
+      <link>https://aaryanjpatel.github.io/blog/local-mcp-server-automation/</link>
+      <guid>https://aaryanjpatel.github.io/blog/local-mcp-server-automation/</guid>
       <pubDate>Mon, 06 Apr 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[I built a fully local MCP (Model Context Protocol) server using FastAPI and Phi-3 Mini to automate repetitive cloud and DevOps tasks — no cloud, no API keys, entirely on-device.]]></description>
-      <enclosure url="https://jagdishkumarpatel.github.io/images/local-mcp-server-automation.jpg" type="image/jpg" />
+      <enclosure url="https://aaryanjpatel.github.io/images/local-mcp-server-automation.jpg" type="image/jpg" />
     </item>
     <item>
       <title><![CDATA[🚀 A language-agnostic API & AI/ML E2E testing framework]]></title>
-      <link>https://jagdishkumarpatel.github.io/blog/e2e-testing-framework/</link>
-      <guid>https://jagdishkumarpatel.github.io/blog/e2e-testing-framework/</guid>
+      <link>https://aaryanjpatel.github.io/blog/e2e-testing-framework/</link>
+      <guid>https://aaryanjpatel.github.io/blog/e2e-testing-framework/</guid>
       <pubDate>Sun, 05 Apr 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[Building a plug-and-play reliability engine for modern API and AI/ML systems.]]></description>
-      <enclosure url="https://jagdishkumarpatel.github.io/images/e2e-testing-framework.jfif" type="image/jfif" />
+      <enclosure url="https://aaryanjpatel.github.io/images/e2e-testing-framework.jfif" type="image/jfif" />
     </item>
   </channel>
 </rss>

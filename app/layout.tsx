@@ -8,7 +8,7 @@ import { Nav } from '@/components/layout/nav'
 import { Footer } from '@/components/layout/footer'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://jagdishkumarpatel.github.io'),
+  metadataBase: new URL('https://aaryanjpatel.github.io'),
   title: {
     default: 'Aaryan Patel — Principal AI/ML Engineer, MLOps & Cloud',
     template: '%s | Aaryan Patel',
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     locale: 'en_AU',
     title: 'Aaryan Patel — Principal AI/ML Engineer, MLOps & Cloud',
     description: 'Principal AI/ML Engineer with 18+ years in AI, MLOps, PromptFlow, DevSecOps, and cloud automation.',
-    url: 'https://jagdishkumarpatel.github.io',
+    url: 'https://aaryanjpatel.github.io',
     images: [
       {
         url: '/images/avatar.jpg',
@@ -81,10 +81,10 @@ export const structuredData = {
   '@type': 'Person',
   name: 'Aaryan Patel',
   jobTitle: 'Principal AI/ML Engineer',
-  url: 'https://jagdishkumarpatel.github.io',
+  url: 'https://aaryanjpatel.github.io',
   sameAs: [
     'https://www.linkedin.com/in/jagjpatel/',
-    'https://github.com/JagdishkumarPatel',
+    'https://github.com/aaryanjpatel',
   ],
   description: 'Principal AI/ML Engineer with 18+ years in AI, MLOps, PromptFlow, DevSecOps, and cloud automation.',
 }

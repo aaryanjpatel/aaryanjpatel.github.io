@@ -60,7 +60,7 @@ function ContactContent({ standalone = false }: { standalone?: boolean }) {
             <Linkedin size={20} /> LinkedIn
           </a>
           <a
-            href="https://github.com/JagdishkumarPatel"
+            href="https://github.com/aaryanjpatel"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 border border-border text-foreground px-6 py-3 rounded-lg hover:border-primary hover:text-primary transition-colors"

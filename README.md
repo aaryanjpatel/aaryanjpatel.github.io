@@ -2,7 +2,7 @@
 
 Personal portfolio and technical blog for **Jagdishkumar (Jag) Patel**, Principal AI/ML Engineer with 18+ years designing and delivering scalable, secure, production-grade systems across AI/ML engineering, machine learning, MLOps, cloud architecture, DevSecOps, and platform engineering.
 
-🌐 **Live site**: [jagdishkumarpatel.github.io](https://jagdishkumarpatel.github.io)
+🌐 **Live site**: [aaryanjpatel.github.io](https://aaryanjpatel.github.io)
 
 ---
 
@@ -85,8 +85,8 @@ Personal portfolio and technical blog for **Jagdishkumar (Jag) Patel**, Principa
 ### Local Development
 
 ```bash
-git clone https://github.com/JagdishkumarPatel/JagdishkumarPatel.github.io.git
-cd JagdishkumarPatel.github.io
+git clone https://github.com/aaryanjpatel/aaryanjpatel.github.io.git
+cd aaryanjpatel.github.io
 npm install
 npm run dev
 ```
@@ -134,7 +134,7 @@ Edit `public/metadata/projects.json` and add an entry:
   "title": "Project Name",
   "description": "Short description.",
   "tech": ["Python", "FastAPI", "Azure"],
-  "github": "https://github.com/JagdishkumarPatel/repo",
+  "github": "https://github.com/aaryanjpatel/repo",
   "blogSlug": "optional-blog-post-slug"
 }
 ```
@@ -146,7 +146,7 @@ Edit `public/metadata/projects.json` and add an entry:
 The site uses `output: "export"` (static HTML) and deploys to GitHub Pages via GitHub Actions on every push to `main`.
 
 - Build output: `./out/`
-- Live URL: `https://jagdishkumarpatel.github.io`
+- Live URL: `https://aaryanjpatel.github.io`
 
 > **Note**: Two workflows run on push to `main` — `pages.yml` (build + deploy) and `release.yml` (semantic-release). If a push is rejected due to remote divergence, run `git pull --rebase && git push`.
 
@@ -192,8 +192,8 @@ Follows [Conventional Commits](https://www.conventionalcommits.org/) — Semanti
 
 **Aaryan Patel**
 - LinkedIn: [linkedin.com/in/jagjpatel](https://www.linkedin.com/in/jagjpatel/)
-- GitHub: [github.com/JagdishkumarPatel](https://github.com/JagdishkumarPatel)
-- Site: [jagdishkumarpatel.github.io](https://jagdishkumarpatel.github.io)
+- GitHub: [github.com/aaryanjpatel](https://github.com/aaryanjpatel)
+- Site: [aaryanjpatel.github.io](https://aaryanjpatel.github.io)
 
 ---
 
