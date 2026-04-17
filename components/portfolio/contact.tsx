@@ -9,7 +9,7 @@ function EmailButton() {
 
   useEffect(() => {
     // Assembled client-side only — not visible to crawlers/bots
-    const parts = ['patel.jag.j', '@', 'gmail', '.', 'com']
+    const parts = ['patel.aaryan.j', '@', 'gmail', '.', 'com']
     setEmail(parts.join(''))
   }, [])
 
