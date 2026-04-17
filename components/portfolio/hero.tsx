@@ -79,10 +79,10 @@ export function Hero() {
             Aaryan Patel
           </h1>
           <p className="font-mono text-lg md:text-xl text-primary">
-            {">"} Principal AI/ML Engineer
+            {">"} Future Tech Entrepreneur | Coding & Mathematics Enthusiast
           </p>
           <p className="max-w-xl text-muted-foreground text-base md:text-lg leading-relaxed">
-            18+ years designing and delivering scalable, secure, production-grade systems — spanning AI/ML engineering, machine learning, MLOps, cloud engineering, DevSecOps, and platform engineering.
+            I’m passionate about building the future through the power of mathematics, coding, and innovation. I enjoy solving complex problems and turning ideas into real-world digital solutions.
           </p>
         </div>
 
