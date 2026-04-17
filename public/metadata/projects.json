@@ -1,50 +1,10 @@
 [
   {
-    "title": "Python Logging SDK — Production-Grade Distributed Observability",
-    "description": "A lightweight, plug-and-play Python Logging SDK that standardizes structured observability across AI/ML pipelines, distributed systems, and backend services. Automatic context injection (trace_id, request_id, span_id), sensitive data redaction, environment-aware config, and OpenTelemetry-compatible integration with Azure Monitor.",
-    "tech": ["Python", "Structured Logging", "OpenTelemetry", "Azure Monitor", "Async Context", "JSON Logging"],
+    "title": "Selective Entr Exam Preparation",
+    "description": "aaryanjpatel.github.io/content/publish/selective-entry-preparation-2026.mdx",
+    "tech": ["selective entry"],
     "github": "",
     "demo": "",
-    "blogSlug": "python-logging-sdk"
-  },
-  {
-    "title": "Language-Agnostic API & AI/ML E2E Testing Framework",
-    "description": "A plug-and-play reliability engine for modern API and AI/ML systems. JSON-driven DSL, parallel execution, built-in observability with structured logs, traces, and SLA enforcement. Works across Python, .NET, and ML pipelines.",
-    "tech": ["TypeScript", "Playwright", "Node.js", "JSON DSL", "GitHub Actions"],
-    "github": "",
-    "demo": "",
-    "blogSlug": "e2e-testing-framework"
-  },
-  {
-    "title": "Local MCP Server — Personal DevOps & MLOps AI Assistant",
-    "description": "A fully local Model Context Protocol server built with FastAPI and Phi-3 Mini (GPT4All). Understands natural language commands and executes DevOps/cloud tasks — no cloud, no API keys. Hybrid routing: keyword-fast for predictable tasks, LLM for flexible intent.",
-    "tech": ["Python", "FastAPI", "MCP", "Phi-3 Mini", "GPT4All", "Local LLM"],
-    "github": "",
-    "demo": "",
-    "blogSlug": "local-mcp-server-automation"
-  },
-  {
-    "title": "Local AI Billing Chat",
-    "description": "Chat with your cloud billing data in plain language. Upload AWS or Azure CSVs and ask about cost changes, new services, and team breakdowns — fully local using Ollama, no data leaves your machine.",
-    "tech": ["Python", "FastAPI", "Ollama", "Pandas", "Jinja2", "WeasyPrint"],
-    "github": "",
-    "demo": "",
-    "blogSlug": "local-ai-billing-chat"
-  },
-  {
-    "title": "Local-First AI Knowledge Base",
-    "description": "A unified local AI chat interface to query PDFs, Word files, PPTs, markdown, and notes entirely on-device. Powered by Gemma 4 (2B) via Ollama, ChromaDB vector search, and NetworkX knowledge graph — with hash-based incremental indexing. Zero cloud dependency.",
-    "tech": ["Python", "FastAPI", "Next.js", "Ollama", "ChromaDB", "NetworkX", "RAG", "Gemma 4", "nomic-embed-text"],
-    "github": "",
-    "demo": "",
-    "blogSlug": "local-first-ai-knowledge-base"
-  },
-  {
-    "title": "AI Decision Engine — Mistral, FastAPI & PromptFlow",
-    "description": "A dynamic decision engine that evaluates user data against JSON-defined rules and provides AI-driven reasoning using Mistral-7B-OpenOrca via GPT4All. Generates HTML & PDF reports, orchestrated with PromptFlow, deployed on Azure App Services with GPU support and full CI/CD via Bicep.",
-    "tech": ["Python", "FastAPI", "Mistral", "PromptFlow", "GPT4All", "Bicep", "Azure", "CI/CD"],
-    "github": "",
-    "demo": "",
-    "blogSlug": "ai-decision-engine-mistral-promptflow"
+    "blogSlug": "selective-entry-preparation-2026"
   }
 ]
