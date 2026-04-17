@@ -1,194 +1,200 @@
-# My Portfolio Website
+# Jag Patel — Portfolio
 
-This is a simple website to show off your projects and info. It uses easy files that anyone can edit!
+Personal portfolio and technical blog for **Jagdishkumar (Jag) Patel**, Principal AI/ML Engineer with 18+ years designing and delivering scalable, secure, production-grade systems across AI/ML engineering, machine learning, MLOps, cloud architecture, DevSecOps, and platform engineering.
 
-## What You Need
-- A computer with internet
-- A GitHub account (free!)
+🌐 **Live site**: [jagdishkumarpatel.github.io](https://jagdishkumarpatel.github.io)
 
-## Step 1: Get the Website Files
-You already have them! They're in this folder.
+---
 
-## Step 2: Add Your Content
+## Tech Stack
 
-### About Page (`about.md`)
-Tell visitors who you are! Edit this file to include:
+| Layer | Technology |
+|-------|-----------|
+| Framework | Next.js 15 (App Router, static export) |
+| Language | TypeScript |
+| Styling | Tailwind CSS v4 |
+| Animations | Framer Motion |
+| Content | MDX (blog posts) |
+| Hosting | GitHub Pages |
+| CI/CD | GitHub Actions |
+| Versioning | Semantic Release |
 
-```markdown
-# About Me
+---
 
-Hi! I'm [Your Name], a [your profession/field] based in [your location].
+## Project Structure
 
-## What I Do
-- [Skill 1]
-- [Skill 2]
-- [Skill 3]
-
-## My Interests
-I'm passionate about [your interests] and always looking to learn new technologies.
-
-## Experience
-- [Job/Position] at [Company] - [Brief description]
-- [Education/School] - [Degree/Major]
-
-Feel free to reach out if you'd like to collaborate!
+```
+├── app/
+│   ├── layout.tsx              # Root layout — fonts, metadata, theme provider
+│   ├── page.tsx                # Homepage — Hero, About, Capabilities, Projects, Blog, Contact
+│   ├── blog/
+│   │   ├── page.tsx            # /blog listing page with tag filter
+│   │   └── [slug]/page.tsx     # Dynamic blog post renderer
+│   ├── about/page.tsx
+│   ├── certifications/page.tsx
+│   ├── contact/page.tsx
+│   ├── education/page.tsx
+│   └── projects/page.tsx
+├── components/
+│   ├── layout/
+│   │   ├── nav.tsx             # Top navigation bar
+│   │   └── footer.tsx
+│   └── portfolio/
+│       ├── hero.tsx            # Hero section with avatar, CTA, animated tagline
+│       ├── about.tsx           # About section (rendered from about.mdx)
+│       ├── capabilities.tsx    # 6-card capabilities grid
+│       ├── projects.tsx        # Projects with tech filter dropdown
+│       ├── blog.tsx            # Homepage blog preview (3 latest posts)
+│       ├── blog-page.tsx       # /blog full listing with tag filter
+│       ├── filter-dropdown.tsx # Reusable multi-select filter dropdown
+│       ├── certifications.tsx
+│       ├── education.tsx
+│       └── contact.tsx
+├── content/
+│   ├── about.mdx               # About section content
+│   └── publish/                # Published MDX blog posts
+├── lib/
+│   ├── posts.ts                # Post reading and metadata utilities
+│   └── themes.ts               # Theme definitions
+├── public/
+│   ├── metadata/
+│   │   ├── blog-posts.json     # Auto-generated blog index (build-time)
+│   │   └── projects.json       # Manually maintained project list
+│   ├── images/                 # Blog post feature images
+│   ├── avatar/                 # Profile headshot
+│   ├── rss/                    # Generated RSS feed
+│   └── sitemap.xml             # Generated sitemap
+├── scripts/
+│   ├── generate-post-index.mjs # Generates blog-posts.json from MDX frontmatter
+│   ├── generate-rss.mjs        # Generates RSS 2.0 feed
+│   └── generate-sitemap.mjs    # Generates sitemap.xml
+└── .github/workflows/
+    ├── pages.yml               # Build and deploy to GitHub Pages
+    └── release.yml             # Semantic Release on push to main
 ```
 
-### Projects Page (`projects.md`)
-Showcase your work! Each project should include:
+---
 
-```markdown
-# My Projects
+## Getting Started
 
-## Project Name
-**Technologies:** [List technologies used]  
-**Description:** Brief description of what the project does and your role.  
-**Links:** [Live Demo](https://your-project-link.com) | [Source Code](https://github.com/yourusername/project-repo)
+### Prerequisites
 
-## Another Project
-**Technologies:** React, Node.js, MongoDB  
-**Description:** A full-stack web application for [purpose]. Features include user authentication, real-time updates, and responsive design.  
-**Links:** [Live Demo](https://demo-link.com) | [Source Code](https://github.com/yourusername/project)
+- Node.js 20+
+- npm
 
-## Project Ideas
-- 🔧 **Tool/Utility**: [Description]
-- 🎮 **Game/App**: [Description]
-- 📊 **Data Project**: [Description]
+### Local Development
+
+```bash
+git clone https://github.com/JagdishkumarPatel/JagdishkumarPatel.github.io.git
+cd JagdishkumarPatel.github.io
+npm install
+npm run dev
 ```
 
-### Contact Page (`contact.md`)
-Make it easy for people to reach you:
+Open [http://localhost:3000](http://localhost:3000).
 
-```markdown
-# Get In Touch
+### Production Build
 
-I'm always interested in new opportunities and collaborations!
-
-## Contact Information
-- **Email:** [your.email@example.com](mailto:your.email@example.com)
-- **LinkedIn:** [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)
-- **GitHub:** [github.com/yourusername](https://github.com/yourusername)
-- **Portfolio:** [yourwebsite.com](https://yourwebsite.com)
-
-## Let's Connect
-Whether you have a project in mind, want to discuss technology, or just want to say hello, I'd love to hear from you!
-
-Drop me a message and I'll get back to you as soon as possible.
+```bash
+npm run build
 ```
 
-### Customization Tips
+Output goes to `./out/` (static export).
 
-#### Styling (`style.css`)
-- Change colors: Look for CSS variables at the top of the file
-- Modify fonts: Update font-family properties
-- Adjust spacing: Change padding/margin values
-- Customize buttons: Update the `.neural-link` styles
+---
 
-#### Adding Images
-1. Create an `images/` folder in your project root
-2. Add your images there
-3. Reference them in markdown: `![Alt text](images/your-image.jpg)`
-4. Or in HTML: `<img src="images/your-image.jpg" alt="Description">`
+## Adding Content
 
-#### Navigation
-The navigation menu is in `_layouts/default.html`. To add new pages:
-1. Create a new `.md` file (e.g., `blog.md`)
-2. Add the link to the navigation in `_layouts/default.html`
-3. Push your changes
+### New Blog Post
 
-### File Structure
-```
-your-portfolio/
-├── _layouts/          # Layout templates
-│   └── default.html   # Main layout
-├── content/           # Source content (optional)
-├── images/            # Your images
-├── _config.yml        # Jekyll configuration
-├── about.md          # About page
-├── projects.md       # Projects page
-├── contact.md        # Contact page
-├── index.md          # Home page
-├── style.css         # Your styles
-├── script.js         # JavaScript
-└── README.md         # This file
+1. Create `content/publish/your-post-slug.mdx` with frontmatter:
+
+```mdx
+---
+slug: your-post-slug
+title: "Your Post Title"
+date: YYYY-MM-DD
+description: "Brief description for SEO and previews."
+tags: [AI, MLOps, Python]
+feature_image: /images/your-post-slug.png
+---
+
+Post content here...
 ```
 
-## Step 3: Test It Locally (Optional)
-To see it on your computer:
-1. Download Ruby from https://rubyinstaller.org/ (for Windows).
-2. Open a terminal (command prompt) in this folder.
-3. Type: `gem install jekyll bundler`
-4. Type: `jekyll serve`
-5. Open http://localhost:4000 in your browser.
+2. Add a feature image to `public/images/your-post-slug.png`.
+3. Run `npm run build` — the post index is auto-generated at build time.
 
-## Step 4: Put It Online with GitHub
-1. Go to https://github.com and sign in.
-2. Click "New repository".
-3. Name it "portfolio" (or anything you like).
-4. Make it **public** (so anyone can see it).
-5. Don't add README or anything, just create it.
-6. Copy the link, like: https://github.com/yourusername/portfolio.git
+### New Project
 
-### Push Your Files to GitHub
-You need to "push" your files to GitHub.
+Edit `public/metadata/projects.json` and add an entry:
 
-#### Option A: Use VS Code (Easy!)
-1. Open this folder in VS Code.
-2. Click the Source Control icon (looks like a branch).
-3. Click "Publish to GitHub" or "Push".
-4. Sign in to GitHub when asked.
-5. Choose your new repo.
+```json
+{
+  "title": "Project Name",
+  "description": "Short description.",
+  "tech": ["Python", "FastAPI", "Azure"],
+  "github": "https://github.com/JagdishkumarPatel/repo",
+  "blogSlug": "optional-blog-post-slug"
+}
+```
 
-#### Option B: Use Terminal with Personal Access Token
-1. Go to https://github.com/settings/tokens
-2. Click "Generate new token (classic)".
-3. Name it "Portfolio".
-4. Check "repo" (for full access).
-5. Click "Generate token". **Copy it now!**
-6. In terminal (in this folder):
-   - Type: `git remote add origin https://github.com/yourusername/portfolio.git` (replace with your link)
-   - Type: `git push -u origin main`
-   - Username: your GitHub username
-   - Password: paste the token
+---
 
-## Step 5: Make It Live
-1. Go to your GitHub repo (the link you copied).
-2. Click "Settings" (top right).
-3. Scroll to "Pages" (left side).
-4. Under "Source", choose "Deploy from a branch".
-5. Select "main" branch.
-6. Click "Save".
-7. Wait 5-10 minutes. Your site will be at: https://yourusername.github.io/portfolio/
+## Deployment
 
-## Tips & Best Practices
+The site uses `output: "export"` (static HTML) and deploys to GitHub Pages via GitHub Actions on every push to `main`.
 
-### Content Updates
-- **Test locally first**: Run `jekyll serve` to preview changes before pushing
-- **Use descriptive commit messages**: "Add new project: Weather App" instead of "update"
-- **Keep it updated**: Regularly add new projects and update your skills
+- Build output: `./out/`
+- Live URL: `https://jagdishkumarpatel.github.io`
 
-### SEO & Performance
-- Use descriptive headings (H1, H2, H3)
-- Add alt text to images for accessibility
-- Keep page load times fast by optimizing images
+> **Note**: Two workflows run on push to `main` — `pages.yml` (build + deploy) and `release.yml` (semantic-release). If a push is rejected due to remote divergence, run `git pull --rebase && git push`.
 
-### Customization Ideas
-- **Color schemes**: Try different color palettes in `style.css`
-- **Fonts**: Experiment with Google Fonts
-- **Animations**: Add CSS transitions for interactive elements
-- **Icons**: Use Font Awesome or similar icon libraries
+### GitHub Pages Configuration
 
-### Troubleshooting
-- **Site not updating**: Wait 5-10 minutes after pushing for GitHub Pages
-- **Local server issues**: Make sure Ruby and Jekyll are properly installed
-- **Styling not working**: Check for syntax errors in CSS
+If the site shows the README instead of the website:
 
-### Advanced Features
-- **Blog posts**: Add a `_posts/` folder with dated markdown files
-- **Collections**: Group related content (tutorials, case studies)
-- **Data files**: Use YAML/JSON files for structured data
-- **Plugins**: Add Jekyll plugins for extra functionality
+1. Go to **Settings → Pages**
+2. Set **Source** to **GitHub Actions**
 
-For detailed Git instructions, see `GIT_PUSH_README.md`.
+---
 
-Enjoy your new website! 🚀
+## Commit Convention
+
+Follows [Conventional Commits](https://www.conventionalcommits.org/) — Semantic Release auto-bumps versions on push to `main`.
+
+| Prefix | Description | Version Bump |
+|--------|-------------|-------------|
+| `feat:` | New feature | Minor |
+| `fix:` | Bug fix | Patch |
+| `docs:` | Documentation only | No release |
+| `style:` | Formatting | No release |
+| `refactor:` | Refactoring | No release |
+| `perf:` | Performance | Patch |
+| `chore:` | Maintenance | No release |
+| `feat!:` / `BREAKING CHANGE:` | Breaking change | Major |
+
+---
+
+## Themes
+
+15 themes across three categories, selectable via the theme switcher in the nav:
+
+| Category | Themes |
+|----------|--------|
+| Default | Light, Dark, System |
+| Developer | Catppuccin, Gruvbox, Rose Pine, Solarized, GitHub Dark, One Dark, Everforest |
+| Professional | Corporate Blue, Executive, Slate, Ocean, Minimal |
+
+---
+
+## Contact
+
+**Jag Patel**
+- LinkedIn: [linkedin.com/in/jagjpatel](https://www.linkedin.com/in/jagjpatel/)
+- GitHub: [github.com/JagdishkumarPatel](https://github.com/JagdishkumarPatel)
+- Site: [jagdishkumarpatel.github.io](https://jagdishkumarpatel.github.io)
+
+---
+
+*Built with Next.js 15 · Deployed on GitHub Pages*
