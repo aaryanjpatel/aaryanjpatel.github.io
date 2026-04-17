@@ -170,7 +170,7 @@ export default function NeuralNetworkNode({ data, selected }: NodeProps) {
               pointerEvents: "none",
             }}
           >
-            <div style={{ fontSize: 11, fontWeight: 700, color: ringColor, letterSpacing: "0.04em" }}>JAG</div>
+            <div style={{ fontSize: 11, fontWeight: 700, color: ringColor, letterSpacing: "0.04em" }}>AARYAN</div>
             <div style={{ fontSize: 10, fontWeight: 500, color: "#94a3b8" }}>PATEL</div>
           </motion.div>
         )}
