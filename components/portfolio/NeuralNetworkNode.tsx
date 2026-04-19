@@ -1,9 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { Handle, Position, NodeProps } from "react-flow-renderer";
+import { Handle, NodeProps, Position } from "react-flow-renderer";
 import { motion } from "framer-motion";
-
 import { getNodeWeight } from "./network-logic";
 
 export default function NeuralNetworkNode({ data, selected }: NodeProps) {
@@ -13,63 +12,48 @@ export default function NeuralNetworkNode({ data, selected }: NodeProps) {
   const highlight = active || lit || hovered || selected;
   const weight = data.weight || getNodeWeight(data.id);
   const isCentral = data.id === "aaryan";
+  const isCompact = Boolean(data.isCompact);
+  const orbitIndex = typeof data.orbitIndex === "number" ? data.orbitIndex : 0;
 
-  // 3D depth-based visual mapping
-  const depth = typeof data.depth === "number" ? data.depth : 1; // [0,1], 1=front, 0=back
-  // Node size and glow by weight — larger on mobile
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
-  const baseSize = isCentral ? 90 : weight === "strong" ? (isMobile ? 48 : 56) : weight === "medium" ? (isMobile ? 40 : 46) : (isMobile ? 32 : 36);
-  // Scale: 0.85 (back) to 1.15 (front)
+  const depth = typeof data.depth === "number" ? data.depth : 1;
+  const baseSize = isCentral
+    ? isCompact
+      ? 96
+      : 108
+    : weight === "strong"
+    ? isCompact
+      ? 42
+      : 58
+    : weight === "medium"
+    ? isCompact
+      ? 34
+      : 48
+    : isCompact
+    ? 30
+    : 38;
   const scale3d = 0.85 + 0.3 * depth;
-  // Opacity: 0.45 (back) to 1 (front)
   const opacity3d = 0.45 + 0.55 * depth;
-  // zIndex: 1 (back) to 100 (front), central always 200
   const zIndex3d = isCentral ? 200 : Math.round(1 + 99 * depth);
   const size = baseSize * scale3d;
-  const ringColor = isCentral
-    ? "#38bdf8"
+
+  const orbitPalette = ["#7dd3fc", "#38bdf8", "#22d3ee"];
+  const basePlanetColor = orbitPalette[orbitIndex] ?? orbitPalette[0];
+  const ringColor = isCentral ? "#fde68a" : active ? "#e0f2fe" : lit ? "#93c5fd" : basePlanetColor;
+  const glowColor = isCentral ? "#fbbf24" : active ? "#7dd3fc" : lit ? "#60a5fa" : basePlanetColor;
+  const bgColor = isCentral
+    ? "radial-gradient(circle at 35% 35%, rgba(254,249,195,0.98), rgba(251,191,36,0.86) 38%, rgba(180,83,9,0.72) 68%, rgba(120,53,15,0.2) 100%)"
     : active
-    ? "#0ff"
+    ? `radial-gradient(circle at 32% 28%, rgba(224,242,254,0.95), ${basePlanetColor} 44%, rgba(8,47,73,0.96) 100%)`
     : lit
-    ? "#a855f7"
-    : "#0ff";
-  const glowColor = isCentral
-    ? "#38bdf8"
-    : active
-    ? "#0ff"
-    : lit
-    ? "#a855f7"
-    : "#0ff";
-  const bgColor = active
-    ? isCentral
-      ? "#38bdf833"
-      : "#0ff3"
-    : lit
-    ? "#a855f720"
-    : "transparent";
-
-  // Mobile tap-to-focus handler
-
-  function handleTouchStart(e: React.TouchEvent) {
-    setHovered(true);
-  }
-  function handleTouchEnd(e: React.TouchEvent) {
-    setHovered(false);
-  }
-
-  function handleMouseEnter() {
-    setHovered(true);
-  }
-  function handleMouseLeave() {
-    setHovered(false);
-  }
+    ? "radial-gradient(circle at 34% 30%, rgba(191,219,254,0.92), rgba(59,130,246,0.85) 42%, rgba(15,23,42,0.96) 100%)"
+    : `radial-gradient(circle at 34% 30%, rgba(224,242,254,0.88), ${basePlanetColor} 36%, rgba(8,47,73,0.94) 100%)`;
 
   return (
     <div
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onTouchStart={() => setHovered(true)}
+      onTouchEnd={() => setHovered(false)}
       style={{
         position: "relative",
         display: "flex",
@@ -79,56 +63,61 @@ export default function NeuralNetworkNode({ data, selected }: NodeProps) {
         opacity: opacity3d,
         zIndex: zIndex3d,
         transition: "opacity 0.3s, z-index 0.3s",
-        minWidth: 44, // ensure touch target size
+        minWidth: 44,
         minHeight: 44,
       }}
     >
       <Handle type="target" position={Position.Top} style={{ opacity: 0, pointerEvents: "none" }} />
 
-      {/* Tooltip */}
-      {hovered && !active && (
-        <div style={{
-          position: "absolute",
-          bottom: "calc(100% + 10px)",
-          left: "50%",
-          transform: "translateX(-50%)",
-          background: "#0f172a",
-          color: "#a5f3fc",
-          border: `1px solid ${ringColor}44`,
-          borderRadius: 8,
-          padding: "4px 12px",
-          fontSize: 11,
-          whiteSpace: "nowrap",
-          boxShadow: `0 2px 16px ${glowColor}44`,
-          pointerEvents: "none",
-          zIndex: 100,
-        }}>
+      {hovered && !active && !isCompact && (
+        <div
+          style={{
+            position: "absolute",
+            bottom: "calc(100% + 10px)",
+            left: "50%",
+            transform: "translateX(-50%)",
+            background: "rgba(2, 6, 23, 0.88)",
+            color: "#dbeafe",
+            border: `1px solid ${ringColor}44`,
+            borderRadius: 999,
+            padding: "5px 12px",
+            fontSize: 11,
+            whiteSpace: "nowrap",
+            boxShadow: `0 2px 16px ${glowColor}44`,
+            backdropFilter: "blur(10px)",
+            pointerEvents: "none",
+            zIndex: 100,
+          }}
+        >
           {data.description || data.label}
         </div>
       )}
 
-      {/* Node circle */}
       <motion.div
         animate={{
           boxShadow: highlight
-            ? `0 0 0 3px ${ringColor}, 0 0 48px 16px ${glowColor}cc`
-            : `0 0 0 1.5px ${ringColor}88, 0 0 16px 4px ${glowColor}22`,
+            ? isCentral
+              ? "0 0 0 2px rgba(254,240,138,0.7), 0 0 28px 8px rgba(251,191,36,0.9), 0 0 72px 24px rgba(245,158,11,0.38)"
+              : `0 0 0 2px ${ringColor}, 0 0 20px 6px ${glowColor}aa, 0 0 54px 18px ${glowColor}40`
+            : isCentral
+            ? "0 0 0 1px rgba(254,240,138,0.5), 0 0 20px 6px rgba(251,191,36,0.48), 0 0 60px 18px rgba(245,158,11,0.24)"
+            : `0 0 0 1px ${ringColor}88, 0 0 12px 3px ${glowColor}24`,
           scale: (active ? 1.18 : lit ? 1.1 : hovered ? 1.08 : 1) * scale3d,
-          backgroundColor: bgColor,
         }}
         transition={{ type: "spring", stiffness: 400, damping: 22 }}
         style={{
           width: size,
           height: size,
           borderRadius: "50%",
-          border: `2px solid ${ringColor}`,
+          border: isCentral ? "1px solid rgba(254,240,138,0.45)" : `1.5px solid ${ringColor}`,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           position: "relative",
+          background: bgColor,
+          overflow: "visible",
         }}
       >
-        {/* Continuous slow pulse ring */}
         <motion.div
           animate={{ scale: [1, 1.7, 1], opacity: [0.4, 0, 0.4] }}
           transition={{ duration: active ? 0.5 : 2.5, repeat: Infinity, ease: "easeInOut" }}
@@ -137,11 +126,37 @@ export default function NeuralNetworkNode({ data, selected }: NodeProps) {
             width: size,
             height: size,
             borderRadius: "50%",
-            border: `2px solid ${ringColor}`,
+            border: isCentral ? "1.5px solid rgba(254,240,138,0.42)" : `1.5px solid ${ringColor}aa`,
             pointerEvents: "none",
           }}
         />
-        {/* Active burst ring */}
+
+        {!isCentral && (
+          <>
+            <div
+              style={{
+                position: "absolute",
+                inset: -4,
+                borderRadius: "50%",
+                border: `1px solid ${ringColor}33`,
+                opacity: 0.9,
+                pointerEvents: "none",
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                inset: size * 0.16,
+                borderRadius: "50%",
+                background: "radial-gradient(circle at 28% 28%, rgba(255,255,255,0.32), transparent 36%)",
+                mixBlendMode: "screen",
+                opacity: 0.75,
+                pointerEvents: "none",
+              }}
+            />
+          </>
+        )}
+
         {active && (
           <motion.div
             initial={{ scale: 1, opacity: 0.8 }}
@@ -152,39 +167,69 @@ export default function NeuralNetworkNode({ data, selected }: NodeProps) {
               width: size,
               height: size,
               borderRadius: "50%",
-              border: `2.5px solid ${ringColor}`,
+              border: `2px solid ${ringColor}`,
               pointerEvents: "none",
             }}
           />
         )}
-        {/* Central node: name inside circle */}
+
         {isCentral && (
-          <motion.div
-            animate={{ color: highlight ? "#fff" : "#e2e8f0", textShadow: highlight ? `0 0 16px ${glowColor}` : "none" }}
-            transition={{ duration: 0.2 }}
-            style={{
-              position: "relative",
-              zIndex: 2,
-              textAlign: "center",
-              lineHeight: 1.2,
-              pointerEvents: "none",
-            }}
-          >
-            <div style={{ fontSize: 11, fontWeight: 700, color: ringColor, letterSpacing: "0.04em" }}>AARYAN</div>
-            <div style={{ fontSize: 10, fontWeight: 500, color: "#94a3b8" }}>PATEL</div>
-          </motion.div>
+          <>
+            <div
+              style={{
+                position: "absolute",
+                inset: -12,
+                borderRadius: "50%",
+                border: "1px solid rgba(251,191,36,0.18)",
+                boxShadow: "0 0 24px rgba(251,191,36,0.18)",
+                pointerEvents: "none",
+              }}
+            />
+            <motion.div
+              animate={{
+                color: highlight ? "#fff" : "#fefce8",
+                textShadow: highlight ? `0 0 16px ${glowColor}` : "0 0 10px rgba(251,191,36,0.2)",
+              }}
+              transition={{ duration: 0.2 }}
+              style={{
+                position: "relative",
+                zIndex: 2,
+                textAlign: "center",
+                lineHeight: 1.12,
+                pointerEvents: "none",
+              }}
+            >
+              <div style={{ fontSize: isCompact ? 11 : 12, fontWeight: 700, color: "#fef3c7", letterSpacing: "0.12em" }}>AARYAN</div>
+              <div style={{ fontSize: isCompact ? 10 : 11, fontWeight: 600, color: "#f8fafc", letterSpacing: "0.08em" }}>PATEL</div>
+            </motion.div>
+          </>
         )}
       </motion.div>
 
-      {/* Orbit node label below circle — hidden for central (name is inside) */}
       {!isCentral && (
-      <motion.div
-        animate={{ color: highlight ? ringColor : "#94a3b8", textShadow: highlight ? `0 0 10px ${glowColor}` : "none" }}
-        transition={{ duration: 0.2 }}
-        style={{ marginTop: 5, fontSize: isMobile ? 9 : 10, fontWeight: 600, whiteSpace: "nowrap", letterSpacing: "0.03em" }}
-      >
-        {data.label}
-      </motion.div>
+        <motion.div
+          animate={{ color: highlight ? "#e0f2fe" : "#94a3b8", textShadow: highlight ? `0 0 12px ${glowColor}` : "none" }}
+          transition={{ duration: 0.2 }}
+          style={{
+            marginTop: isCompact ? 5 : 8,
+            padding: isCompact ? "2px 6px" : "3px 8px",
+            fontSize: isCompact ? 8 : 10,
+            fontWeight: 600,
+            whiteSpace: "nowrap",
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            maxWidth: isCompact ? 72 : "none",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            textAlign: "center",
+            borderRadius: 999,
+            background: highlight ? "rgba(2, 6, 23, 0.5)" : "transparent",
+            border: highlight ? `1px solid ${ringColor}33` : "1px solid transparent",
+            backdropFilter: highlight ? "blur(8px)" : "none",
+          }}
+        >
+          {data.label}
+        </motion.div>
       )}
 
       <Handle type="source" position={Position.Bottom} style={{ opacity: 0, pointerEvents: "none" }} />
