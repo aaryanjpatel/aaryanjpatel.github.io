@@ -1,5 +1,21 @@
 [
   {
+    "slug": "python-basics-for-data-science-journey-2026",
+    "title": "Python Basics For Data Science Journey 2026",
+    "date": "2026-04-19",
+    "excerpt": "Learning Python for data science has been an exciting and rewarding journey for me. This post shares my experience completing the Python Basics for Data Science course, the different things I had to learn along the way, and how the course helped me grow in confidence as a learner…",
+    "feature_image": "/images/python-basics-for-data-science-journey-2026.svg",
+    "tags": [
+      "Python",
+      "Data Science",
+      "IBM",
+      "edX",
+      "Programming",
+      "Learning Journey",
+      "2026"
+    ]
+  },
+  {
     "slug": "Verbal-reasoning-Practice",
     "title": "My Journey practicing Verbal Reasoning",
     "date": "2026-04-18",
@@ -19,7 +35,7 @@
     "slug": "selective-entry-preparation-2026",
     "title": "Selective Entry Preparation 2026",
     "date": "2026-04-17",
-    "excerpt": "Preparing for selective entry exams requires a structured approach across all subjects. This guide provides strategies, resources, and tips to help students excel in 2026. ## 📚 Subjects Covered - **Mathematics**: Problem-solving, algebra, geometry, and advanced topics.…",
+    "excerpt": "Preparing for selective entry exams requires a clear plan, regular practice, and steady confidence. This guide outlines the main areas students should focus on and the study habits that can make preparation more effective in 2026. ## Core Areas…",
     "feature_image": "/images/selective-entry-preparation-2026.png",
     "tags": [
       "Education",
@@ -27,15 +43,14 @@
       "Preparation",
       "2026",
       "Study Guide",
-      "Exams",
-      "Subjects"
+      "Exams"
     ]
   },
   {
     "slug": "resilient-leadership",
-    "title": "My first lesson on Harvard Business School, Resilient Leadership",
+    "title": "My First Harvard Business School Lesson: Resilient Leadership",
     "date": "2026-04-17",
-    "excerpt": "## 🌟 My Resilient Leadership Learning ### Overview 🌟 Completing my first Harvard Business School Online lesson reshaped how I understand leadership.…",
+    "excerpt": "## My Resilient Leadership Learning ### Overview Completing my first Harvard Business School Online lesson reshaped how I understand leadership.…",
     "feature_image": "/images/Resilient-Leadership.png",
     "tags": [
       "Education",

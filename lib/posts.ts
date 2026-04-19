@@ -23,7 +23,12 @@ export function getAllPostSlugs(): string[] {
   return fs
     .readdirSync(PUBLISH_DIR)
     .filter((f) => f.endsWith('.md') || f.endsWith('.mdx'))
-    .map((f) => f.replace(/\.mdx?$/, ''))
+    .map((file) => {
+      const filePath = path.join(PUBLISH_DIR, file)
+      const raw = fs.readFileSync(filePath, 'utf8')
+      const { data } = matter(raw)
+      return data.slug || file.replace(/\.mdx?$/, '')
+    })
 }
 
 export function getAllPosts(): PostMeta[] {
@@ -59,14 +64,22 @@ export function getAllPosts(): PostMeta[] {
 }
 
 export function getPostBySlug(slug: string): Post | null {
-  const extensions = ['.mdx', '.md']
-  for (const ext of extensions) {
-    const filePath = path.join(PUBLISH_DIR, `${slug}${ext}`)
-    if (fs.existsSync(filePath)) {
-      const raw = fs.readFileSync(filePath, 'utf8')
-      const { data, content } = matter(raw)
+  if (!fs.existsSync(PUBLISH_DIR)) return null
+
+  const files = fs
+    .readdirSync(PUBLISH_DIR)
+    .filter((f) => f.endsWith('.md') || f.endsWith('.mdx'))
+
+  for (const file of files) {
+    const fileSlug = file.replace(/\.mdx?$/, '')
+    const filePath = path.join(PUBLISH_DIR, file)
+    const raw = fs.readFileSync(filePath, 'utf8')
+    const { data, content } = matter(raw)
+    const postSlug = data.slug || fileSlug
+
+    if (postSlug === slug || fileSlug === slug) {
       return {
-        slug: data.slug || slug,
+        slug: postSlug,
         title: data.title || 'Untitled',
         date: data.date || '',
         content,
@@ -76,5 +89,6 @@ export function getPostBySlug(slug: string): Post | null {
       }
     }
   }
+
   return null
 }

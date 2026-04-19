@@ -1,8 +1,24 @@
 [
   {
-    "title": "Selective Entr Exam Preparation",
-    "description": "Preparing for selective entry exams requires a structured approach across all subjects. This guide provides strategies, resources, and tips to help students excel in 2026.",
-    "tech": ["selective entry"],
+    "title": "Python Basics for Data Science Journey 2026",
+    "description": "My journey completing the Python Basics for Data Science course, learning Python fundamentals, and building a stronger foundation for future data science study.",
+    "tech": ["Python", "Data Science", "IBM", "edX"],
+    "github": "",
+    "demo": "",
+    "blogSlug": "python-basics-for-data-science-journey-2026"
+  },
+  {
+    "title": "My Journey Practising Verbal Reasoning",
+    "description": "Learning vocabulary to improve my Verbal Reasoning scores and strengthen my selective entry preparation.",
+    "tech": ["Education", "Selective Entry", "Preparation", "VR"],
+    "github": "",
+    "demo": "",
+    "blogSlug": "Verbal-reasoning-Practice"
+  },
+  {
+    "title": "Selective Entry Preparation 2026",
+    "description": "A guide to selective entry preparation across key exam areas in 2026.",
+    "tech": ["Education", "Selective Entry", "Preparation"],
     "github": "",
     "demo": "",
     "blogSlug": "selective-entry-preparation-2026"

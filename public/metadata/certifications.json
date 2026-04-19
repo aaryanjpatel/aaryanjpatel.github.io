@@ -1,4 +1,24 @@
 [
-  { "name": "Harward Business Leadership Course", "issuer": "Harwardx", "issued": "2026-03", "expires": "", "credentialId": "", "credentialUrl": "", "category": "Business" }
-
+  {
+    "name": "Resilient Leadership Course Completion",
+    "issuer": "Harvard Business School Online",
+    "issued": "2026-04",
+    "expires": "",
+    "credentialId": "",
+    "credentialUrl": "",
+    "image": "/images/Resilient-Leadership.png",
+    "category": "Course Accomplishments",
+    "blogSlug": "resilient-leadership"
+  },
+  {
+    "name": "Python Basics for Data Science Course Completion",
+    "issuer": "IBM via edX",
+    "issued": "2026-04",
+    "expires": "",
+    "credentialId": "",
+    "credentialUrl": "",
+    "image": "/images/python-basics-for-data-science-journey-2026.svg",
+    "category": "Course Accomplishments",
+    "blogSlug": "python-basics-for-data-science-journey-2026"
+  }
 ]
