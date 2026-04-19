@@ -1,30 +1,27 @@
-"use client";
+﻿"use client";
 
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import "react-flow-renderer/dist/style.css";
 import ReactFlow, {
   Background,
   BackgroundVariant,
-  Connection,
-  MarkerType,
-  Node,
-  addEdge,
-  useEdgesState,
+  Controls,
   useNodesState,
+  useEdgesState,
+  addEdge,
+  MarkerType,
+  Connection,
+  Node,
 } from "react-flow-renderer";
 import { useRouter } from "next/navigation";
 import NeuralNetworkNode from "./NeuralNetworkNode";
-import { edges as EDGE_CONFIG, nodes as NODE_CONFIG } from "./network-config";
-import { buildAdjacency, getConnectionLevels } from "./network-logic";
+import NeuralNetworkEdge from "./NeuralNetworkEdge";
+import { nodes as NODE_CONFIG, edges as EDGE_CONFIG } from "./network-config";
+import { getConnectionLevels, searchNodes, getNodeWeight, buildAdjacency } from "./network-logic";
+import ContextPanel from "./ContextPanel";
 
-const HEADER_OFFSET = 88;
-const MOBILE_BREAKPOINT = 768;
-const ORBIT_GROUPS = [
-  ["aiml", "mlops", "cloud", "llm"],
-  ["proj", "platform", "devsec", "obs"],
-  ["blog", "certs", "edu", "about", "contact"],
-] as const;
 
+// Utility: random position for initial scatter
 function randomPos(spread = 150) {
   return {
     x: (Math.random() - 0.5) * spread,
@@ -32,6 +29,7 @@ function randomPos(spread = 150) {
   };
 }
 
+// Build initial scattered nodes
 function makeInitialNodes() {
   return NODE_CONFIG.map((n) => ({
     id: n.id,
@@ -40,14 +38,14 @@ function makeInitialNodes() {
       ...n,
       active: false,
       lit: false,
-      isCompact: false,
     },
     type: "neuralNode",
     draggable: true,
   }));
 }
 
-function makeEdges() {
+// Build edges for React Flow
+function makeEdges(firingEdges: Set<string> = new Set()) {
   return EDGE_CONFIG.map((e) => ({
     id: `e-${e.source}-${e.target}`,
     source: e.source,
@@ -61,6 +59,7 @@ function makeEdges() {
 
 const nodeTypes = { neuralNode: NeuralNetworkNode };
 
+// Node id → route mapping (outside component to keep stable reference)
 const NODE_ROUTES: Record<string, string> = {
   aaryan: "/about",
   aiml: "/projects",
@@ -84,62 +83,32 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
   const [litNodes, setLitNodes] = useState<Set<string>>(new Set());
   const [firingEdges, setFiringEdges] = useState<Set<string>>(new Set());
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
-  const [viewport, setViewport] = useState({ width: 1280, height: 800 });
+  const [contextNode, setContextNode] = useState<string | null>(null);
+  const [search, setSearch] = useState("");
   const animRef = useRef<number>(0);
   const startTimeRef = useRef<number>(performance.now());
   const pausedRef = useRef<boolean>(false);
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
-  const isCompact = viewport.width < MOBILE_BREAKPOINT;
-  const orbitConfig = useMemo(() => {
-    const safeWidth = Math.max(viewport.width - (isCompact ? 96 : 240), 320);
-    const safeHeight = Math.max(viewport.height - HEADER_OFFSET - (isCompact ? 140 : 150), 340);
-    const centerY = isCompact ? 72 : 28;
-
-    const baseRings = isCompact
-      ? [
-          { radiusX: Math.min(safeWidth * 0.2, 104), radiusY: Math.min(safeHeight * 0.15, 82), speed: 0.00028, tilt: -0.72 },
-          { radiusX: Math.min(safeWidth * 0.29, 152), radiusY: Math.min(safeHeight * 0.22, 120), speed: -0.00018, tilt: 0.92 },
-          { radiusX: Math.min(safeWidth * 0.39, 210), radiusY: Math.min(safeHeight * 0.29, 176), speed: 0.00012, tilt: -1.24 },
-        ]
-      : [
-          { radiusX: Math.min(safeWidth * 0.14, 170), radiusY: Math.min(safeHeight * 0.18, 110), speed: 0.0002, tilt: -0.6 },
-          { radiusX: Math.min(safeWidth * 0.24, 292), radiusY: Math.min(safeHeight * 0.28, 182), speed: -0.00013, tilt: 0.78 },
-          { radiusX: Math.min(safeWidth * 0.34, 418), radiusY: Math.min(safeHeight * 0.38, 250), speed: 0.00009, tilt: -1.05 },
-        ];
-
-    return {
-      centerY,
-      rings: baseRings,
-    };
-  }, [isCompact, viewport.height, viewport.width]);
-
+  // Initial scatter, then animate to circle
   const [nodes, setNodes, onNodesChange] = useNodesState(makeInitialNodes());
   const [edges, setEdges, onEdgesChange] = useEdgesState(makeEdges());
 
+  // Circular motion animation loop — fixed coord system, fitView handles scaling
+  // Animation loop with pause/resume
   useEffect(() => {
-    const updateViewport = () => {
-      setViewport({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
+    const nodeIds = NODE_CONFIG.map((n) => n.id);
+    const totalNodes = nodeIds.filter((id) => id !== "aaryan").length;
+    const speed = 0.00025;
+    const breatheSpeed = 0.00013;
+    // Fixed radius in ReactFlow coords — fitView scales to fill screen
+    const BASE_RADIUS = 260;
 
-    updateViewport();
-    window.addEventListener("resize", updateViewport, { passive: true });
-    return () => window.removeEventListener("resize", updateViewport);
-  }, []);
-
-  useEffect(() => {
-    const orbitLookup = new Map<string, { orbitIndex: number; slot: number; total: number }>();
-    ORBIT_GROUPS.forEach((group, orbitIndex) => {
-      group.forEach((id, slot) => {
-        orbitLookup.set(id, { orbitIndex, slot, total: group.length });
-      });
-    });
-
-    const breatheSpeed = 0.00012;
-
+    // 3D depth mapping helpers
     function getDepth(angleRad: number) {
+      // 0 = top (farthest), pi = bottom (closest)
+      // Map to [0,1]: 0 (back) to 1 (front)
+      // Use cosine so bottom (pi) is 1, top (0/2pi) is 0
       return 0.5 * (1 + Math.cos(angleRad - Math.PI));
     }
 
@@ -148,47 +117,27 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
         animRef.current = requestAnimationFrame(tick);
         return;
       }
-
       const t = performance.now() - startTimeRef.current;
-      const breathe = 1 + 0.03 * Math.sin(t * breatheSpeed);
+      const radius = BASE_RADIUS + BASE_RADIUS * 0.08 * Math.sin(t * breatheSpeed);
 
       setNodes((nds) =>
         nds.map((n) => {
           if (n.id === "aaryan") {
-            return {
-              ...n,
-              position: { x: -54, y: orbitConfig.centerY - 54 },
-              draggable: false,
-              data: { ...n.data, depth: 1, isCompact },
-            };
+            return { ...n, position: { x: -45, y: -45 }, draggable: false, data: { ...n.data, depth: 1 } };
           }
-
-          const orbitInfo = orbitLookup.get(n.id);
-          if (!orbitInfo) {
-            return n;
-          }
-
-          const ring = orbitConfig.rings[orbitInfo.orbitIndex];
-          const angle =
-            (2 * Math.PI * orbitInfo.slot) / orbitInfo.total +
-            t * ring.speed +
-            ring.tilt;
+          const idx = nodeIds.filter((id) => id !== "aaryan").indexOf(n.id);
+          const angle = (2 * Math.PI * idx) / totalNodes + t * speed;
           const depth = getDepth(angle);
-          const ringBreath = breathe * (1 + orbitInfo.orbitIndex * 0.025);
-          const drift = 1 + 0.06 * Math.sin(t * (0.00018 + orbitInfo.orbitIndex * 0.00004) + orbitInfo.slot);
-
           return {
             ...n,
             position: {
-              x: ring.radiusX * ringBreath * drift * Math.cos(angle),
-              y: orbitConfig.centerY + ring.radiusY * ringBreath * Math.sin(angle),
+              x: radius * Math.cos(angle),
+              y: radius * Math.sin(angle),
             },
-            draggable: false,
+            draggable: true,
             data: {
               ...n.data,
               depth,
-              isCompact,
-              orbitIndex: orbitInfo.orbitIndex,
             },
           };
         })
@@ -196,21 +145,21 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
 
       animRef.current = requestAnimationFrame(tick);
     }
-
     animRef.current = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(animRef.current);
-  }, [isCompact, orbitConfig, setNodes]);
+    return () => { cancelAnimationFrame(animRef.current); };
+  }, []);
 
+  // Pause/resume animation based on hoveredNode
   useEffect(() => {
     pausedRef.current = hoveredNode !== null;
   }, [hoveredNode]);
 
+  // Sync active/lit/hover highlight into node data
   useEffect(() => {
     let highlightLevels: Record<string, number> = {};
     if (hoveredNode) {
-      highlightLevels = getConnectionLevels(hoveredNode, 3);
+      highlightLevels = getConnectionLevels(hoveredNode, 3); // BFS: 0=self, 1=direct, 2=secondary
     }
-
     setNodes((nds) =>
       nds.map((n) => ({
         ...n,
@@ -219,20 +168,21 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
           active: activeNode === n.id,
           lit: litNodes.has(n.id),
           highlightLevel: highlightLevels[n.id] ?? null,
-          isCompact,
         },
       }))
     );
-  }, [activeNode, isCompact, litNodes, hoveredNode, setNodes]);
+  }, [activeNode, litNodes, hoveredNode, setNodes]);
 
+  // Sync firing and highlight into edge data
   useEffect(() => {
     let highlightLevels: Record<string, number> = {};
     if (hoveredNode) {
       highlightLevels = getConnectionLevels(hoveredNode, 3);
     }
-
     setEdges((eds) =>
       eds.map((e) => {
+        // An edge is "direct" if both ends are within 1 hop of hoveredNode
+        // i.e. one end IS hoveredNode (level 0) and the other is level 1
         const srcLevel = highlightLevels[e.source] ?? null;
         const tgtLevel = highlightLevels[e.target] ?? null;
         const isDirect =
@@ -240,10 +190,8 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
           ((e.source === hoveredNode && tgtLevel === 1) ||
             (e.target === hoveredNode && srcLevel === 1));
         const isSecondary =
-          hoveredNode != null &&
-          !isDirect &&
-          srcLevel != null &&
-          tgtLevel != null &&
+          hoveredNode != null && !isDirect &&
+          srcLevel != null && tgtLevel != null &&
           Math.max(srcLevel, tgtLevel) <= 2;
         const isActive = firingEdges.has(e.id);
         const anyHover = hoveredNode != null;
@@ -254,29 +202,31 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
         let animated: boolean;
 
         if (isActive) {
-          stroke = "#7dd3fc";
+          stroke = "#00ffff";
           strokeWidth = 2.5;
           opacity = 1;
           animated = true;
         } else if (isDirect) {
-          stroke = "#93c5fd";
+          stroke = "#00ffff";
           strokeWidth = 2;
           opacity = 1;
           animated = true;
         } else if (isSecondary) {
-          stroke = "#67e8f9";
-          strokeWidth = 1.3;
-          opacity = 0.4;
+          stroke = "#a855f7";
+          strokeWidth = 1.5;
+          opacity = 0.6;
           animated = false;
         } else if (anyHover) {
-          stroke = "#173257";
+          // non-connected edges fade to near-invisible when something is hovered
+          stroke = "#1e4060";
           strokeWidth = 1;
-          opacity = 0.08;
+          opacity = 0.12;
           animated = false;
         } else {
-          stroke = "#3b82f6";
+          // default: very faint but visible
+          stroke = "#38bdf8";
           strokeWidth = 1;
-          opacity = isCompact ? 0.16 : 0.22;
+          opacity = 0.18;
           animated = false;
         }
 
@@ -289,8 +239,9 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
         };
       })
     );
-  }, [firingEdges, hoveredNode, isCompact, setEdges]);
+  }, [firingEdges, hoveredNode, setEdges]);
 
+  // Build adjacency map once
   const adjacency = buildAdjacency();
 
   const handleNodeClick = useCallback(
@@ -317,10 +268,10 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
     [adjacency, router]
   );
 
+  // Node hover: set hoveredNode for highlight propagation
   const handleNodeMouseEnter = useCallback((_: React.MouseEvent, node: Node) => {
     setHoveredNode(node.id);
   }, []);
-
   const handleNodeMouseLeave = useCallback(() => {
     setHoveredNode(null);
   }, []);
@@ -328,112 +279,46 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
   const onConnect = useCallback(
     (params: Connection) =>
       setEdges((eds) =>
-        addEdge(
-          { ...params, type: "neuralEdge", markerEnd: { type: MarkerType.ArrowClosed }, data: { firing: false } },
-          eds
-        )
+        addEdge({ ...params, type: "neuralEdge", markerEnd: { type: MarkerType.ArrowClosed }, data: { firing: false } }, eds)
       ),
     [setEdges]
   );
 
-  return (
-    <div
-      style={{
-        width: "100%",
-        height: "100svh",
-        background:
-          "radial-gradient(circle at 50% 46%, rgba(59,130,246,0.22) 0%, rgba(8,15,38,0.9) 24%, #020617 58%, #01030a 100%)",
-        position: "relative",
-        paddingTop: HEADER_OFFSET,
-        overflow: "hidden",
-      }}
-    >
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "radial-gradient(circle at 50% 45%, rgba(125,211,252,0.18) 0 10%, rgba(103,232,249,0.08) 16%, transparent 34%), radial-gradient(circle at 22% 28%, rgba(14,165,233,0.14), transparent 24%), radial-gradient(circle at 80% 22%, rgba(56,189,248,0.1), transparent 20%), radial-gradient(circle at 74% 72%, rgba(34,211,238,0.08), transparent 26%)",
-          filter: "blur(8px)",
-          pointerEvents: "none",
-          zIndex: 0,
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage:
-            "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.9) 0 1px, transparent 1.5px), radial-gradient(circle at 80% 18%, rgba(255,255,255,0.85) 0 1.1px, transparent 1.8px), radial-gradient(circle at 66% 72%, rgba(186,230,253,0.6) 0 1px, transparent 1.6px), radial-gradient(circle, rgba(148,163,184,0.45) 0 1px, transparent 1.4px)",
-          backgroundSize: "100% 100%, 100% 100%, 100% 100%, 24px 24px",
-          opacity: 0.46,
-          pointerEvents: "none",
-          zIndex: 0,
-        }}
-      />
-      {orbitConfig.rings.map((ring, index) => (
-        <div
-          key={`orbit-${index}`}
-          style={{
-            position: "absolute",
-            left: "50%",
-            top: `calc(50% + ${orbitConfig.centerY / 2}px)`,
-            width: ring.radiusX * 2,
-            height: ring.radiusY * 2,
-            transform: "translate(-50%, -50%)",
-            borderRadius: "50%",
-            border: index === 0 ? "1px solid rgba(125,211,252,0.24)" : "1px solid rgba(59,130,246,0.16)",
-            boxShadow: index === 0 ? "0 0 40px rgba(125,211,252,0.08)" : "none",
-            pointerEvents: "none",
-            zIndex: 1,
-          }}
-        />
-      ))}
-      {onSkip && (
-        <button
-          onClick={onSkip}
-          style={{ position: "absolute", top: isCompact ? 72 : 18, right: isCompact ? 14 : 16, zIndex: 50 }}
-          className="text-xs text-muted-foreground hover:text-primary border border-border bg-background/85 backdrop-blur-sm rounded-full px-4 py-2 shadow-md transition-colors"
-        >
-          Skip to Classic View
-        </button>
-      )}
-
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "linear-gradient(180deg, rgba(1,4,16,0.96) 0px, rgba(2,8,23,0.84) 104px, rgba(2,8,23,0.18) 250px)",
-          pointerEvents: "none",
-          zIndex: 1,
-        }}
-      />
-
-      <ReactFlow
-        nodes={nodes}
-        edges={edges}
-        onNodesChange={onNodesChange}
-        onEdgesChange={onEdgesChange}
-        onConnect={onConnect}
-        onNodeClick={handleNodeClick}
-        onNodeMouseEnter={isCompact ? undefined : handleNodeMouseEnter}
-        onNodeMouseLeave={isCompact ? undefined : handleNodeMouseLeave}
-        nodeTypes={nodeTypes}
-        fitView
-        fitViewOptions={{ padding: isCompact ? 0.32 : 0.2, includeHiddenNodes: false }}
-        nodesDraggable={false}
-        panOnDrag={false}
-        zoomOnScroll={false}
-        panOnScroll={false}
-        preventScrolling={false}
-        zoomOnDoubleClick={false}
-        minZoom={0.6}
-        maxZoom={1.15}
-        proOptions={{ hideAttribution: true }}
-      >
-        <Background variant={BackgroundVariant.Dots} gap={26} size={1.1} color="#15314d" />
-      </ReactFlow>
-    </div>
-  );
+      return (
+        <div style={{ width: "100%", height: "100svh", background: "#020817", position: "relative" }}>
+          {onSkip && (
+            <button
+              onClick={onSkip}
+              style={{ position: "absolute", top: 12, right: 12, zIndex: 50 }}
+              className="text-xs text-muted-foreground hover:text-primary border border-border bg-background/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-md transition-colors"
+            >
+              Skip to Classic View
+            </button>
+          )}
+          <ReactFlow
+            nodes={nodes}
+            edges={edges}
+            onNodesChange={onNodesChange}
+            onEdgesChange={onEdgesChange}
+            onConnect={onConnect}
+            onNodeClick={handleNodeClick}
+            onNodeMouseEnter={isMobile ? undefined : handleNodeMouseEnter}
+            onNodeMouseLeave={isMobile ? undefined : handleNodeMouseLeave}
+            nodeTypes={nodeTypes}
+            fitView
+            fitViewOptions={{ padding: 0.18 }}
+            nodesDraggable={false}
+            panOnDrag={false}
+            zoomOnScroll={false}
+            panOnScroll={false}
+            preventScrolling={false}
+            zoomOnDoubleClick={false}
+          >
+            <Background variant={BackgroundVariant.Dots} gap={24} size={1} color="#1e293b" />
+            <Controls showInteractive={false} />
+            {/* Hide ReactFlow attribution */}
+            <style>{`.react-flow__attribution { display: none !important; }`}</style>
+          </ReactFlow>
+        </div>
+      );
 }
