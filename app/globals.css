@@ -221,6 +221,25 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  body.neural-home-active footer {
+    display: none;
+  }
+
+  body.neural-home-active header a,
+  body.neural-home-active header button {
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  body.neural-home-active header nav a {
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  body.neural-home-active header a:hover,
+  body.neural-home-active header nav a:hover,
+  body.neural-home-active header button:hover {
+    color: #ffffff;
+  }
 }
 
 /* Blog prose styles */

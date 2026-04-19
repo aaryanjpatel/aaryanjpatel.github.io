@@ -13,6 +13,15 @@ export function HomeEntry({ children }: { children: React.ReactNode }) {
     setView(saved === "classic" ? "classic" : "neural")
   }, [])
 
+  useEffect(() => {
+    if (view === "neural") {
+      document.body.classList.add("neural-home-active")
+      return () => document.body.classList.remove("neural-home-active")
+    }
+
+    document.body.classList.remove("neural-home-active")
+  }, [view])
+
   const skipToClassic = () => {
     localStorage.setItem(STORAGE_KEY, "classic")
     setView("classic")

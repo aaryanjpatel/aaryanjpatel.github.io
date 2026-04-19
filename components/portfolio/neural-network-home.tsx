@@ -1,27 +1,24 @@
-﻿"use client";
+"use client";
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import "react-flow-renderer/dist/style.css";
 import ReactFlow, {
   Background,
   BackgroundVariant,
-  Controls,
-  useNodesState,
-  useEdgesState,
-  addEdge,
-  MarkerType,
   Connection,
+  MarkerType,
   Node,
+  addEdge,
+  useEdgesState,
+  useNodesState,
 } from "react-flow-renderer";
 import { useRouter } from "next/navigation";
 import NeuralNetworkNode from "./NeuralNetworkNode";
-import NeuralNetworkEdge from "./NeuralNetworkEdge";
 import { nodes as NODE_CONFIG, edges as EDGE_CONFIG } from "./network-config";
-import { getConnectionLevels, searchNodes, getNodeWeight, buildAdjacency } from "./network-logic";
-import ContextPanel from "./ContextPanel";
+import { buildAdjacency, getConnectionLevels } from "./network-logic";
 
+const HEADER_OFFSET = 88;
 
-// Utility: random position for initial scatter
 function randomPos(spread = 150) {
   return {
     x: (Math.random() - 0.5) * spread,
@@ -29,7 +26,6 @@ function randomPos(spread = 150) {
   };
 }
 
-// Build initial scattered nodes
 function makeInitialNodes() {
   return NODE_CONFIG.map((n) => ({
     id: n.id,
@@ -38,14 +34,14 @@ function makeInitialNodes() {
       ...n,
       active: false,
       lit: false,
+      isCompact: false,
     },
     type: "neuralNode",
     draggable: true,
   }));
 }
 
-// Build edges for React Flow
-function makeEdges(firingEdges: Set<string> = new Set()) {
+function makeEdges() {
   return EDGE_CONFIG.map((e) => ({
     id: `e-${e.source}-${e.target}`,
     source: e.source,
@@ -59,7 +55,6 @@ function makeEdges(firingEdges: Set<string> = new Set()) {
 
 const nodeTypes = { neuralNode: NeuralNetworkNode };
 
-// Node id → route mapping (outside component to keep stable reference)
 const NODE_ROUTES: Record<string, string> = {
   aaryan: "/about",
   aiml: "/projects",
@@ -83,32 +78,22 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
   const [litNodes, setLitNodes] = useState<Set<string>>(new Set());
   const [firingEdges, setFiringEdges] = useState<Set<string>>(new Set());
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
-  const [contextNode, setContextNode] = useState<string | null>(null);
-  const [search, setSearch] = useState("");
   const animRef = useRef<number>(0);
   const startTimeRef = useRef<number>(performance.now());
   const pausedRef = useRef<boolean>(false);
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+  const isCompact = typeof window !== "undefined" && window.innerWidth < 768;
 
-  // Initial scatter, then animate to circle
   const [nodes, setNodes, onNodesChange] = useNodesState(makeInitialNodes());
   const [edges, setEdges, onEdgesChange] = useEdgesState(makeEdges());
 
-  // Circular motion animation loop — fixed coord system, fitView handles scaling
-  // Animation loop with pause/resume
   useEffect(() => {
     const nodeIds = NODE_CONFIG.map((n) => n.id);
     const totalNodes = nodeIds.filter((id) => id !== "aaryan").length;
     const speed = 0.00025;
     const breatheSpeed = 0.00013;
-    // Fixed radius in ReactFlow coords — fitView scales to fill screen
-    const BASE_RADIUS = 260;
+    const baseRadius = isCompact ? 215 : 260;
 
-    // 3D depth mapping helpers
     function getDepth(angleRad: number) {
-      // 0 = top (farthest), pi = bottom (closest)
-      // Map to [0,1]: 0 (back) to 1 (front)
-      // Use cosine so bottom (pi) is 1, top (0/2pi) is 0
       return 0.5 * (1 + Math.cos(angleRad - Math.PI));
     }
 
@@ -117,27 +102,36 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
         animRef.current = requestAnimationFrame(tick);
         return;
       }
+
       const t = performance.now() - startTimeRef.current;
-      const radius = BASE_RADIUS + BASE_RADIUS * 0.08 * Math.sin(t * breatheSpeed);
+      const radius = baseRadius + baseRadius * 0.08 * Math.sin(t * breatheSpeed);
 
       setNodes((nds) =>
         nds.map((n) => {
           if (n.id === "aaryan") {
-            return { ...n, position: { x: -45, y: -45 }, draggable: false, data: { ...n.data, depth: 1 } };
+            return {
+              ...n,
+              position: { x: -45, y: -45 },
+              draggable: false,
+              data: { ...n.data, depth: 1, isCompact },
+            };
           }
+
           const idx = nodeIds.filter((id) => id !== "aaryan").indexOf(n.id);
           const angle = (2 * Math.PI * idx) / totalNodes + t * speed;
           const depth = getDepth(angle);
+
           return {
             ...n,
             position: {
               x: radius * Math.cos(angle),
               y: radius * Math.sin(angle),
             },
-            draggable: true,
+            draggable: false,
             data: {
               ...n.data,
               depth,
+              isCompact,
             },
           };
         })
@@ -145,21 +139,21 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
 
       animRef.current = requestAnimationFrame(tick);
     }
-    animRef.current = requestAnimationFrame(tick);
-    return () => { cancelAnimationFrame(animRef.current); };
-  }, []);
 
-  // Pause/resume animation based on hoveredNode
+    animRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(animRef.current);
+  }, [isCompact, setNodes]);
+
   useEffect(() => {
     pausedRef.current = hoveredNode !== null;
   }, [hoveredNode]);
 
-  // Sync active/lit/hover highlight into node data
   useEffect(() => {
     let highlightLevels: Record<string, number> = {};
     if (hoveredNode) {
-      highlightLevels = getConnectionLevels(hoveredNode, 3); // BFS: 0=self, 1=direct, 2=secondary
+      highlightLevels = getConnectionLevels(hoveredNode, 3);
     }
+
     setNodes((nds) =>
       nds.map((n) => ({
         ...n,
@@ -168,21 +162,20 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
           active: activeNode === n.id,
           lit: litNodes.has(n.id),
           highlightLevel: highlightLevels[n.id] ?? null,
+          isCompact,
         },
       }))
     );
-  }, [activeNode, litNodes, hoveredNode, setNodes]);
+  }, [activeNode, hoveredNode, isCompact, litNodes, setNodes]);
 
-  // Sync firing and highlight into edge data
   useEffect(() => {
     let highlightLevels: Record<string, number> = {};
     if (hoveredNode) {
       highlightLevels = getConnectionLevels(hoveredNode, 3);
     }
+
     setEdges((eds) =>
       eds.map((e) => {
-        // An edge is "direct" if both ends are within 1 hop of hoveredNode
-        // i.e. one end IS hoveredNode (level 0) and the other is level 1
         const srcLevel = highlightLevels[e.source] ?? null;
         const tgtLevel = highlightLevels[e.target] ?? null;
         const isDirect =
@@ -190,8 +183,10 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
           ((e.source === hoveredNode && tgtLevel === 1) ||
             (e.target === hoveredNode && srcLevel === 1));
         const isSecondary =
-          hoveredNode != null && !isDirect &&
-          srcLevel != null && tgtLevel != null &&
+          hoveredNode != null &&
+          !isDirect &&
+          srcLevel != null &&
+          tgtLevel != null &&
           Math.max(srcLevel, tgtLevel) <= 2;
         const isActive = firingEdges.has(e.id);
         const anyHover = hoveredNode != null;
@@ -217,13 +212,11 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
           opacity = 0.6;
           animated = false;
         } else if (anyHover) {
-          // non-connected edges fade to near-invisible when something is hovered
           stroke = "#1e4060";
           strokeWidth = 1;
           opacity = 0.12;
           animated = false;
         } else {
-          // default: very faint but visible
           stroke = "#38bdf8";
           strokeWidth = 1;
           opacity = 0.18;
@@ -241,7 +234,6 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
     );
   }, [firingEdges, hoveredNode, setEdges]);
 
-  // Build adjacency map once
   const adjacency = buildAdjacency();
 
   const handleNodeClick = useCallback(
@@ -268,10 +260,10 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
     [adjacency, router]
   );
 
-  // Node hover: set hoveredNode for highlight propagation
   const handleNodeMouseEnter = useCallback((_: React.MouseEvent, node: Node) => {
     setHoveredNode(node.id);
   }, []);
+
   const handleNodeMouseLeave = useCallback(() => {
     setHoveredNode(null);
   }, []);
@@ -279,46 +271,94 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
   const onConnect = useCallback(
     (params: Connection) =>
       setEdges((eds) =>
-        addEdge({ ...params, type: "neuralEdge", markerEnd: { type: MarkerType.ArrowClosed }, data: { firing: false } }, eds)
+        addEdge(
+          { ...params, type: "neuralEdge", markerEnd: { type: MarkerType.ArrowClosed }, data: { firing: false } },
+          eds
+        )
       ),
     [setEdges]
   );
 
-      return (
-        <div style={{ width: "100%", height: "100svh", background: "#020817", position: "relative" }}>
-          {onSkip && (
-            <button
-              onClick={onSkip}
-              style={{ position: "absolute", top: 12, right: 12, zIndex: 50 }}
-              className="text-xs text-muted-foreground hover:text-primary border border-border bg-background/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-md transition-colors"
-            >
-              Skip to Classic View
-            </button>
-          )}
-          <ReactFlow
-            nodes={nodes}
-            edges={edges}
-            onNodesChange={onNodesChange}
-            onEdgesChange={onEdgesChange}
-            onConnect={onConnect}
-            onNodeClick={handleNodeClick}
-            onNodeMouseEnter={isMobile ? undefined : handleNodeMouseEnter}
-            onNodeMouseLeave={isMobile ? undefined : handleNodeMouseLeave}
-            nodeTypes={nodeTypes}
-            fitView
-            fitViewOptions={{ padding: 0.18 }}
-            nodesDraggable={false}
-            panOnDrag={false}
-            zoomOnScroll={false}
-            panOnScroll={false}
-            preventScrolling={false}
-            zoomOnDoubleClick={false}
-          >
-            <Background variant={BackgroundVariant.Dots} gap={24} size={1} color="#1e293b" />
-            <Controls showInteractive={false} />
-            {/* Hide ReactFlow attribution */}
-            <style>{`.react-flow__attribution { display: none !important; }`}</style>
-          </ReactFlow>
-        </div>
-      );
+  return (
+    <div
+      style={{
+        width: "100%",
+        height: "100svh",
+        background:
+          "radial-gradient(circle at 50% 50%, rgba(12, 28, 58, 0.82) 0%, rgba(2, 8, 23, 0.96) 36%, #020817 72%, #01030a 100%)",
+        position: "relative",
+        paddingTop: HEADER_OFFSET,
+        overflow: "hidden",
+      }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "radial-gradient(circle at 22% 26%, rgba(34,197,94,0.16), transparent 14%), radial-gradient(circle at 50% 50%, rgba(125,211,252,0.14), transparent 22%), radial-gradient(circle at 76% 30%, rgba(59,130,246,0.12), transparent 18%), radial-gradient(circle at 62% 74%, rgba(168,85,247,0.1), transparent 20%)",
+          filter: "blur(20px)",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage:
+            "radial-gradient(circle at 8% 18%, rgba(255,255,255,0.98) 0 1.25px, transparent 1.9px), radial-gradient(circle at 21% 30%, rgba(255,255,255,0.92) 0 1.1px, transparent 1.7px), radial-gradient(circle at 34% 14%, rgba(255,255,255,0.95) 0 1.15px, transparent 1.75px), radial-gradient(circle at 52% 22%, rgba(255,255,255,0.86) 0 1px, transparent 1.6px), radial-gradient(circle at 68% 12%, rgba(255,255,255,0.94) 0 1.2px, transparent 1.85px), radial-gradient(circle at 82% 28%, rgba(255,255,255,0.9) 0 1.05px, transparent 1.65px), radial-gradient(circle at 92% 18%, rgba(255,255,255,0.96) 0 1.1px, transparent 1.7px), radial-gradient(circle at 15% 68%, rgba(255,255,255,0.88) 0 1px, transparent 1.55px), radial-gradient(circle at 28% 82%, rgba(255,255,255,0.94) 0 1.15px, transparent 1.75px), radial-gradient(circle at 44% 74%, rgba(255,255,255,0.84) 0 1px, transparent 1.55px), radial-gradient(circle at 62% 84%, rgba(255,255,255,0.96) 0 1.15px, transparent 1.75px), radial-gradient(circle at 76% 74%, rgba(255,255,255,0.88) 0 1px, transparent 1.55px), radial-gradient(circle at 90% 82%, rgba(255,255,255,0.92) 0 1.05px, transparent 1.65px), radial-gradient(circle at 12% 10%, rgba(255,255,255,0.9) 0 0.9px, transparent 1.45px), radial-gradient(circle at 26% 8%, rgba(255,255,255,0.84) 0 0.95px, transparent 1.5px), radial-gradient(circle at 40% 9%, rgba(255,255,255,0.82) 0 0.9px, transparent 1.45px), radial-gradient(circle at 58% 8%, rgba(255,255,255,0.9) 0 0.95px, transparent 1.5px), radial-gradient(circle at 72% 9%, rgba(255,255,255,0.82) 0 0.9px, transparent 1.45px), radial-gradient(circle at 86% 8%, rgba(255,255,255,0.88) 0 0.95px, transparent 1.5px), radial-gradient(circle at 10% 42%, rgba(255,255,255,0.82) 0 0.9px, transparent 1.45px), radial-gradient(circle at 24% 46%, rgba(255,255,255,0.9) 0 0.95px, transparent 1.5px), radial-gradient(circle at 38% 40%, rgba(255,255,255,0.84) 0 0.9px, transparent 1.45px), radial-gradient(circle at 56% 44%, rgba(255,255,255,0.88) 0 0.95px, transparent 1.5px), radial-gradient(circle at 70% 42%, rgba(255,255,255,0.84) 0 0.9px, transparent 1.45px), radial-gradient(circle at 84% 46%, rgba(255,255,255,0.9) 0 0.95px, transparent 1.5px), radial-gradient(circle at 8% 90%, rgba(255,255,255,0.84) 0 0.9px, transparent 1.45px), radial-gradient(circle at 22% 94%, rgba(255,255,255,0.9) 0 0.95px, transparent 1.5px), radial-gradient(circle at 36% 88%, rgba(255,255,255,0.82) 0 0.9px, transparent 1.45px), radial-gradient(circle at 54% 92%, rgba(255,255,255,0.88) 0 0.95px, transparent 1.5px), radial-gradient(circle at 68% 90%, rgba(255,255,255,0.84) 0 0.9px, transparent 1.45px), radial-gradient(circle at 82% 94%, rgba(255,255,255,0.9) 0 0.95px, transparent 1.5px), radial-gradient(circle at 94% 90%, rgba(255,255,255,0.82) 0 0.9px, transparent 1.45px), radial-gradient(circle, rgba(255,255,255,0.34) 0 1px, transparent 1.5px)",
+          backgroundSize: "100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 20px 20px",
+          opacity: 0.86,
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "linear-gradient(180deg, rgba(2,8,23,0.97) 0px, rgba(2,8,23,0.82) 110px, rgba(2,8,23,0.18) 240px), radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05), transparent 30%)",
+          pointerEvents: "none",
+          zIndex: 1,
+        }}
+      />
+
+      {onSkip && (
+        <button
+          onClick={onSkip}
+          style={{ position: "absolute", top: 12, right: 12, zIndex: 50 }}
+          className="text-xs text-muted-foreground hover:text-primary border border-border bg-background/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-md transition-colors"
+        >
+          Skip to Classic View
+        </button>
+      )}
+
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        onConnect={onConnect}
+        onNodeClick={handleNodeClick}
+        onNodeMouseEnter={isCompact ? undefined : handleNodeMouseEnter}
+        onNodeMouseLeave={isCompact ? undefined : handleNodeMouseLeave}
+        nodeTypes={nodeTypes}
+        fitView
+        fitViewOptions={{ padding: isCompact ? 0.24 : 0.18, includeHiddenNodes: false }}
+        nodesDraggable={false}
+        panOnDrag={false}
+        zoomOnScroll={false}
+        panOnScroll={false}
+        preventScrolling={false}
+        zoomOnDoubleClick={false}
+        minZoom={0.72}
+        maxZoom={1}
+        proOptions={{ hideAttribution: true }}
+      >
+        <Background variant={BackgroundVariant.Dots} gap={22} size={1.15} color="rgba(255,255,255,0.24)" />
+      </ReactFlow>
+    </div>
+  );
 }
