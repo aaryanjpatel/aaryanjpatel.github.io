@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ExternalLink, Github, BookOpen } from 'lucide-react'
 import projectsData from '@/public/metadata/projects.json'
 import { FilterDropdown } from '@/components/portfolio/filter-dropdown'
@@ -9,6 +10,7 @@ import { FilterDropdown } from '@/components/portfolio/filter-dropdown'
 type Project = {
   title: string
   description: string
+  image?: string
   tech: string[]
   github: string
   demo?: string
@@ -18,6 +20,16 @@ type Project = {
 function ProjectCard({ project }: { project: Project }) {
   return (
     <div className="flex flex-col rounded-xl border border-border bg-card p-6 hover:border-primary/50 hover:shadow-md transition-all duration-200">
+      {project.image && (
+        <div className="relative mb-5 aspect-[16/9] w-full overflow-hidden rounded-lg border border-border bg-muted">
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-cover"
+          />
+        </div>
+      )}
       <h3 className="font-semibold text-lg mb-2 leading-snug">{project.title}</h3>
       <hr className="border-border mb-8" /> {/* Add a divider */}
       <p className="text-sm text-muted-foreground mb-4 leading-relaxed flex-1">{project.description}</p>
