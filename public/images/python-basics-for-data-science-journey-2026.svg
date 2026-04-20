@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
-  <title id="title">Python Basics for Data Science Journey 2026</title>
-  <desc id="desc">Feature image for a post about Python, coding practice, and selective entry discipline.</desc>
+  <title id="title">Python Basics for Data Science</title>
+  <desc id="desc">Feature image showing a course card for Python Basics for Data Science by IBM.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#f6f8fc"/>
@@ -30,22 +30,22 @@
       Python Basics for Data Science
     </text>
     <text x="0" y="58" font-family="Segoe UI, Arial, sans-serif" font-size="20" fill="#32475b">
-      Coding • Python • Selective Entry Mindset
+      IBM • PY0101EN • Access expires May 16, 2026
     </text>
 
     <g transform="translate(0 118)">
       <rect width="650" height="170" rx="20" fill="#f7fafc" stroke="#dbe6ef"/>
       <text x="28" y="48" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="600" fill="#102a43">
-        My Learning Journey
+        My Course Journey
       </text>
       <text x="28" y="88" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#486581">
-        Building coding confidence, focus, and
+        Learning Python fundamentals, data structures,
       </text>
       <text x="28" y="116" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#486581">
-        problem-solving through Python practice.
+        control flow, and functions for data science.
       </text>
       <text x="28" y="145" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#829ab1">
-        Inspired by my interest in coding and study discipline.
+        Built as a feature image for my portfolio post.
       </text>
     </g>
   </g>
@@ -56,10 +56,10 @@
     <rect x="36" y="22" width="20" height="18" rx="3" fill="#0f3854"/>
     <path d="M40 22v-7c0-11 8-18 17-18s17 7 17 18v7" fill="none" stroke="#0f3854" stroke-width="4" stroke-linecap="round"/>
     <text x="72" y="41" font-family="Segoe UI, Arial, sans-serif" font-size="24" fill="#0f3854">
-      Keep
+      Upgrade
     </text>
     <text x="243" y="41" font-family="Segoe UI, Arial, sans-serif" font-size="24" fill="#ffffff">
-      Growing
+      Resume
     </text>
   </g>
 
