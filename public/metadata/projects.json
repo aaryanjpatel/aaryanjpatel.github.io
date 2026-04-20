@@ -2,7 +2,6 @@
   {
     "title": "Python Basics for Data Science Journey 2026",
     "description": "My journey completing the Python Basics for Data Science course, learning Python fundamentals, and building a stronger foundation for future data science study.",
-    "image": "/images/python-basics-for-data-science-journey-2026.svg",
     "tech": ["Python", "Data Science", "IBM", "edX"],
     "github": "",
     "demo": "",
@@ -11,7 +10,6 @@
   {
     "title": "My Journey Practising Verbal Reasoning",
     "description": "Learning vocabulary to improve my Verbal Reasoning scores and strengthen my selective entry preparation.",
-    "image": "/images/VRpic.png",
     "tech": ["Education", "Selective Entry", "Preparation", "VR"],
     "github": "",
     "demo": "",
@@ -20,7 +18,6 @@
   {
     "title": "Selective Entry Preparation 2026",
     "description": "A guide to selective entry preparation across key exam areas in 2026.",
-    "image": "/images/selective-entry-preparation-2026.png",
     "tech": ["Education", "Selective Entry", "Preparation"],
     "github": "",
     "demo": "",
