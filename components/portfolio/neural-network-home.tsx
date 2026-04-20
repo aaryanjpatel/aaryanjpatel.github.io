@@ -3,8 +3,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import "react-flow-renderer/dist/style.css";
 import ReactFlow, {
-  Background,
-  BackgroundVariant,
   Connection,
   MarkerType,
   Node,
@@ -355,10 +353,8 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
         zoomOnDoubleClick={false}
         minZoom={0.72}
         maxZoom={1}
-        proOptions={{ hideAttribution: true }}
-      >
-        <Background variant={BackgroundVariant.Dots} gap={22} size={1.15} color="rgba(255,255,255,0.24)" />
-      </ReactFlow>
+        proOptions={{ hideAttribution: true, account: "your-account-id" }}
+      />
     </div>
   );
 }
