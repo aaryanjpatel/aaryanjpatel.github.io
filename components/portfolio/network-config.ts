@@ -3,7 +3,7 @@
 
 export const nodes = [
   {
-    id: "aaryan",
+    id: "Aaryan",
     label: "Aaryan Patel",
     type: "central",
     weight: "strong",
@@ -131,10 +131,10 @@ export const nodes = [
 ];
 
 export const edges = [
-  { source: "aaryan", target: "aiml" },
-  { source: "aaryan", target: "mlops" },
-  { source: "aaryan", target: "cloud" },
-  { source: "aaryan", target: "llm" },
+  { source: "Aaryan", target: "aiml" },
+  { source: "Aaryan", target: "mlops" },
+  { source: "Aaryan", target: "cloud" },
+  { source: "Aaryan", target: "llm" },
   { source: "aiml", target: "proj" },
   { source: "aiml", target: "blog" },
   { source: "mlops", target: "proj" },

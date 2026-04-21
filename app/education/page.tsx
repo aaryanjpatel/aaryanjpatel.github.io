@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Education | Aaryan Patel',
   description: 'Academic background and formal qualifications of Aaryan Patel — Future Tech Entrepreneur with 18+ years of experience in AI, cloud, and platform engineering.',
   keywords: [
-    'Aaryan Patel education', 'Jagdishkumar Patel', 'Aaryan Patel qualifications',
+    'Aaryan Patel education', 'Aaryankumar Patel', 'Aaryan Patel qualifications',
     'AI ML engineer education', 'Principal AI ML Engineer background',
   ],
   authors: [{ name: 'Aaryan Patel', url: 'https://aaryanjpatel.github.io' }],
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     card: 'summary',
     title: 'Education | Aaryan Patel',
     description: 'Academic background and qualifications of Aaryan Patel, Future Tech Entrepreneur.',
-    creator: '@JagPatel',
+    creator: '@AaryanPatel',
   },
   robots: { index: true, follow: true },
 }

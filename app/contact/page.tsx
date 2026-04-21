@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Contact Aaryan Patel | Future Tech Entrepreneur',
   description: 'Get in touch with Aaryan Patel — Future Tech Entrepreneur specialising in AI/ML, MLOps, platform engineering, and cloud automation.',
   keywords: [
-    'Aaryan Patel', 'contact Aaryan Patel', 'Jagdishkumar Patel', 'hire AI ML engineer',
+    'Aaryan Patel', 'contact Aaryan Patel', 'Aaryankumar Patel', 'hire AI ML engineer',
     'Principal AI ML Engineer contact', 'AI engineer Australia',
   ],
   authors: [{ name: 'Aaryan Patel', url: 'https://aaryanjpatel.github.io' }],
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     card: 'summary',
     title: 'Contact Aaryan Patel | Future Tech Entrepreneur',
     description: 'Get in touch with Aaryan Patel — Future Tech Entrepreneur.',
-    creator: '@JagPatel',
+    creator: '@AaryanPatel',
   },
   robots: { index: true, follow: true },
 }

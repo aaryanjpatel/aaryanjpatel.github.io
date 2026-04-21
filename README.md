@@ -1,6 +1,6 @@
 # Aaryan Patel — Portfolio
 
-Personal portfolio and technical blog for **Jagdishkumar (Jag) Patel**, Future Tech Entrepreneur with 18+ years designing and delivering scalable, secure, production-grade systems across AI/ML engineering, machine learning, MLOps, cloud architecture, DevSecOps, and platform engineering.
+Personal portfolio and technical blog for **Aaryankumar (Aaryan) Patel**, Future Tech Entrepreneur with 18+ years designing and delivering scalable, secure, production-grade systems across AI/ML engineering, machine learning, MLOps, cloud architecture, DevSecOps, and platform engineering.
 
 🌐 **Live site**: [aaryanjpatel.github.io](https://aaryanjpatel.github.io)
 

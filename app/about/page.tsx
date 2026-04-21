@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'About Aaryan Patel | Future Tech Entrepreneur',
   description: 'Aaryan Patel is a Future Tech Entrepreneur with 18+ years across AI/ML, LLMs, MLOps, DevSecOps, and cloud infrastructure. Based in Australia.',
   keywords: [
-    'Aaryan Patel', 'Jagdishkumar Patel', 'about Aaryan Patel', 'Principal AI ML Engineer',
+    'Aaryan Patel', 'Aaryankumar Patel', 'about Aaryan Patel', 'Principal AI ML Engineer',
     'AI ML Engineer Australia', 'MLOps engineer', 'LLM engineer', 'DevSecOps engineer',
     'cloud engineer Australia', 'platform engineer',
   ],
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'About Aaryan Patel | Future Tech Entrepreneur',
     description: 'Aaryan Patel — 18+ years in AI/ML, LLMs, MLOps, DevSecOps, and cloud automation.',
-    creator: '@JagPatel',
+    creator: '@AaryanPatel',
   },
   robots: { index: true, follow: true },
 }

@@ -9,9 +9,9 @@ import { HomeEntry } from '@/components/portfolio/home-entry'
 
 export const metadata: Metadata = {
   title: 'Aaryan Patel — Future Tech Entrepreneur | Machine Learning, MLOps & Cloud',
-  description: 'Aaryan Patel (Jagdishkumar Patel) — Future Tech Entrepreneur with 18+ years across AI/ML Engineering, Machine Learning, Data Science, MLOps, Cloud Engineering, Cloud DevOps, and DevSecOps. Based in Australia.',
+  description: 'Aaryan Patel (Aaryankumar Patel) — Future Tech Entrepreneur with 18+ years across AI/ML Engineering, Machine Learning, Data Science, MLOps, Cloud Engineering, Cloud DevOps, and DevSecOps. Based in Australia.',
   keywords: [
-    'Aaryan Patel', 'Jagdishkumar Patel', 'AI Engineer', 'AI/ML Engineer', 'AI/ML Engineering',
+    'Aaryan Patel', 'Aaryankumar Patel', 'AI Engineer', 'AI/ML Engineer', 'AI/ML Engineering',
     'Future Tech Entrepreneur', 'Machine Learning Engineer', 'Data Science Engineer',
     'MLOps Engineer', 'Cloud Engineer', 'Cloud Engineering', 'Cloud DevOps Engineer',
     'Cloud DevSecOps Engineer', 'DevSecOps', 'LLM', 'Ollama', 'Azure', 'AWS',

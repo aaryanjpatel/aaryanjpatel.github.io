@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Projects | Aaryan Patel',
   description: 'Explore projects built by Aaryan Patel — Future Tech Entrepreneur specialising in AI/ML pipelines, distributed systems, platform engineering, and cloud automation.',
   keywords: [
-    'Aaryan Patel', 'Jagdishkumar Patel', 'Aaryan Patel projects', 'AI ML projects',
+    'Aaryan Patel', 'Aaryankumar Patel', 'Aaryan Patel projects', 'AI ML projects',
     'Principal AI ML Engineer', 'platform engineering projects', 'Python projects',
     'MLOps projects', 'distributed systems projects', 'cloud automation', 'Azure AI projects',
   ],
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Projects | Aaryan Patel',
     description: 'AI/ML, platform engineering, and cloud automation projects by Aaryan Patel — Future Tech Entrepreneur.',
-    creator: '@JagPatel',
+    creator: '@AaryanPatel',
   },
   robots: { index: true, follow: true },
 }

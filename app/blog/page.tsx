@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Blog | Aaryan Patel',
     description: 'AI/ML, platform engineering, and local LLM articles by Aaryan Patel.',
-    creator: '@JagPatel',
+    creator: '@AaryanPatel',
   },
   robots: { index: true, follow: true },
 }

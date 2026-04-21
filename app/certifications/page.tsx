@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Licences & Certifications | Aaryan Patel',
   description: 'Professional certifications and licences held by Aaryan Patel — Future Tech Entrepreneur specialising in cloud, DevSecOps, and infrastructure engineering.',
   keywords: [
-    'Aaryan Patel certifications', 'Jagdishkumar Patel', 'AWS certified', 'Azure certified',
+    'Aaryan Patel certifications', 'Aaryankumar Patel', 'AWS certified', 'Azure certified',
     'Terraform certified', 'DevSecOps certifications', 'cloud certifications Aaryan Patel',
     'Principal AI ML Engineer certifications',
   ],
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     card: 'summary',
     title: 'Licences & Certifications | Aaryan Patel',
     description: 'AWS, Azure, Terraform and more — certifications held by Aaryan Patel, Future Tech Entrepreneur.',
-    creator: '@JagPatel',
+    creator: '@AaryanPatel',
   },
   robots: { index: true, follow: true },
 }

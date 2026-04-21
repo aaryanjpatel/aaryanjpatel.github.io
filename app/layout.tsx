@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description: 'Aaryan Patel — Future Tech Entrepreneur. 18+ years in AI/ML, LLMs, PromptFlow, DevSecOps, and cloud automation. Building transparent, production-grade AI systems and secure platforms.',
   keywords: [
     'Aaryan Patel',
-    'Jagdishkumar Patel',
+    'Aaryankumar Patel',
     'AI Engineer',
     'AI/ML Engineer',
     'AI/ML Engineering',

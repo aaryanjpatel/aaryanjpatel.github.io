@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: post.title,
       description,
       images: post.feature_image ? [post.feature_image] : [],
-      creator: '@JagPatel',
+      creator: '@AaryanPatel',
     },
     robots: { index: true, follow: true },
   }
