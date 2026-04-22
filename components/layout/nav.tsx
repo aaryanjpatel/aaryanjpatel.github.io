@@ -11,6 +11,7 @@ const STORAGE_KEY = "portfolio-view"
 const navLinks = [
   { label: "About", href: "/about" },
   { label: "Projects", href: "/projects" },
+  { label: "My Business", href: "/business" },
   { label: "Certifications", href: "/certifications" },
   { label: "Education", href: "/education" },
   { label: "Blog", href: "/blog" },

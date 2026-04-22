@@ -25,5 +25,14 @@
     "demo": "",
     "blogSlug": "selective-entry-preparation-2026",
     "feature_image": "/images/selective-entry-preparation-2026.png"
+  },
+  {
+    "title": "My New Business",
+    "description": "Professional website design and development for individuals and businesses. Custom solutions starting from $1500, with pricing based on complexity and development time.",
+    "tech": ["Web Design", "Web Development", "Custom Solutions", "Business"],
+    "github": "",
+    "demo": "",
+    "blogSlug": "",
+    "feature_image": "/images/my-new-business.png"
   }
 ]
