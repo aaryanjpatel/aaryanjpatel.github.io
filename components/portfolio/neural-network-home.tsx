@@ -66,19 +66,19 @@ const adjacency = buildAdjacency();
 // Node id → route mapping (outside component to keep stable reference)
 const NODE_ROUTES: Record<string, string> = {
   Aaryan: "/about",
-  aiml: "/projects",
-  mlops: "/projects",
-  cloud: "/projects",
-  llm: "/projects",
-  proj: "/projects",
-  certs: "/certifications",
-  edu: "/education",
-  blog: "/blog",
-  devsec: "/projects",
-  platform: "/projects",
-  obs: "/projects",
-  contact: "/contact",
-  about: "/about",
+  python: "/projects",
+  datasci: "/projects",
+  webdev: "/projects",
+  quant: "/education",
+  math: "/education",
+  logic: "/education",
+  vocab: "/blog",
+  english: "/blog",
+  writing: "/blog",
+  study: "/education",
+  selent: "/education",
+  timemanage: "/education",
+  growth: "/about",
 };
 
 export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {

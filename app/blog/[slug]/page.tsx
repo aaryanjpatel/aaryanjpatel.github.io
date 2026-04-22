@@ -74,47 +74,55 @@ export default function BlogPostPage({ params }: Props) {
       <div className="flex gap-12">
         {/* Main content */}
         <article className="flex-1 min-w-0">
-          {post.feature_image && (
-            <div className="relative w-full rounded-xl overflow-hidden mb-8 bg-muted" style={{ aspectRatio: '16/9' }}>
-              <Image
-                src={post.feature_image}
-                alt={post.title}
-                fill
-                className="object-contain"
-                priority
-              />
+          {/* Header with image and title side-by-side */}
+          <div className="flex gap-6 mb-10 rounded-xl border border-border bg-card p-6 items-start">
+            {/* Feature Image */}
+            {post.feature_image && (
+              <div className="hidden sm:block relative shrink-0 w-48 h-36 overflow-hidden rounded-lg bg-muted">
+                <Image
+                  src={post.feature_image}
+                  alt={post.title}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            )}
+            
+            {/* Title and Metadata */}
+            <div className="flex-1 min-w-0 flex flex-col justify-center">
+              <h1 className="text-2xl md:text-3xl font-extrabold leading-tight mb-3">{post.title}</h1>
+              <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{post.description || post.excerpt}</p>
+              <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
+                <time>
+                  {new Date(post.date).toLocaleDateString('en-AU', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                  })}
+                </time>
+                <span>·</span>
+                <span>{mins} min read</span>
+                {post.tags && post.tags.length > 0 && (
+                  <>
+                    <span>·</span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {post.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full bg-secondary px-2 py-0.5 text-xs font-medium text-secondary-foreground"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
             </div>
-          )}
+          </div>
 
-          <header className="mb-10">
-            <h1 className="text-3xl md:text-4xl font-extrabold leading-tight mb-4">{post.title}</h1>
-            <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
-              <time>
-                {new Date(post.date).toLocaleDateString('en-AU', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
-              </time>
-              <span>·</span>
-              <span>{mins} min read</span>
-              {post.tags && post.tags.length > 0 && (
-                <>
-                  <span>·</span>
-                  <div className="flex flex-wrap gap-1.5">
-                    {post.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
-          </header>
+          {/* Article content */}
 
           <div className="prose prose-slate max-w-none dark:prose-invert prose-headings:font-semibold prose-a:text-primary prose-code:text-primary prose-code:before:content-none prose-code:after:content-none">
             <MDXRemote

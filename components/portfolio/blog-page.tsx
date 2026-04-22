@@ -67,7 +67,7 @@ export function BlogPage({ posts }: { posts: PostMeta[] }) {
           <Link key={post.slug} href={`/blog/${post.slug}`} className="group block">
             <div className="flex gap-5 rounded-xl border border-border bg-card hover:border-primary/50 hover:shadow-md transition-all duration-200 overflow-hidden">
               {post.feature_image && (
-                <div className="hidden sm:block relative shrink-0 w-40 h-32 overflow-hidden">
+                <div className="relative shrink-0 w-32 h-28 sm:w-40 sm:h-32 overflow-hidden rounded">
                   <Image
                     src={post.feature_image}
                     alt={post.title}
@@ -76,7 +76,7 @@ export function BlogPage({ posts }: { posts: PostMeta[] }) {
                   />
                 </div>
               )}
-              <div className="flex-1 p-5 flex flex-col justify-between gap-3">
+              <div className="flex-1 p-4 sm:p-5 flex flex-col justify-between gap-3 min-w-0">
                 <div>
                   <h2 className="font-semibold text-base leading-snug group-hover:text-primary transition-colors line-clamp-2">
                     {post.title}

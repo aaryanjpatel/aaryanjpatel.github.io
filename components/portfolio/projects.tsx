@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ExternalLink, Github, BookOpen } from 'lucide-react'
 import projectsData from '@/public/metadata/projects.json'
 import { FilterDropdown } from '@/components/portfolio/filter-dropdown'
@@ -13,14 +14,28 @@ type Project = {
   github: string
   demo?: string
   blogSlug?: string
+  feature_image?: string
 }
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <div className="flex flex-col rounded-xl border border-border bg-card p-6 hover:border-primary/50 hover:shadow-md transition-all duration-200">
-      <h3 className="font-semibold text-lg mb-2 leading-snug">{project.title}</h3>
-      <hr className="border-border mb-8" /> {/* Add a divider */}
-      <p className="text-sm text-muted-foreground mb-4 leading-relaxed flex-1">{project.description}</p>
+    <Link href={project.blogSlug ? `/blog/${project.blogSlug}` : '#'} className={project.blogSlug ? 'group block' : ''}>
+      <div className="flex flex-col rounded-xl border border-border bg-card hover:border-primary/50 hover:shadow-md transition-all duration-200 overflow-hidden h-full">
+        {/* Feature Image */}
+        {project.feature_image && (
+          <div className="relative w-full h-40 overflow-hidden rounded-t-xl bg-muted">
+            <Image
+              src={project.feature_image}
+              alt={project.title}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        )}
+        <div className="flex flex-col p-6 flex-1">
+          <h3 className="font-semibold text-lg mb-2 leading-snug group-hover:text-primary transition-colors">{project.title}</h3>
+          <hr className="border-border mb-4" />
+          <p className="text-sm text-muted-foreground mb-4 leading-relaxed flex-1">{project.description}</p>
       <div className="flex flex-wrap gap-2 mb-5">
         {project.tech.map((tech) => (
           <span key={tech} className="rounded-full bg-primary/10 text-primary px-2.5 py-0.5 text-xs font-medium">
@@ -28,37 +43,38 @@ function ProjectCard({ project }: { project: Project }) {
           </span>
         ))}
       </div>
-      <div className="flex items-center gap-4">
-        {project.github && (
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
-          >
-            <Github size={15} /> GitHub <ExternalLink size={12} />
-          </a>
-        )}
-        {project.demo && (
-          <a
-            href={project.demo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
-          >
-            <ExternalLink size={15} /> Live Demo
-          </a>
-        )}
-        {project.blogSlug && (
-          <Link
-            href={`/blog/${project.blogSlug}`}
-            className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline transition-colors"
-          >
-            <BookOpen size={15} /> Read Post
-          </Link>
-        )}
+          <div className="flex items-center gap-4 flex-wrap mt-auto">
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
+                <Github size={15} /> GitHub <ExternalLink size={12} />
+              </a>
+            )}
+            {project.demo && (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
+                <ExternalLink size={15} /> Live Demo
+              </a>
+            )}
+            {project.blogSlug && (
+              <span
+                className="inline-flex items-center gap-1.5 text-sm text-primary group-hover:underline transition-colors cursor-pointer"
+              >
+                <BookOpen size={15} /> Read Post
+              </span>
+            )}
+          </div>
+        </div>
       </div>
-    </div>
+    </Link>
   )
 }
 

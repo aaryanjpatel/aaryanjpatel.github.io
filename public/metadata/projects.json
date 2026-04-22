@@ -5,7 +5,8 @@
     "tech": ["Python", "Data Science", "IBM", "edX"],
     "github": "",
     "demo": "",
-    "blogSlug": "python-basics-for-data-science-journey-2026"
+    "blogSlug": "python-basics-for-data-science-journey-2026",
+    "feature_image": "/images/python-basics-for-data-science-journey-2026.svg"
   },
   {
     "title": "My Journey Practising Verbal Reasoning",
@@ -13,7 +14,8 @@
     "tech": ["Education", "Selective Entry", "Preparation", "VR"],
     "github": "",
     "demo": "",
-    "blogSlug": "Verbal-reasoning-Practice"
+    "blogSlug": "Verbal-reasoning-Practice",
+    "feature_image": "/images/VRpic.png"
   },
   {
     "title": "Selective Entry Preparation 2026",
@@ -21,6 +23,7 @@
     "tech": ["Education", "Selective Entry", "Preparation"],
     "github": "",
     "demo": "",
-    "blogSlug": "selective-entry-preparation-2026"
+    "blogSlug": "selective-entry-preparation-2026",
+    "feature_image": "/images/selective-entry-preparation-2026.png"
   }
 ]
