@@ -18,14 +18,18 @@ type Project = {
 }
 
 function ProjectCard({ project }: { project: Project }) {
+  const featureImage =
+    project.feature_image || (project.title === 'My New Business' ? '/images/bussness.png' : undefined)
+  const href = project.blogSlug ? `/blog/${project.blogSlug}?from=projects` : '#'
+
   return (
-    <Link href={project.blogSlug ? `/blog/${project.blogSlug}` : '#'} className={project.blogSlug ? 'group block' : ''}>
+    <Link href={href} className={project.blogSlug ? 'group block' : ''}>
       <div className="flex flex-col rounded-xl border border-border bg-card hover:border-primary/50 hover:shadow-md transition-all duration-200 overflow-hidden h-full">
         {/* Feature Image */}
-        {project.feature_image && (
+        {featureImage && (
           <div className="relative w-full h-40 overflow-hidden rounded-t-xl bg-muted">
             <Image
-              src={project.feature_image}
+              src={featureImage}
               alt={project.title}
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-300"

@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
 import rehypeHighlight from 'rehype-highlight'
 import { getAllPostSlugs, getPostBySlug } from '@/lib/posts'
+import { PostBackLink } from '@/components/portfolio/post-back-link'
 import type { Metadata } from 'next'
 
 type Props = { params: { slug: string } }
@@ -19,6 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return {}
   const url = `https://aaryanjpatel.github.io/blog/${post.slug}`
   const description = post.description || post.excerpt
+
   return {
     title: post.title.startsWith('Aaryan Patel') ? post.title : `${post.title} | Aaryan Patel`,
     description,
@@ -62,38 +64,27 @@ export default function BlogPostPage({ params }: Props) {
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-12 md:px-8">
-      {/* Breadcrumb */}
       <div className="mb-8 flex items-center gap-2 text-sm text-muted-foreground">
         <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
         <span>/</span>
-        <Link href="/#blog" className="hover:text-foreground transition-colors">Blog</Link>
+        <Link href="/blog" className="hover:text-foreground transition-colors">Blog</Link>
         <span>/</span>
         <span className="text-foreground truncate max-w-xs">{post.title}</span>
       </div>
 
       <div className="flex gap-12">
-        {/* Main content */}
         <article className="flex-1 min-w-0">
-          {/* Header with image and title side-by-side */}
-          <div className="flex gap-6 mb-10 rounded-xl border border-border bg-card p-6 items-start">
-            {/* Feature Image */}
-            {post.feature_image && (
-              <div className="hidden sm:block relative shrink-0 w-48 h-36 overflow-hidden rounded-lg bg-muted">
-                <Image
-                  src={post.feature_image}
-                  alt={post.title}
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            )}
-            
-            {/* Title and Metadata */}
-            <div className="flex-1 min-w-0 flex flex-col justify-center">
-              <h1 className="text-2xl md:text-3xl font-extrabold leading-tight mb-3">{post.title}</h1>
-              <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{post.description || post.excerpt}</p>
-              <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
+          <div className="mb-6">
+            <PostBackLink />
+          </div>
+
+          <div className="mb-10 rounded-2xl border border-border bg-card overflow-hidden">
+            <div className="p-6 md:p-8">
+              <h1 className="text-3xl md:text-5xl font-extrabold leading-tight mb-4">{post.title}</h1>
+              <p className="max-w-3xl text-base text-muted-foreground mb-5 md:text-lg">
+                {post.description || post.excerpt}
+              </p>
+              <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
                 <time>
                   {new Date(post.date).toLocaleDateString('en-AU', {
                     year: 'numeric',
@@ -103,26 +94,36 @@ export default function BlogPostPage({ params }: Props) {
                 </time>
                 <span>·</span>
                 <span>{mins} min read</span>
-                {post.tags && post.tags.length > 0 && (
-                  <>
-                    <span>·</span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {post.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-full bg-secondary px-2 py-0.5 text-xs font-medium text-secondary-foreground"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </>
-                )}
               </div>
-            </div>
-          </div>
 
-          {/* Article content */}
+              {post.tags && post.tags.length > 0 && (
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {post.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {post.feature_image && (
+              <div className="px-6 pb-6 md:px-8 md:pb-8">
+                <div className="relative w-full h-[320px] overflow-hidden rounded-2xl border border-border bg-muted sm:h-[420px] lg:h-[560px]">
+                  <Image
+                    src={post.feature_image}
+                    alt={post.title}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              </div>
+            )}
+          </div>
 
           <div className="prose prose-slate max-w-none dark:prose-invert prose-headings:font-semibold prose-a:text-primary prose-code:text-primary prose-code:before:content-none prose-code:after:content-none">
             <MDXRemote
@@ -135,9 +136,12 @@ export default function BlogPostPage({ params }: Props) {
               }}
             />
           </div>
+
+          <div className="mt-12 border-t border-border pt-6">
+            <PostBackLink />
+          </div>
         </article>
 
-        {/* Sticky sidebar — hidden on mobile */}
         <aside className="hidden lg:block w-56 shrink-0">
           <div className="sticky top-24 space-y-3">
             <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">

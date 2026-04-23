@@ -28,11 +28,11 @@
   },
   {
     "title": "My New Business",
-    "description": "Professional website design and development for individuals and businesses. Custom solutions starting from $1500, with pricing based on complexity and development time.",
+    "description": "My goal is to build a successful business by creating professional websites for clients and growing it over time through quality work and custom solutions.",
     "tech": ["Web Design", "Web Development", "Custom Solutions", "Business"],
     "github": "",
     "demo": "",
-    "blogSlug": "",
-    "feature_image": "/images/my-new-business.png"
+    "blogSlug": "my-business-plan",
+    "feature_image": "/images/bussness.png"
   }
 ]

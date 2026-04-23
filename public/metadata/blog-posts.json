@@ -1,5 +1,18 @@
 [
   {
+    "slug": "my-business-plan",
+    "title": "My Business Plan For Website Design And Development",
+    "date": "2026-04-23",
+    "excerpt": "## My Business Idea My business is about creating websites for people, brands, and businesses that want a strong online presence. I want to design and build websites that look professional, are easy to use, and help clients present their ideas clearly. This business is not only a…",
+    "feature_image": "/images/bussness.png",
+    "tags": [
+      "Business",
+      "Web Design",
+      "Web Development",
+      "Entrepreneurship"
+    ]
+  },
+  {
     "slug": "python-basics-for-data-science-journey-2026",
     "title": "Python Basics For Data Science Journey 2026",
     "date": "2026-04-19",

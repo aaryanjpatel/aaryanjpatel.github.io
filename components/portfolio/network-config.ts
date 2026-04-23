@@ -121,12 +121,12 @@ export const nodes = [
   },
   {
     id: "growth",
-    label: "Self Improvement",
+    label: "My Business",
     type: "skill",
     weight: "learning",
-    skills: ["Goal Setting", "Habit Building", "Progress"],
-    summary: "Personal growth and continuous self-improvement.",
-    projects: ["Learning Journey", "Development"],
+    skills: ["Web Design", "Web Development", "Business Planning"],
+    summary: "My website business with pricing starting from $1500 depending on content, features, and complexity.",
+    projects: ["Business Plan", "Client Websites", "Custom Builds"],
   },
 ];
 

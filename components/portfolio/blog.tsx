@@ -21,7 +21,7 @@ export function Blog() {
 
       <div className="space-y-6">
         {blogPosts.map((post) => (
-          <Link key={post.slug} href={`/blog/${post.slug}`} className="group block">
+          <Link key={post.slug} href={`/blog/${post.slug}?from=blog`} className="group block">
             <div className="flex gap-5 rounded-xl border border-border bg-card hover:border-primary/50 hover:shadow-md transition-all duration-200 overflow-hidden">
               {/* Image */}
               {post.feature_image && (

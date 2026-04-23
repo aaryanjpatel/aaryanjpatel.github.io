@@ -17,14 +17,22 @@ type Project = {
 }
 
 function BusinessCard({ project }: { project: Project }) {
+  const featureImage =
+    project.feature_image || (project.title === 'My New Business' ? '/images/bussness.png' : undefined)
+  const description =
+    project.title === 'My New Business'
+      ? 'My business focuses on creating websites for businesses, personal brands, and individual clients. I build business websites, personal websites, and custom sites, with pricing starting from $1500 and increasing for more content, pages, features, and complexity.'
+      : project.description
+  const href = project.blogSlug ? `/blog/${project.blogSlug}?from=business` : '#'
+
   return (
-    <Link href={project.blogSlug ? `/blog/${project.blogSlug}` : '#'} className={project.blogSlug ? 'group block' : ''}>
+    <Link href={href} className={project.blogSlug ? 'group block' : ''}>
       <div className="flex flex-col rounded-xl border border-border bg-card hover:border-primary/50 hover:shadow-md transition-all duration-200 overflow-hidden h-full">
         {/* Feature Image */}
-        {project.feature_image && (
+        {featureImage && (
           <div className="relative w-full h-40 overflow-hidden rounded-t-xl bg-muted">
             <Image
-              src={project.feature_image}
+              src={featureImage}
               alt={project.title}
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -34,7 +42,7 @@ function BusinessCard({ project }: { project: Project }) {
         <div className="flex flex-col p-6 flex-1">
           <h3 className="font-semibold text-lg mb-2 leading-snug group-hover:text-primary transition-colors">{project.title}</h3>
           <hr className="border-border mb-4" />
-          <p className="text-sm text-muted-foreground mb-4 leading-relaxed flex-1">{project.description}</p>
+          <p className="text-sm text-muted-foreground mb-4 leading-relaxed flex-1">{description}</p>
           <div className="flex flex-wrap gap-2 mb-5">
             {project.tech.map((tech) => (
               <span key={tech} className="rounded-full bg-primary/10 text-primary px-2.5 py-0.5 text-xs font-medium">
@@ -91,7 +99,7 @@ export function BusinessPage({ projects }: { projects: Project[] }) {
           <h1 className="text-3xl font-extrabold tracking-tight">My Business</h1>
           <hr className="border-border mb-8 mt-2" />
           <p className="text-sm text-muted-foreground mt-2">
-            Professional website design and development services
+            Website design and development for businesses, personal brands, and individual clients
           </p>
         </div>
       </div>
