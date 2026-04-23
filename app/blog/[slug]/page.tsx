@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
+import { Suspense } from 'react'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
@@ -75,10 +76,12 @@ export default function BlogPostPage({ params }: Props) {
       <div className="flex gap-12">
         <article className="flex-1 min-w-0">
           <div className="mb-6">
-            <PostBackLink />
+            <Suspense fallback={<Link href="/blog" className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:border-primary/50">Back to Blog</Link>}>
+              <PostBackLink />
+            </Suspense>
           </div>
 
-          <div className="mb-10 rounded-2xl border border-border bg-card overflow-hidden">
+          <div className="mb-10 border border-border bg-card">
             <div className="p-6 md:p-8">
               <h1 className="text-3xl md:text-5xl font-extrabold leading-tight mb-4">{post.title}</h1>
               <p className="max-w-3xl text-base text-muted-foreground mb-5 md:text-lg">
@@ -109,21 +112,21 @@ export default function BlogPostPage({ params }: Props) {
                 </div>
               )}
             </div>
-
-            {post.feature_image && (
-              <div className="px-6 pb-6 md:px-8 md:pb-8">
-                <div className="relative w-full h-[320px] overflow-hidden rounded-2xl border border-border bg-muted sm:h-[420px] lg:h-[560px]">
-                  <Image
-                    src={post.feature_image}
-                    alt={post.title}
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-              </div>
-            )}
           </div>
+
+          {post.feature_image && (
+            <div className="mb-10 relative left-1/2 right-1/2 w-screen -translate-x-1/2 border-y border-border bg-muted">
+              <div className="relative h-[42vh] min-h-[320px] w-full sm:h-[52vh] lg:h-[72vh]">
+                <Image
+                  src={post.feature_image}
+                  alt={post.title}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </div>
+          )}
 
           <div className="prose prose-slate max-w-none dark:prose-invert prose-headings:font-semibold prose-a:text-primary prose-code:text-primary prose-code:before:content-none prose-code:after:content-none">
             <MDXRemote
@@ -138,7 +141,9 @@ export default function BlogPostPage({ params }: Props) {
           </div>
 
           <div className="mt-12 border-t border-border pt-6">
-            <PostBackLink />
+            <Suspense fallback={<Link href="/blog" className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:border-primary/50">Back to Blog</Link>}>
+              <PostBackLink />
+            </Suspense>
           </div>
         </article>
 
