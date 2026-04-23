@@ -148,7 +148,7 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
       cancelled = true;
       cancelAnimationFrame(animRef.current);
     };
-  }, []);
+  }, [setNodes]);
 
   // Pause/resume animation based on hoveredNode
   useEffect(() => {
@@ -241,7 +241,7 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
         };
       })
     );
-  }, [firingEdges, hoveredNode]);
+  }, [firingEdges, hoveredNode, setEdges]);
 
   // Build adjacency map once
   // (moved to module scope — stable reference, no re-render trigger)
@@ -267,7 +267,7 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
         if (route) router.push(route);
       }, 800);
     },
-    [adjacency, router]
+    [router]
   );
 
   // Node hover: set hoveredNode for highlight propagation

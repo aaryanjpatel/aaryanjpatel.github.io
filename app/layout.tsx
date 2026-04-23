@@ -74,8 +74,7 @@ export const metadata: Metadata = {
   },
 }
 
-// Add JSON-LD structured data for Person
-export const structuredData = {
+const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Aaryan Patel',
