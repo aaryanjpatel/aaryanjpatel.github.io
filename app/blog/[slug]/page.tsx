@@ -140,11 +140,6 @@ export default function BlogPostPage({ params }: Props) {
             />
           </div>
 
-          <div className="mt-12 border-t border-border pt-6">
-            <Suspense fallback={<Link href="/blog" className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:border-primary/50">Back to Blog</Link>}>
-              <PostBackLink />
-            </Suspense>
-          </div>
         </article>
 
         <aside className="hidden lg:block w-56 shrink-0">

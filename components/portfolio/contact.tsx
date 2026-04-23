@@ -1,35 +1,7 @@
 "use client"
 
-import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { Mail, Github, Linkedin, ArrowLeft } from 'lucide-react'
-
-function EmailButton() {
-  const [email, setEmail] = useState('')
-
-  useEffect(() => {
-    // Assembled client-side only — not visible to crawlers/bots
-    const parts = ['patel.aaryan.j', '@', 'gmail', '.', 'com']
-    setEmail(parts.join(''))
-  }, [])
-
-  if (!email) {
-    return (
-      <span className="inline-flex items-center gap-2 bg-primary/30 text-primary-foreground px-6 py-3 rounded-lg text-sm">
-        <Mail size={20} /> Loading…
-      </span>
-    )
-  }
-
-  return (
-    <a
-      href={`mailto:${email}`}
-      className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors"
-    >
-      <Mail size={20} /> Email Me
-    </a>
-  )
-}
+import { Mail, Github } from 'lucide-react'
 
 function ContactContent({ standalone = false }: { standalone?: boolean }) {
   return (
@@ -50,14 +22,11 @@ function ContactContent({ standalone = false }: { standalone?: boolean }) {
           I&apos;enjoy collaborating on challenging problems and exchanging ideas in AI/ML and platform engineering.
         </p>
         <div className="flex flex-wrap gap-4">
-          <EmailButton />
           <a
-            href="https://www.linkedin.com/in/aaryanjpatel/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 border border-primary text-primary px-6 py-3 rounded-lg hover:bg-primary/10 transition-colors"
+            href="mailto:aaryanjpatel@gmail.com"
+            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors"
           >
-            <Linkedin size={20} /> LinkedIn
+            <Mail size={20} /> Email Me
           </a>
           <a
             href="https://github.com/aaryanjpatel"

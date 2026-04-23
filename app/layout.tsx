@@ -5,7 +5,6 @@ import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { ThemeDarkSync } from '@/components/theme-dark-sync'
 import { Nav } from '@/components/layout/nav'
-import { Footer } from '@/components/layout/footer'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://aaryanjpatel.github.io'),
@@ -112,7 +111,6 @@ export default function RootLayout({
           <ThemeDarkSync />
           <Nav />
           <main className="flex-1">{children}</main>
-          <Footer />
         </ThemeProvider>
       </body>
     </html>

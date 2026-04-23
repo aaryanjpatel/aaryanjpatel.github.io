@@ -28,7 +28,9 @@ export const metadata: Metadata = {
 }
 
 export default function Business() {
-  // Filter to get only the business project
-  const businessProject = projectsData.filter(p => p.title === 'My New Business')
-  return <BusinessPage projects={businessProject} />
+  const businessProjects = projectsData.filter((project) =>
+    ['My New Business', 'Aaryan Web Solutions'].includes(project.title)
+  )
+
+  return <BusinessPage projects={businessProjects} />
 }
