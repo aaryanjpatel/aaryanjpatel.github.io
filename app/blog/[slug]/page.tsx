@@ -81,7 +81,7 @@ export default function BlogPostPage({ params }: Props) {
             </Suspense>
           </div>
 
-          <div className="mb-10 border border-border bg-card">
+          <div className="mb-10 overflow-hidden border border-border bg-card">
             <div className="p-6 md:p-8">
               <h1 className="text-3xl md:text-5xl font-extrabold leading-tight mb-4">{post.title}</h1>
               <p className="max-w-3xl text-base text-muted-foreground mb-5 md:text-lg">
@@ -112,21 +112,21 @@ export default function BlogPostPage({ params }: Props) {
                 </div>
               )}
             </div>
-          </div>
 
-          {post.feature_image && (
-            <div className="mb-10 relative left-1/2 right-1/2 w-screen -translate-x-1/2 border-y border-border bg-muted">
-              <div className="relative h-[42vh] min-h-[320px] w-full sm:h-[52vh] lg:h-[72vh]">
-                <Image
-                  src={post.feature_image}
-                  alt={post.title}
-                  fill
-                  className="object-cover"
-                  priority
-                />
+            {post.feature_image && (
+              <div className="border-t border-border bg-muted/30">
+                <div className="relative mx-auto w-full max-w-5xl h-[280px] sm:h-[360px] lg:h-[520px]">
+                  <Image
+                    src={post.feature_image}
+                    alt={post.title}
+                    fill
+                    className="object-contain"
+                    priority
+                  />
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
 
           <div className="prose prose-slate max-w-none dark:prose-invert prose-headings:font-semibold prose-a:text-primary prose-code:text-primary prose-code:before:content-none prose-code:after:content-none">
             <MDXRemote
