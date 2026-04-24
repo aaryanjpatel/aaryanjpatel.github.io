@@ -6,7 +6,6 @@ const ROOT = process.cwd();
 const PUBLISH_DIR = path.join(ROOT, "content/publish");
 const RSS_DIR = path.join(ROOT, "public/rss");
 
-// Ensure directories exist
 if (!fs.existsSync(PUBLISH_DIR)) {
   fs.mkdirSync(PUBLISH_DIR, { recursive: true });
 }
@@ -15,7 +14,7 @@ if (!fs.existsSync(RSS_DIR)) {
 }
 
 const siteUrl = "https://aaryanjpatel.github.io";
-const siteTitle = "Aaryan Patel — Blog";
+const siteTitle = "Aaryan Patel - Blog";
 const siteDescription = "AI/ML engineering, MLOps, cloud architecture, and platform insights.";
 
 function toAbsUrl(p) {
@@ -85,7 +84,7 @@ function buildRss(posts) {
       const link = `${siteUrl}/blog/${p.slug}/`;
       const pubDate = p.date ? p.date.toUTCString() : lastBuild;
       const enclosure = p.featureImage
-        ? `<enclosure url="${escapeXml(p.featureImage)}" type="image/${p.featureImage.split('.').pop()}" />`
+        ? `<enclosure url="${escapeXml(p.featureImage)}" type="image/${p.featureImage.split(".").pop()}" />`
         : "";
       return `
     <item>
@@ -121,5 +120,5 @@ function buildRss(posts) {
   }
   const out = path.join(RSS_DIR, "feed.xml");
   fs.writeFileSync(out, rss);
-  console.log(`✅ Generated RSS → ${out} (${posts.length} posts)`);
+  console.log(`Generated RSS -> ${out} (${posts.length} posts)`);
 })();

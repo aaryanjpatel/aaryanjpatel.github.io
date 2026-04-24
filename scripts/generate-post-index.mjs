@@ -5,7 +5,6 @@ import matter from "gray-matter";
 const PUBLISH_DIR = path.join(process.cwd(), "content/publish");
 const OUT_FILE = path.join(process.cwd(), "public/metadata/blog-posts.json");
 
-// Ensure directories exist
 if (!fs.existsSync(PUBLISH_DIR)) {
   fs.mkdirSync(PUBLISH_DIR, { recursive: true });
 }
@@ -19,7 +18,7 @@ function extractExcerpt(content) {
     .map((l) => l.trim())
     .filter((l) => l.length > 0)
     .slice(0, 3);
-  return lines.join(" ").substring(0, 280).trim() + "…";
+  return lines.join(" ").substring(0, 280).trim() + "...";
 }
 
 function extractFeatureImage(content, frontmatterImage) {
@@ -55,4 +54,4 @@ const posts = fs
 fs.mkdirSync(path.dirname(OUT_FILE), { recursive: true });
 fs.writeFileSync(OUT_FILE, JSON.stringify(posts, null, 2));
 
-console.log(`✅ Generated ${posts.length} posts → ${OUT_FILE}`);
+console.log(`Generated ${posts.length} posts -> ${OUT_FILE}`);

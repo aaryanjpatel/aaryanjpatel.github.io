@@ -12,6 +12,7 @@ const navLinks = [
   { label: "About", href: "/about" },
   { label: "Projects", href: "/projects" },
   { label: "My Business", href: "/business" },
+  { label: "Pricing", href: "/business/pricing" },
   { label: "Certifications", href: "/certifications" },
   { label: "Education", href: "/education" },
   { label: "Blog", href: "/blog" },
@@ -39,38 +40,35 @@ export function Nav() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-background/80 backdrop-blur-md border-b border-border shadow-sm"
+          ? "border-b border-border bg-background/80 shadow-sm backdrop-blur-md"
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
-        {/* Logo */}
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <Link
           href="/"
-          className="font-mono font-bold text-lg text-foreground hover:text-primary transition-colors"
+          className="font-mono text-lg font-bold text-foreground transition-colors hover:text-primary"
         >
           <span className="text-primary">{">"}</span> Aaryan Patel
         </Link>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        {/* Right actions */}
         <div className="flex items-center gap-3">
           <ThemeSwitcher />
           {isHome && (
             <button
-              className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary border border-border bg-background/80 backdrop-blur-sm rounded-full px-2 py-1.5 md:px-3 transition-colors"
+              className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background/80 px-2 py-1.5 text-xs text-muted-foreground transition-colors hover:text-primary md:px-3"
               title={neuralView ? "Switch to Classic View" : "Switch to Neural View"}
               aria-label={neuralView ? "Switch to Classic View" : "Switch to Neural View"}
               onClick={() => {
@@ -84,13 +82,14 @@ export function Nav() {
                 window.location.reload()
               }}
             >
-              <span>{neuralView ? "⚡" : "🧠"}</span>
-              <span className="hidden md:inline whitespace-nowrap">{neuralView ? "Classic View" : "Neural View"}</span>
+              <span>{neuralView ? "Lightning" : "Neural"}</span>
+              <span className="hidden whitespace-nowrap md:inline">
+                {neuralView ? "Classic View" : "Neural View"}
+              </span>
             </button>
           )}
-          {/* Mobile toggle */}
           <button
-            className="md:hidden p-2 rounded-md hover:bg-accent transition-colors"
+            className="rounded-md p-2 transition-colors hover:bg-accent md:hidden"
             onClick={() => setOpen((o) => !o)}
             aria-label="Toggle menu"
           >
@@ -99,15 +98,14 @@ export function Nav() {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-background/95 backdrop-blur-md border-b border-border px-6 py-4 flex flex-col gap-4">
+        <div className="flex flex-col gap-4 border-b border-border bg-background/95 px-6 py-4 backdrop-blur-md md:hidden">
           {navLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1"
+              className="py-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               {link.label}
             </Link>

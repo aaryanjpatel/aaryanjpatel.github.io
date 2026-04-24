@@ -1,4 +1,5 @@
 "use client"
+
 import Image from "next/image"
 import { Github, Linkedin, Mail } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
@@ -20,7 +21,7 @@ function useTypewriter(words: string[], delay = 1800) {
 
   useEffect(() => {
     timeout.current = setTimeout(() => {
-      setIndex(i => (i + 1) % words.length)
+      setIndex((i) => (i + 1) % words.length)
     }, delay)
     return () => clearTimeout(timeout.current)
   }, [index, words, delay])
@@ -36,7 +37,7 @@ function TypewriterKeywords() {
   const word = useTypewriter(KEYWORDS, 1800)
   return (
     <span className="inline-block min-w-[12ch] align-middle">
-      <span className="transition-colors duration-300 text-primary font-semibold">{word}</span>
+      <span className="font-semibold text-primary transition-colors duration-300">{word}</span>
       <span className="animate-pulse text-primary/60">|</span>
     </span>
   )
@@ -44,10 +45,13 @@ function TypewriterKeywords() {
 
 export function Hero() {
   const [mounted, setMounted] = useState(false)
-  useEffect(() => { setMounted(true) }, [])
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   return (
     <section className="relative flex items-center justify-center overflow-hidden">
-      {/* Dot-grid background */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.04]"
         style={{
@@ -55,14 +59,12 @@ export function Hero() {
           backgroundSize: "28px 28px",
         }}
       />
-      {/* Glow orb */}
-      <div className="pointer-events-none absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/8 blur-[120px] rounded-full" />
+      <div className="pointer-events-none absolute left-1/2 top-1/3 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/8 blur-[120px]" />
 
-      <div className="relative z-10 mx-auto max-w-4xl px-6 pt-28 pb-12 flex flex-col items-center text-center gap-8">
-        {/* Avatar */}
+      <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center gap-8 px-6 pb-12 pt-28 text-center">
         <div className="relative">
-          <div className="absolute inset-0 rounded-full bg-primary/20 blur-xl scale-110" />
-          <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-2 ring-primary/30 ring-offset-4 ring-offset-background">
+          <div className="absolute inset-0 scale-110 rounded-full bg-primary/20 blur-xl" />
+          <div className="relative h-32 w-32 overflow-hidden rounded-full ring-2 ring-primary/30 ring-offset-4 ring-offset-background md:h-40 md:w-40">
             <Image
               src="/avatar/headshot.jpg"
               alt="Aaryan Patel"
@@ -73,24 +75,29 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Name + role */}
         <div className="space-y-3">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight gradient-heading">
+          <h1 className="gradient-heading text-4xl font-extrabold tracking-tight md:text-6xl">
             Aaryan Patel
           </h1>
-          <p className="font-mono text-lg md:text-xl text-primary">
+          <p className="font-mono text-lg text-primary md:text-xl">
             {">"} Future Tech Entrepreneur | Coding & Mathematics Enthusiast
           </p>
-          <p className="max-w-xl text-muted-foreground text-base md:text-lg leading-relaxed">
-            I’m passionate about building the future through the power of mathematics, coding, and innovation. I enjoy solving complex problems and turning ideas into real-world digital solutions.
+          <p className="max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
+            I&apos;m passionate about building the future through the power of mathematics, coding, and innovation. I
+            enjoy solving complex problems and turning ideas into real-world digital solutions.
           </p>
         </div>
 
-        {/* CTA buttons */}
-        <div className="flex flex-wrap gap-3 justify-center">
+        <div className="flex flex-wrap justify-center gap-3">
+          <a
+            href="/business/pricing"
+            className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            Website Pricing
+          </a>
           <a
             href="/contact"
-            className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium hover:bg-primary/90 transition-colors"
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-background/50 px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
           >
             <Mail className="h-4 w-4" /> Contact
           </a>
@@ -98,7 +105,7 @@ export function Hero() {
             href="https://www.linkedin.com/in/aaryanjpatel/"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-background/50 text-foreground px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition-colors"
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-background/50 px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
           >
             <Linkedin className="h-4 w-4" /> LinkedIn
           </a>
@@ -106,33 +113,31 @@ export function Hero() {
             href="https://github.com/aaryanjpatel"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-background/50 text-foreground px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition-colors"
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-background/50 px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
           >
             <Github className="h-4 w-4" /> GitHub
           </a>
         </div>
 
-        {/* Animated tagline with Framer Motion, client-only */}
         {mounted && (
           <motion.div
             className="mt-4 flex flex-col items-center gap-2"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.6, ease: 'easeOut' }}
+            transition={{ duration: 1.6, ease: "easeOut" }}
           >
             <motion.span
-              className="font-mono text-xs tracking-widest text-muted-foreground/60 uppercase"
+              className="font-mono text-xs uppercase tracking-widest text-muted-foreground/60"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7, duration: 1.2, ease: 'easeOut' }}
+              transition={{ delay: 0.7, duration: 1.2, ease: "easeOut" }}
             >
-              Turning research into real-world, scalable solutions.{' '}
-              <span className="text-primary/60">|</span>{' '}
+              Turning research into real-world, scalable solutions. <span className="text-primary/60">|</span>{" "}
               <TypewriterKeywords />
             </motion.span>
-            <div className="flex flex-col items-center gap-0.5 animate-bounce text-muted-foreground/40">
-              <div className="w-px h-4 bg-current" />
-              <div className="w-px h-4 bg-current" />
+            <div className="flex animate-bounce flex-col items-center gap-0.5 text-muted-foreground/40">
+              <div className="h-4 w-px bg-current" />
+              <div className="h-4 w-px bg-current" />
             </div>
           </motion.div>
         )}

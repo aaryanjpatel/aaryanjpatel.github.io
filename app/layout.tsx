@@ -5,14 +5,15 @@ import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { ThemeDarkSync } from '@/components/theme-dark-sync'
 import { Nav } from '@/components/layout/nav'
+import { Footer } from '@/components/layout/footer'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://aaryanjpatel.github.io'),
   title: {
-    default: 'Aaryan Patel — Future Tech Entrepreneur, MLOps & Cloud',
+    default: 'Aaryan Patel - Future Tech Entrepreneur, MLOps and Cloud',
     template: '%s | Aaryan Patel',
   },
-  description: 'Aaryan Patel — Future Tech Entrepreneur. 18+ years in AI/ML, LLMs, PromptFlow, DevSecOps, and cloud automation. Building transparent, production-grade AI systems and secure platforms.',
+  description: 'Aaryan Patel - Future Tech Entrepreneur. 18+ years in AI/ML, LLMs, PromptFlow, DevSecOps, and cloud automation. Building transparent, production-grade AI systems and secure platforms.',
   keywords: [
     'Aaryan Patel',
     'Aaryankumar Patel',
@@ -50,7 +51,7 @@ export const metadata: Metadata = {
     siteName: 'Aaryan Patel',
     type: 'profile',
     locale: 'en_AU',
-    title: 'Aaryan Patel — Future Tech Entrepreneur, MLOps & Cloud',
+    title: 'Aaryan Patel - Future Tech Entrepreneur, MLOps and Cloud',
     description: 'Future Tech Entrepreneur with 18+ years in AI, MLOps, PromptFlow, DevSecOps, and cloud automation.',
     url: 'https://aaryanjpatel.github.io',
     images: [
@@ -58,13 +59,13 @@ export const metadata: Metadata = {
         url: '/images/avatar.jpg',
         width: 800,
         height: 800,
-        alt: 'Aaryan Patel — Future Tech Entrepreneur',
+        alt: 'Aaryan Patel - Future Tech Entrepreneur',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Aaryan Patel — Future Tech Entrepreneur',
+    title: 'Aaryan Patel - Future Tech Entrepreneur',
     description: '18+ years in AI/ML, LLMs, PromptFlow, DevSecOps, and cloud automation.',
     images: ['/images/avatar.jpg'],
   },
@@ -100,7 +101,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className="font-sans bg-background text-foreground antialiased flex flex-col min-h-screen">
+      <body className="flex min-h-screen flex-col bg-background font-sans text-foreground antialiased">
         <ThemeProvider
           attribute="data-theme"
           defaultTheme="dark"
@@ -110,6 +111,7 @@ export default function RootLayout({
           <ThemeDarkSync />
           <Nav />
           <main className="flex-1">{children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

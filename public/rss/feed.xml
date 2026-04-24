@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title><![CDATA[Aaryan Patel — Blog]]></title>
+    <title><![CDATA[Aaryan Patel - Blog]]></title>
     <link>https://aaryanjpatel.github.io/blog</link>
     <description><![CDATA[AI/ML engineering, MLOps, cloud architecture, and platform insights.]]></description>
     <language>en</language>
-    <lastBuildDate>Thu, 23 Apr 2026 06:09:07 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 24 Apr 2026 02:37:36 GMT</lastBuildDate>
     
     <item>
       <title><![CDATA[My Business Plan For Website Design And Development]]></title>
       <link>https://aaryanjpatel.github.io/blog/my-business-plan/</link>
       <guid>https://aaryanjpatel.github.io/blog/my-business-plan/</guid>
       <pubDate>Thu, 23 Apr 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[My business plan for creating websites for people and businesses, with pricing starting from $1500 and increasing based on content, features, and complexity.]]></description>
+      <description><![CDATA[My business plan for creating personal and business websites, with clear package pricing, extras, and custom options depending on project scope.]]></description>
       <enclosure url="https://aaryanjpatel.github.io/images/bussness.png" type="image/png" />
     </item>
     <item>

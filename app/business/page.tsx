@@ -4,7 +4,7 @@ import projectsData from '@/public/metadata/projects.json'
 
 export const metadata: Metadata = {
   title: 'My Business | Aaryan Patel',
-  description: 'Professional website design and development services for individuals and businesses. Custom solutions starting from $1500.',
+  description: 'Professional website design and development services for personal and business websites, with clear pricing packages and custom options.',
   keywords: [
     'Web Design', 'Web Development', 'Custom Websites', 'Website Design Services',
     'Business Websites', 'Professional Web Design', 'Website Development',
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://aaryanjpatel.github.io/business' },
   openGraph: {
     title: 'My Business | Aaryan Patel',
-    description: 'Professional website design and development services for individuals and businesses.',
+    description: 'Professional website design and development services for personal websites, business websites, and custom builds.',
     url: 'https://aaryanjpatel.github.io/business',
     siteName: 'Aaryan Patel',
     type: 'profile',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'My Business | Aaryan Patel',
-    description: 'Professional website design and development services.',
+    description: 'Website design and development services with clear pricing and custom options.',
     creator: '@AaryanPatel',
   },
   robots: { index: true, follow: true },
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 
 export default function Business() {
   const businessProjects = projectsData.filter((project) =>
-    ['My New Business', 'Aaryan Web Solutions'].includes(project.title)
+    ['My New Business'].includes(project.title)
   )
 
   return <BusinessPage projects={businessProjects} />

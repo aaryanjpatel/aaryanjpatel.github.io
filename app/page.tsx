@@ -8,8 +8,8 @@ import { Contact } from '@/components/portfolio/contact'
 import { HomeEntry } from '@/components/portfolio/home-entry'
 
 export const metadata: Metadata = {
-  title: 'Aaryan Patel — Future Tech Entrepreneur | Machine Learning, MLOps & Cloud',
-  description: 'Aaryan Patel (Aaryankumar Patel) — Future Tech Entrepreneur with 18+ years across AI/ML Engineering, Machine Learning, Data Science, MLOps, Cloud Engineering, Cloud DevOps, and DevSecOps. Based in Australia.',
+  title: 'Aaryan Patel - Future Tech Entrepreneur | Machine Learning, MLOps and Cloud',
+  description: 'Aaryan Patel (Aaryankumar Patel) - Future Tech Entrepreneur with 18+ years across AI/ML Engineering, Machine Learning, Data Science, MLOps, Cloud Engineering, Cloud DevOps, and DevSecOps. Based in Australia.',
   keywords: [
     'Aaryan Patel', 'Aaryankumar Patel', 'AI Engineer', 'AI/ML Engineer', 'AI/ML Engineering',
     'Future Tech Entrepreneur', 'Machine Learning Engineer', 'Data Science Engineer',
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: 'https://aaryanjpatel.github.io' },
   openGraph: {
-    title: 'Aaryan Patel — Future Tech Entrepreneur',
+    title: 'Aaryan Patel - Future Tech Entrepreneur',
     description: 'Future Tech Entrepreneur with 18+ years in AI/ML Engineering, Machine Learning, MLOps, Cloud Engineering, and DevSecOps.',
     url: 'https://aaryanjpatel.github.io',
     siteName: 'Aaryan Patel',
