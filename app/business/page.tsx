@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 
 export default function Business() {
   const businessProjects = projectsData.filter((project) =>
-    ['My New Business'].includes(project.title)
+    ['My New Business', "Aaryan's Web Solutions"].includes(project.title)
   )
 
   return <BusinessPage projects={businessProjects} />

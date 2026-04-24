@@ -34,5 +34,14 @@
     "demo": "",
     "blogSlug": "my-business-plan",
     "feature_image": "/images/bussness.png"
+  },
+  {
+    "title": "Aaryan's Web Solutions",
+    "description": "This logo represents the identity of Aaryan's Web Solutions. The circular shape reflects trust and balance, the bold initials give the brand a strong and modern look, and the rising connected lines represent growth, creativity, technology, and building websites that help clients move forward online.",
+    "tech": ["Logo Design", "Branding", "Web Design", "Business"],
+    "github": "",
+    "demo": "",
+    "blogSlug": "my-logo-design-for-aaryan-web-solutions",
+    "feature_image": "/images/logo.png"
   }
 ]
