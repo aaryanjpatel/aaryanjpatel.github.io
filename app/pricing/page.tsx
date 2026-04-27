@@ -69,49 +69,49 @@ const notes = [
 ]
 
 export const metadata: Metadata = {
-  title: 'Business Pricing | Aaryan Patel',
+  title: 'Website Pricing | Aaryan Patel',
   description: 'Website pricing for personal and business websites by Aaryan Patel, including package tiers, extras, and custom options.',
   keywords: [
     'Website pricing',
     'Web design pricing',
     'Business website cost',
     'Personal website pricing',
-    'Aaryan Patel business pricing',
+    'Aaryan Patel pricing',
   ],
   authors: [{ name: 'Aaryan Patel', url: 'https://aaryanjpatel.github.io' }],
-  alternates: { canonical: 'https://aaryanjpatel.github.io/business/pricing' },
+  alternates: { canonical: 'https://aaryanjpatel.github.io/pricing' },
   openGraph: {
-    title: 'Business Pricing | Aaryan Patel',
+    title: 'Website Pricing | Aaryan Patel',
     description: 'Pricing packages for personal and business websites.',
-    url: 'https://aaryanjpatel.github.io/business/pricing',
+    url: 'https://aaryanjpatel.github.io/pricing',
     siteName: 'Aaryan Patel',
     type: 'website',
   },
   twitter: {
     card: 'summary',
-    title: 'Business Pricing | Aaryan Patel',
+    title: 'Website Pricing | Aaryan Patel',
     description: 'Pricing packages for personal and business websites.',
     creator: '@AaryanPatel',
   },
   robots: { index: true, follow: true },
 }
 
-export default function BusinessPricingPage() {
+export default function PricingPage() {
   return (
     <div className="mx-auto max-w-6xl px-6 py-14">
       <div className="mb-8 flex items-center gap-2 text-sm text-muted-foreground">
-        <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
-        <span>/</span>
-        <Link href="/business" className="hover:text-foreground transition-colors">My Business</Link>
+        <Link href="/" className="hover:text-foreground transition-colors">
+          Home
+        </Link>
         <span>/</span>
         <span className="text-foreground">Pricing</span>
       </div>
 
       <div className="mb-10 max-w-4xl">
-        <p className="font-mono text-sm text-primary mb-1">{`>`} pricing</p>
+        <p className="mb-1 font-mono text-sm text-primary">{`>`} pricing</p>
         <h1 className="text-3xl font-extrabold tracking-tight">Website Pricing</h1>
-        <hr className="border-border mb-6 mt-2" />
-        <p className="text-base text-muted-foreground leading-relaxed">
+        <hr className="mb-6 mt-2 border-border" />
+        <p className="text-base leading-relaxed text-muted-foreground">
           Clear starting prices for personal and business websites, with room for extra features, faster delivery,
           and tailored project scopes when needed.
         </p>

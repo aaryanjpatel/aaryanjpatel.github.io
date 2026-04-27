@@ -1,7 +1,10 @@
 "use client"
 
 import Link from 'next/link'
-import { Mail, Github } from 'lucide-react'
+import { Mail } from 'lucide-react'
+
+const gmailComposeUrl =
+  'https://mail.google.com/mail/?view=cm&fs=1&to=aaryanjpatel@gmail.com'
 
 function ContactContent({ standalone = false }: { standalone?: boolean }) {
   return (
@@ -23,18 +26,12 @@ function ContactContent({ standalone = false }: { standalone?: boolean }) {
         </p>
         <div className="flex flex-wrap gap-4">
           <a
-            href="mailto:aaryanjpatel@gmail.com"
+            href={gmailComposeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors"
           >
             <Mail size={20} /> Email Me
-          </a>
-          <a
-            href="https://github.com/aaryanjpatel"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 border border-border text-foreground px-6 py-3 rounded-lg hover:border-primary hover:text-primary transition-colors"
-          >
-            <Github size={20} /> GitHub
           </a>
         </div>
       </div>

@@ -14,6 +14,46 @@ type Project = {
   feature_image?: string
 }
 
+function PurchaseGuideCard() {
+  return (
+    <Link href="/blog/how-to-purchase-a-website?from=business" className="group block">
+      <div className="flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card transition-all duration-200 hover:border-primary/50 hover:shadow-md">
+        <div className="relative h-40 w-full overflow-hidden rounded-t-xl bg-muted">
+          <Image
+            src="/images/purchase.png"
+            alt="How to Purchase a Website"
+            fill
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+        </div>
+        <div className="flex flex-1 flex-col p-6">
+          <p className="mb-2 text-xs font-medium uppercase tracking-[0.2em] text-primary">Business Guide</p>
+          <h3 className="mb-2 text-lg font-semibold leading-snug transition-colors group-hover:text-primary">
+            Start your website project
+          </h3>
+          <hr className="mb-4 border-border" />
+          <p className="mb-4 flex-1 text-sm leading-relaxed text-muted-foreground">
+            A simple step-by-step guide covering how to email us, what details to include, and how your starting quote
+            is prepared.
+          </p>
+          <div className="mb-5 flex flex-wrap gap-2">
+            {['Guide', 'Website Purchase', 'Quote Process'].map((tag) => (
+              <span key={tag} className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
+                {tag}
+              </span>
+            ))}
+          </div>
+          <div className="mt-auto flex flex-wrap items-center gap-4">
+            <span className="inline-flex cursor-pointer items-center gap-1.5 text-sm text-primary transition-colors group-hover:underline">
+              <BookOpen size={15} /> Read Post
+            </span>
+          </div>
+        </div>
+      </div>
+    </Link>
+  )
+}
+
 function BusinessCard({ project }: { project: Project }) {
   const featureImage =
     project.feature_image || (project.title === 'My New Business' ? '/images/bussness.png' : undefined)
@@ -86,7 +126,9 @@ export function BusinessPage({ projects }: { projects: Project[] }) {
   return (
     <div className="mx-auto max-w-4xl px-6 py-14">
       <div className="mb-8 flex items-center gap-2 text-sm text-muted-foreground">
-        <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
+        <Link href="/" className="hover:text-foreground transition-colors">
+          Home
+        </Link>
         <span>/</span>
         <span className="text-foreground">My Business</span>
       </div>
@@ -106,12 +148,12 @@ export function BusinessPage({ projects }: { projects: Project[] }) {
           <div className="max-w-2xl">
             <h2 className="text-xl font-semibold tracking-tight">Pricing Packages</h2>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              View pricing for personal websites, business websites, and additional extras before getting in touch.
+              View pricing for personal websites and business websites before getting in touch.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
             <Link
-              href="/business/pricing"
+              href="/pricing"
               className="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
             >
               View Pricing
@@ -126,7 +168,15 @@ export function BusinessPage({ projects }: { projects: Project[] }) {
         </div>
       </div>
 
+      <div className="mb-5">
+        <h2 className="text-xl font-semibold tracking-tight">Business Posts</h2>
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+          Explore business updates, branding work, and how to get started with a website project.
+        </p>
+      </div>
+
       <div className="grid gap-6 md:grid-cols-2">
+        <PurchaseGuideCard />
         {projects.map((project) => (
           <BusinessCard key={project.title} project={project} />
         ))}
