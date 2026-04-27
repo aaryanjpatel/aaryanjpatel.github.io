@@ -22,7 +22,7 @@ function ContactContent({ standalone = false }: { standalone?: boolean }) {
           <h2 className="text-3xl font-extrabold tracking-tight gradient-heading">Get In Touch</h2>
         </div>
         <p className="text-muted-foreground text-lg mb-10 leading-relaxed">
-          I&apos;enjoy collaborating on challenging problems and exchanging ideas in AI/ML and platform engineering.
+          I enjoy collaborating on challenging problems and exchanging ideas in AI/ML and platform engineering.
         </p>
         <div className="flex flex-wrap gap-4">
           <a
