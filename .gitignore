@@ -11,6 +11,7 @@
 # next.js
 /.next/
 /out/
+/aaryanjpatel.github.io/
 
 # production
 /build
