@@ -4,8 +4,6 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
 import "react-flow-renderer/dist/style.css";
 import ReactFlow, {
-  Background,
-  BackgroundVariant,
   Controls,
   useNodesState,
   useEdgesState,
@@ -98,10 +96,6 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
   const isDarkTheme = !resolvedTheme || DARK_THEMES.has(resolvedTheme);
   const backgroundImage = isDarkTheme ? "/images/bg-dark.png" : "/images/bg-light.png";
-  const backgroundOverlay = isDarkTheme
-    ? "linear-gradient(180deg, rgba(2, 6, 23, 0.2), rgba(2, 6, 23, 0.35))"
-    : "linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.26))";
-  const dotColor = isDarkTheme ? "rgba(148, 163, 184, 0.16)" : "rgba(71, 85, 105, 0.12)";
 
   // Initial scatter, then animate to circle
   const [nodes, setNodes, onNodesChange] = useNodesState(makeInitialNodes());
@@ -302,10 +296,10 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
             height: "100svh",
             position: "relative",
             backgroundColor: "transparent",
-            backgroundImage: `${backgroundOverlay}, url('${backgroundImage}')`,
-            backgroundPosition: "center, center",
-            backgroundRepeat: "no-repeat, no-repeat",
-            backgroundSize: "cover, cover",
+            backgroundImage: `url('${backgroundImage}')`,
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
           }}
         >
           {onSkip && null}
@@ -330,7 +324,6 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
             zoomOnDoubleClick={false}
             style={{ background: "transparent" }}
           >
-            <Background variant={BackgroundVariant.Dots} gap={24} size={1} color={dotColor} />
             <Controls showInteractive={false} />
             {/* Hide ReactFlow attribution */}
             <style>{`.react-flow__attribution { display: none !important; }`}</style>
