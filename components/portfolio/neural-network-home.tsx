@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useTheme } from "next-themes";
 import "react-flow-renderer/dist/style.css";
 import ReactFlow, {
   Background,
@@ -20,6 +21,7 @@ import { nodes as NODE_CONFIG, edges as EDGE_CONFIG } from "./network-config";
 import { getConnectionLevels, searchNodes, getNodeWeight, buildAdjacency } from "./network-logic";
 import ContextPanel from "./ContextPanel";
 
+const DARK_THEMES = new Set(["dark", "catppuccin", "gruvbox", "one-dark", "rose-pine", "ocean"]);
 
 // Utility: random position for initial scatter
 function randomPos(spread = 150) {
@@ -82,6 +84,7 @@ const NODE_ROUTES: Record<string, string> = {
 };
 
 export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
+  const { resolvedTheme } = useTheme();
   const router = useRouter();
   const [activeNode, setActiveNode] = useState<string | null>(null);
   const [litNodes, setLitNodes] = useState<Set<string>>(new Set());
@@ -93,6 +96,12 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
   const startTimeRef = useRef<number>(performance.now());
   const pausedRef = useRef<boolean>(false);
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+  const isDarkTheme = !resolvedTheme || DARK_THEMES.has(resolvedTheme);
+  const backgroundImage = isDarkTheme ? "/images/bg-dark.png" : "/images/bg-light.png";
+  const backgroundOverlay = isDarkTheme
+    ? "linear-gradient(180deg, rgba(2, 6, 23, 0.2), rgba(2, 6, 23, 0.35))"
+    : "linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.26))";
+  const dotColor = isDarkTheme ? "rgba(148, 163, 184, 0.16)" : "rgba(71, 85, 105, 0.12)";
 
   // Initial scatter, then animate to circle
   const [nodes, setNodes, onNodesChange] = useNodesState(makeInitialNodes());
@@ -287,7 +296,18 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
   );
 
       return (
-        <div style={{ width: "100%", height: "100svh", background: "#020817", position: "relative" }}>
+        <div
+          style={{
+            width: "100%",
+            height: "100svh",
+            position: "relative",
+            backgroundColor: "transparent",
+            backgroundImage: `${backgroundOverlay}, url('${backgroundImage}')`,
+            backgroundPosition: "center, center",
+            backgroundRepeat: "no-repeat, no-repeat",
+            backgroundSize: "cover, cover",
+          }}
+        >
           {onSkip && null}
           <ReactFlow
             nodes={nodes}
@@ -308,8 +328,9 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
             panOnScroll={false}
             preventScrolling={false}
             zoomOnDoubleClick={false}
+            style={{ background: "transparent" }}
           >
-            <Background variant={BackgroundVariant.Dots} gap={24} size={1} color="#1e293b" />
+            <Background variant={BackgroundVariant.Dots} gap={24} size={1} color={dotColor} />
             <Controls showInteractive={false} />
             {/* Hide ReactFlow attribution */}
             <style>{`.react-flow__attribution { display: none !important; }`}</style>

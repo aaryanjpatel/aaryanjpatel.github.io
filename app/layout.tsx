@@ -101,16 +101,17 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className="flex min-h-screen flex-col bg-background font-sans text-foreground antialiased">
+      <body className="site-theme-shell flex min-h-screen flex-col bg-background font-sans text-foreground antialiased">
         <ThemeProvider
           attribute="data-theme"
           defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
+          <div aria-hidden="true" className="site-theme-background" />
           <ThemeDarkSync />
           <Nav />
-          <main className="flex-1">{children}</main>
+          <main className="relative z-10 flex-1">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>

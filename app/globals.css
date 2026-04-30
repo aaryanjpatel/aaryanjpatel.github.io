@@ -8,6 +8,8 @@
   [data-theme='light'] {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
+    --page-background-image: url('/images/bg-light.png');
+    --page-background-overlay: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.72));
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
@@ -33,6 +35,8 @@
   [data-theme='dark'] {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
+    --page-background-image: url('/images/bg-dark.png');
+    --page-background-overlay: linear-gradient(180deg, rgba(2, 6, 23, 0.58), rgba(2, 6, 23, 0.72));
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
     --popover: 222.2 84% 4.9%;
@@ -56,6 +60,8 @@
   [data-theme='catppuccin'] {
     --background: 240 21% 15%;
     --foreground: 226 64% 88%;
+    --page-background-image: url('/images/bg-dark.png');
+    --page-background-overlay: linear-gradient(180deg, rgba(30, 30, 46, 0.58), rgba(30, 30, 46, 0.72));
     --card: 240 21% 18%;
     --card-foreground: 226 64% 88%;
     --popover: 240 21% 18%;
@@ -79,6 +85,8 @@
   [data-theme='gruvbox'] {
     --background: 20 10% 13%;
     --foreground: 46 43% 82%;
+    --page-background-image: url('/images/bg-dark.png');
+    --page-background-overlay: linear-gradient(180deg, rgba(40, 40, 40, 0.58), rgba(40, 40, 40, 0.72));
     --card: 20 10% 16%;
     --card-foreground: 46 43% 82%;
     --popover: 20 10% 16%;
@@ -102,6 +110,8 @@
   [data-theme='one-dark'] {
     --background: 220 13% 18%;
     --foreground: 220 14% 71%;
+    --page-background-image: url('/images/bg-dark.png');
+    --page-background-overlay: linear-gradient(180deg, rgba(40, 44, 52, 0.58), rgba(40, 44, 52, 0.72));
     --card: 220 13% 21%;
     --card-foreground: 220 14% 71%;
     --popover: 220 13% 21%;
@@ -125,6 +135,8 @@
   [data-theme='rose-pine'] {
     --background: 249 22% 12%;
     --foreground: 245 50% 91%;
+    --page-background-image: url('/images/bg-dark.png');
+    --page-background-overlay: linear-gradient(180deg, rgba(25, 23, 36, 0.56), rgba(25, 23, 36, 0.72));
     --card: 249 22% 16%;
     --card-foreground: 245 50% 91%;
     --popover: 249 22% 16%;
@@ -148,6 +160,8 @@
   [data-theme='corporate'] {
     --background: 210 33% 98%;
     --foreground: 213 27% 20%;
+    --page-background-image: url('/images/bg-light.png');
+    --page-background-overlay: linear-gradient(180deg, rgba(248, 250, 252, 0.82), rgba(248, 250, 252, 0.72));
     --card: 0 0% 100%;
     --card-foreground: 213 27% 20%;
     --popover: 0 0% 100%;
@@ -171,6 +185,8 @@
   [data-theme='slate'] {
     --background: 210 20% 98%;
     --foreground: 215 25% 15%;
+    --page-background-image: url('/images/bg-light.png');
+    --page-background-overlay: linear-gradient(180deg, rgba(248, 250, 252, 0.82), rgba(248, 250, 252, 0.72));
     --card: 0 0% 100%;
     --card-foreground: 215 25% 15%;
     --popover: 0 0% 100%;
@@ -194,6 +210,8 @@
   [data-theme='ocean'] {
     --background: 210 50% 10%;
     --foreground: 200 50% 90%;
+    --page-background-image: url('/images/bg-dark.png');
+    --page-background-overlay: linear-gradient(180deg, rgba(8, 47, 73, 0.56), rgba(8, 47, 73, 0.72));
     --card: 210 50% 14%;
     --card-foreground: 200 50% 90%;
     --popover: 210 50% 14%;
@@ -220,6 +238,26 @@
   }
   body {
     @apply bg-background text-foreground;
+    position: relative;
+  }
+
+  .site-theme-background {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-color: hsl(var(--background));
+    background-image: var(--page-background-overlay), var(--page-background-image);
+    background-position: center, center top;
+    background-repeat: no-repeat, no-repeat;
+    background-size: cover, cover;
+    background-attachment: fixed, fixed;
+    transition: background-image 0.2s ease, background-color 0.2s ease;
+  }
+
+  .site-theme-shell > :not(.site-theme-background) {
+    position: relative;
+    z-index: 1;
   }
 
   body.neural-home-active footer {
