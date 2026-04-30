@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { createPortal } from "react-dom"
 import { useTheme } from "next-themes"
 import { Palette, Check, ChevronDown } from "lucide-react"
 import { themes, themeCategories } from "@/lib/themes"
@@ -16,12 +17,43 @@ export function ThemeSwitcher() {
   const [open, setOpen] = React.useState(false)
   const [mounted, setMounted] = React.useState(false)
   const ref = React.useRef<HTMLDivElement>(null)
+  const buttonRef = React.useRef<HTMLButtonElement>(null)
+  const menuRef = React.useRef<HTMLDivElement>(null)
+  const [menuPosition, setMenuPosition] = React.useState({ top: 80, left: 0, width: 208 })
 
   React.useEffect(() => { setMounted(true) }, [])
 
   React.useEffect(() => {
+    if (!open || !buttonRef.current) return
+
+    const updatePosition = () => {
+      const rect = buttonRef.current?.getBoundingClientRect()
+      if (!rect) return
+
+      setMenuPosition({
+        top: rect.bottom + 8,
+        left: rect.right - 208,
+        width: 208,
+      })
+    }
+
+    updatePosition()
+    window.addEventListener("resize", updatePosition)
+    window.addEventListener("scroll", updatePosition, true)
+
+    return () => {
+      window.removeEventListener("resize", updatePosition)
+      window.removeEventListener("scroll", updatePosition, true)
+    }
+  }, [open])
+
+  React.useEffect(() => {
     function handleClick(e: MouseEvent) {
-      if (ref.current && !ref.current.contains(e.target as Node)) {
+      const target = e.target as Node
+      const clickedTrigger = ref.current?.contains(target)
+      const clickedMenu = menuRef.current?.contains(target)
+
+      if (!clickedTrigger && !clickedMenu) {
         setOpen(false)
       }
     }
@@ -32,8 +64,9 @@ export function ThemeSwitcher() {
   const current = mounted ? (themes.find((t) => t.value === theme) ?? themes[0]) : themes[0]
 
   return (
-    <div ref={ref} className="relative">
+    <div ref={ref} className="relative z-[90]">
       <button
+        ref={buttonRef}
         onClick={() => setOpen((o) => !o)}
         className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors border border-border bg-background"
         aria-label="Switch theme"
@@ -43,11 +76,19 @@ export function ThemeSwitcher() {
         <ChevronDown className="h-3 w-3 opacity-60" />
       </button>
 
-      {open && (
-        <div className="absolute right-0 top-full mt-2 w-52 rounded-lg border border-border bg-popover shadow-lg z-50 overflow-hidden">
+      {open && mounted && createPortal(
+        <div
+          ref={menuRef}
+          className="fixed z-[200] overflow-hidden rounded-lg border border-border bg-popover shadow-lg"
+          style={{
+            top: menuPosition.top,
+            left: Math.max(16, menuPosition.left),
+            width: menuPosition.width,
+          }}
+        >
           {(["default", "dev", "professional"] as const).map((cat) => (
             <div key={cat}>
-              <div className="px-3 py-1.5 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+              <div className="px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                 {categoryLabels[cat]}
               </div>
               {themeCategories[cat].map((t) => (
@@ -62,7 +103,8 @@ export function ThemeSwitcher() {
               ))}
             </div>
           ))}
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   )
