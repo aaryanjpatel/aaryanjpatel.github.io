@@ -55,7 +55,7 @@ export function FilterDropdown({ label, options, selected, onChange }: FilterDro
           className={`inline-flex items-center gap-2 rounded-lg border px-3.5 py-2 text-sm font-medium transition-colors ${
             hasSelection
               ? 'border-primary bg-primary/10 text-primary'
-              : 'border-border bg-card/90 text-muted-foreground backdrop-blur-md hover:border-primary/50 hover:text-foreground'
+              : 'border-border bg-card/95 text-muted-foreground hover:border-primary/50 hover:text-foreground'
           }`}
         >
           {hasSelection ? (
@@ -75,7 +75,7 @@ export function FilterDropdown({ label, options, selected, onChange }: FilterDro
         </button>
 
         {open && (
-          <div className="absolute right-0 top-full z-50 mt-1.5 min-w-[220px] rounded-xl border border-border bg-popover shadow-[0_18px_48px_rgba(15,23,42,0.18)] backdrop-blur-xl">
+          <div className="absolute right-0 top-full z-50 mt-1.5 min-w-[220px] rounded-xl border border-border bg-popover shadow-[0_18px_48px_rgba(15,23,42,0.18)]">
             <div className="p-1 max-h-64 overflow-y-auto">
               {options.map((option) => {
                 const isSelected = selected.includes(option)

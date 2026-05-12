@@ -305,9 +305,9 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
               backgroundImage: `url('${backgroundImage}')`,
               backgroundPosition: "center 0",
               backgroundRepeat: "no-repeat",
-              backgroundSize: "min(100vw, 1140px) auto",
+              backgroundSize: "min(100vw, 1376px) auto",
               opacity: 1,
-              filter: "saturate(1.28) contrast(1.12) brightness(1.05)",
+              filter: "saturate(1.22) contrast(1.09) brightness(1.03)",
             }}
           />
           <div

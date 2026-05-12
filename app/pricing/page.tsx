@@ -218,13 +218,13 @@ export default function PricingPage() {
           </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center rounded-lg border border-border bg-card/90 px-5 py-3 text-sm font-medium text-foreground backdrop-blur-md transition-colors hover:border-primary hover:text-primary"
+            className="inline-flex items-center rounded-lg border border-border bg-card/95 px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
           >
             Contact Me
           </Link>
           <Link
             href="/business"
-            className="inline-flex items-center rounded-lg border border-border bg-card/90 px-5 py-3 text-sm font-medium text-foreground backdrop-blur-md transition-colors hover:border-primary hover:text-primary"
+            className="inline-flex items-center rounded-lg border border-border bg-card/95 px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
           >
             Back to My Business
           </Link>
