@@ -30,8 +30,8 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="mx-auto max-w-4xl px-6 pt-20">
-      <div className="mb-4 flex items-center gap-2 text-sm text-muted-foreground">
+    <div className="mx-auto max-w-5xl px-6 pt-24 pb-16 sm:pt-28">
+      <div className="mb-6 flex items-center gap-2 text-sm text-muted-foreground/90">
         <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
         <span>/</span>
         <span className="text-foreground">About</span>

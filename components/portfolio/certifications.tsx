@@ -35,7 +35,7 @@ function groupByCategory(certs: Cert[]) {
 
 function CertCard({ cert }: { cert: Cert }) {
   const cardContent = (
-    <div className="flex flex-col gap-5 rounded-xl border border-border bg-card p-5 hover:border-primary/50 hover:shadow-md transition-all duration-200 md:flex-row md:items-center">
+    <div className="site-panel flex flex-col gap-5 p-5 transition-all duration-200 hover:border-primary/50 hover:shadow-[0_22px_56px_rgba(15,23,42,0.18)] md:flex-row md:items-center">
       <div className="shrink-0 overflow-hidden rounded-lg border border-border bg-muted">
         {cert.image ? (
           <div className="relative h-40 w-full md:h-28 md:w-44">
@@ -122,7 +122,7 @@ export function CertificationsPage() {
       <div className="space-y-10">
         {Object.entries(groups).map(([category, certs]) => (
           <div key={category}>
-            <h2 className="text-base font-semibold uppercase tracking-widest text-muted-foreground mb-4 border-b border-border pb-2">
+            <h2 className="mb-4 border-b border-border pb-2 text-base font-semibold uppercase tracking-widest text-muted-foreground">
               {category}
             </h2>
             <div className="grid gap-4">

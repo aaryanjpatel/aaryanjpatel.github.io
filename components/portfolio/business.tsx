@@ -17,7 +17,7 @@ type Project = {
 function PurchaseGuideCard() {
   return (
     <Link href="/blog/how-to-purchase-a-website?from=business" className="group block">
-      <div className="flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card transition-all duration-200 hover:border-primary/50 hover:shadow-md">
+      <div className="site-panel flex h-full flex-col overflow-hidden rounded-xl transition-all duration-200 hover:border-primary/50 hover:shadow-[0_22px_56px_rgba(15,23,42,0.18)]">
         <div className="relative h-40 w-full overflow-hidden rounded-t-xl bg-muted">
           <Image
             src="/images/purchase.png"
@@ -31,7 +31,7 @@ function PurchaseGuideCard() {
           <h3 className="mb-2 text-lg font-semibold leading-snug transition-colors group-hover:text-primary">
             Start your website project
           </h3>
-          <hr className="mb-4 border-border" />
+          <hr className="site-divider mb-4" />
           <p className="mb-4 flex-1 text-sm leading-relaxed text-muted-foreground">
             A simple step-by-step guide covering how to email us, what details to include, and how your starting quote
             is prepared.
@@ -65,7 +65,7 @@ function BusinessCard({ project }: { project: Project }) {
 
   return (
     <Link href={href} className={project.blogSlug ? 'group block' : ''}>
-      <div className="flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card transition-all duration-200 hover:border-primary/50 hover:shadow-md">
+      <div className="site-panel flex h-full flex-col overflow-hidden rounded-xl transition-all duration-200 hover:border-primary/50 hover:shadow-[0_22px_56px_rgba(15,23,42,0.18)]">
         {featureImage && (
           <div className="relative h-40 w-full overflow-hidden rounded-t-xl bg-muted">
             <Image
@@ -80,7 +80,7 @@ function BusinessCard({ project }: { project: Project }) {
           <h3 className="mb-2 text-lg font-semibold leading-snug transition-colors group-hover:text-primary">
             {project.title}
           </h3>
-          <hr className="mb-4 border-border" />
+          <hr className="site-divider mb-4" />
           <p className="mb-4 flex-1 text-sm leading-relaxed text-muted-foreground">{description}</p>
           <div className="mb-5 flex flex-wrap gap-2">
             {project.tech.map((tech) => (
@@ -136,14 +136,14 @@ export function BusinessPage({ projects }: { projects: Project[] }) {
         <div>
           <p className="mb-1 font-mono text-sm text-primary">{`>`} business</p>
           <h1 className="text-3xl font-extrabold tracking-tight">My Business</h1>
-          <hr className="mb-8 mt-2 border-border" />
+          <hr className="site-divider mb-8 mt-2" />
           <p className="mt-2 text-sm text-muted-foreground">
             Website design and development for businesses, personal brands, and individual clients
           </p>
         </div>
       </div>
 
-      <div className="mb-8 rounded-2xl border border-border bg-card p-6">
+      <div className="site-panel mb-8 p-6">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
             <h2 className="text-xl font-semibold tracking-tight">Pricing Packages</h2>
@@ -160,7 +160,7 @@ export function BusinessPage({ projects }: { projects: Project[] }) {
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-lg border border-border px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
+              className="inline-flex items-center justify-center rounded-lg border border-border bg-card/90 px-5 py-3 text-sm font-medium text-foreground backdrop-blur-md transition-colors hover:border-primary hover:text-primary"
             >
               Start a Project
             </Link>

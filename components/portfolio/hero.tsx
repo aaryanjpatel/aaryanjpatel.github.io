@@ -97,7 +97,7 @@ export function Hero() {
           </a>
           <a
             href="/contact"
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-background/50 px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
+            className="site-pill inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
           >
             <Mail className="h-4 w-4" /> Contact
           </a>
@@ -105,7 +105,7 @@ export function Hero() {
             href="https://www.linkedin.com/in/aaryanjpatel/"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-background/50 px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
+            className="site-pill inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
           >
             <Linkedin className="h-4 w-4" /> LinkedIn
           </a>
@@ -113,7 +113,7 @@ export function Hero() {
             href="https://github.com/aaryanjpatel"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-background/50 px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
+            className="site-pill inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
           >
             <Github className="h-4 w-4" /> GitHub
           </a>

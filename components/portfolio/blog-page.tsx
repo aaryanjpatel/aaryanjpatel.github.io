@@ -60,12 +60,12 @@ export function BlogPage({ posts }: { posts: PostMeta[] }) {
           </div>
         )}
       </div>
-      <hr className="border-border mb-8" />
+      <hr className="site-divider mb-8" />
 
       <div className="space-y-6">
         {filtered.map((post) => (
           <Link key={post.slug} href={`/blog/${post.slug}?from=blog`} className="group block">
-            <div className="flex gap-5 rounded-xl border border-border bg-card hover:border-primary/50 hover:shadow-md transition-all duration-200 overflow-hidden">
+            <div className="site-panel flex overflow-hidden rounded-xl transition-all duration-200 hover:border-primary/50 hover:shadow-[0_22px_56px_rgba(15,23,42,0.18)]">
               {post.feature_image && (
                 <div className="relative shrink-0 w-32 h-28 sm:w-40 sm:h-32 overflow-hidden rounded">
                   <Image

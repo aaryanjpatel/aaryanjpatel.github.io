@@ -34,7 +34,7 @@ export function EducationPage() {
         {education.map((edu) => (
           <div
             key={`${edu.institution}-${edu.degree}`}
-            className="flex items-start gap-5 rounded-xl border border-border bg-card p-6 hover:border-primary/50 hover:shadow-md transition-all duration-200"
+            className="site-panel flex items-start gap-5 p-6 transition-all duration-200 hover:border-primary/50 hover:shadow-[0_22px_56px_rgba(15,23,42,0.18)]"
           >
             <div className="mt-0.5 shrink-0 rounded-lg bg-primary/10 p-2.5">
               <GraduationCap className="h-5 w-5 text-primary" />

@@ -44,12 +44,12 @@ export function Capabilities() {
         <p className="font-mono text-sm text-primary mb-1">{'>'} expertise</p>
         <h2 className="text-3xl font-extrabold tracking-tight gradient-heading">Capabilities</h2>
       </div>
-      <hr className="border-border mb-10" />
+      <hr className="site-divider mb-10" />
       <div className="grid sm:grid-cols-2 gap-6">
         {capabilities.map((cap) => (
           <div
             key={cap.title}
-            className="rounded-xl border border-border bg-card p-6 hover:border-primary/40 hover:shadow-md transition-all duration-200"
+            className="site-panel rounded-xl p-6 transition-all duration-200 hover:border-primary/40 hover:shadow-[0_22px_56px_rgba(15,23,42,0.18)]"
           >
             <div className="flex items-center gap-3 mb-3">
               <span className="text-2xl">{cap.icon}</span>

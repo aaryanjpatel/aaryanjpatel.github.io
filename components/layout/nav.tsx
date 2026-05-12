@@ -40,7 +40,7 @@ export function Nav() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "border-b border-border bg-background/80 shadow-sm backdrop-blur-md"
+          ? "border-b border-border bg-popover/80 shadow-[0_10px_40px_rgba(15,23,42,0.14)] backdrop-blur-xl"
           : "bg-transparent"
       }`}
     >
@@ -68,7 +68,7 @@ export function Nav() {
           <ThemeSwitcher />
           {isHome && (
             <button
-              className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background/80 px-2 py-1.5 text-xs text-muted-foreground transition-colors hover:text-primary md:px-3"
+              className="site-pill inline-flex items-center gap-1.5 px-2 py-1.5 text-xs text-muted-foreground transition-colors hover:text-primary md:px-3"
               title={neuralView ? "Switch to Classic View" : "Switch to Neural View"}
               aria-label={neuralView ? "Switch to Classic View" : "Switch to Neural View"}
               onClick={() => {
@@ -99,7 +99,7 @@ export function Nav() {
       </div>
 
       {open && (
-        <div className="flex flex-col gap-4 border-b border-border bg-background/95 px-6 py-4 backdrop-blur-md md:hidden">
+        <div className="flex flex-col gap-4 border-b border-border bg-popover/90 px-6 py-4 backdrop-blur-xl md:hidden">
           {navLinks.map((link) => (
             <Link
               key={link.label}

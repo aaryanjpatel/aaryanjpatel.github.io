@@ -14,6 +14,7 @@ import ReactFlow, {
   Node,
 } from "react-flow-renderer";
 import { useRouter } from "next/navigation";
+import { useTheme } from "next-themes";
 import NeuralNetworkNode from "./NeuralNetworkNode";
 import NeuralNetworkEdge from "./NeuralNetworkEdge";
 import { nodes as NODE_CONFIG, edges as EDGE_CONFIG } from "./network-config";
@@ -63,6 +64,8 @@ const edgeTypes = { neuralEdge: NeuralNetworkEdge };
 // Build adjacency map once outside component — stable reference
 const adjacency = buildAdjacency();
 
+const DARK_THEMES = new Set(["dark", "catppuccin", "gruvbox", "one-dark", "rose-pine", "ocean"]);
+
 // Node id → route mapping (outside component to keep stable reference)
 const NODE_ROUTES: Record<string, string> = {
   Aaryan: "/about",
@@ -83,6 +86,7 @@ const NODE_ROUTES: Record<string, string> = {
 
 export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
   const router = useRouter();
+  const { resolvedTheme } = useTheme();
   const [activeNode, setActiveNode] = useState<string | null>(null);
   const [litNodes, setLitNodes] = useState<Set<string>>(new Set());
   const [firingEdges, setFiringEdges] = useState<Set<string>>(new Set());
@@ -93,6 +97,11 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
   const startTimeRef = useRef<number>(performance.now());
   const pausedRef = useRef<boolean>(false);
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+  const isDarkTheme = resolvedTheme ? DARK_THEMES.has(resolvedTheme) : true;
+  const backgroundImage = isDarkTheme ? "/images/bgdark.png" : "/images/bglight.png";
+  const sceneOverlay = isDarkTheme
+    ? "linear-gradient(180deg, rgba(2, 6, 23, 0.14), rgba(2, 6, 23, 0.44)), radial-gradient(circle at 50% 18%, rgba(56, 189, 248, 0.16), transparent 38%), radial-gradient(circle at 50% 18%, rgba(2, 6, 23, 0), rgba(2, 6, 23, 0.34) 78%, rgba(2, 6, 23, 0.64) 100%)"
+    : "linear-gradient(180deg, rgba(255, 255, 255, 0.36), rgba(241, 245, 249, 0.58)), radial-gradient(circle at 50% 18%, rgba(59, 130, 246, 0.12), transparent 38%), radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.12) 78%, rgba(241, 245, 249, 0.4) 100%)";
 
   // Initial scatter, then animate to circle
   const [nodes, setNodes, onNodesChange] = useNodesState(makeInitialNodes());
@@ -287,9 +296,31 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
   );
 
       return (
-        <div style={{ width: "100%", height: "100svh", background: "#020817", position: "relative" }}>
+        <div style={{ width: "100%", height: "100svh", background: "transparent", position: "relative", overflow: "hidden" }}>
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              inset: 0,
+              backgroundImage: `url('${backgroundImage}')`,
+              backgroundPosition: "center 0",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "min(100vw, 1140px) auto",
+              opacity: 1,
+              filter: "saturate(1.28) contrast(1.12) brightness(1.05)",
+            }}
+          />
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              inset: 0,
+              background: sceneOverlay,
+            }}
+          />
           {onSkip && null}
           <ReactFlow
+            style={{ background: "transparent", position: "relative", zIndex: 1 }}
             nodes={nodes}
             edges={edges}
             onNodesChange={onNodesChange}
@@ -309,7 +340,7 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
             preventScrolling={false}
             zoomOnDoubleClick={false}
           >
-            <Background variant={BackgroundVariant.Dots} gap={24} size={1} color="#1e293b" />
+            <Background variant={BackgroundVariant.Dots} gap={24} size={1.2} color="rgba(148, 163, 184, 0.22)" />
             <Controls showInteractive={false} />
             {/* Hide ReactFlow attribution */}
             <style>{`.react-flow__attribution { display: none !important; }`}</style>

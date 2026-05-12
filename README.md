@@ -93,6 +93,11 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+To reset local laptop to original site
+git stash
+git clean -fd
+git reset --hard
+
 ### Production Build
 
 ```bash

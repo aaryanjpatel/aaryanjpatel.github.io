@@ -16,12 +16,15 @@ export function About() {
   const content = getAboutContent()
 
   return (
-    <section id="about" className="pt-10 pb-14 mx-auto max-w-4xl px-6">
-      <div className="mb-12">
-        <p className="font-mono text-sm text-primary mb-1">{`>`} about</p>
-        <h2 className="text-3xl font-extrabold tracking-tight gradient-heading">About Me</h2>
+    <section
+      id="about"
+      className="mx-auto max-w-4xl rounded-[2rem] border border-white/10 bg-background/20 px-6 py-10 shadow-[0_20px_80px_rgba(0,0,0,0.18)] backdrop-blur-[2px] sm:px-8 sm:py-12"
+    >
+      <div className="mb-10">
+        <p className="mb-2 font-mono text-sm text-primary">{`>`} about</p>
+        <h1 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">About Me</h1>
       </div>
-      <div className="prose prose-slate max-w-none dark:prose-invert prose-headings:font-semibold prose-a:text-primary prose-code:text-primary prose-code:before:content-none prose-code:after:content-none">
+      <div className="prose-about">
         <MDXRemote
           source={content}
           options={{

@@ -22,7 +22,7 @@ export function PostBackLink({ className = '' }: { className?: string }) {
   return (
     <Link
       href={source.href}
-      className={`inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:border-primary/50 ${className}`.trim()}
+      className={`site-pill inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:border-primary/50 ${className}`.trim()}
     >
       <ArrowLeft className="h-4 w-4" />
       Back to {source.label}

@@ -35,7 +35,7 @@ export function ThemeSwitcher() {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen((o) => !o)}
-        className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors border border-border bg-background"
+        className="flex items-center gap-2 rounded-md border border-border bg-card/90 px-3 py-2 text-sm font-medium backdrop-blur-md transition-colors hover:bg-accent hover:text-accent-foreground"
         aria-label="Switch theme"
       >
         <Palette className="h-4 w-4" />
@@ -44,7 +44,7 @@ export function ThemeSwitcher() {
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full mt-2 w-52 rounded-lg border border-border bg-popover shadow-lg z-50 overflow-hidden">
+        <div className="absolute right-0 top-full z-50 mt-2 w-52 overflow-hidden rounded-lg border border-border bg-popover shadow-[0_18px_48px_rgba(15,23,42,0.18)] backdrop-blur-xl">
           {(["default", "dev", "professional"] as const).map((cat) => (
             <div key={cat}>
               <div className="px-3 py-1.5 text-xs font-semibold text-muted-foreground uppercase tracking-wider">

@@ -110,7 +110,7 @@ export default function PricingPage() {
       <div className="mb-10 max-w-4xl">
         <p className="mb-1 font-mono text-sm text-primary">{`>`} pricing</p>
         <h1 className="text-3xl font-extrabold tracking-tight">Website Pricing</h1>
-        <hr className="mb-6 mt-2 border-border" />
+        <hr className="site-divider mb-6 mt-2" />
         <p className="text-base leading-relaxed text-muted-foreground">
           Clear starting prices for personal and business websites, with room for extra features, faster delivery,
           and tailored project scopes when needed.
@@ -118,21 +118,21 @@ export default function PricingPage() {
       </div>
 
       <div className="mb-10 grid gap-4 md:grid-cols-3">
-        <div className="rounded-2xl border border-border bg-card p-5">
+        <div className="site-panel p-5">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">Starting From</p>
           <p className="mt-3 text-3xl font-extrabold tracking-tight">$300 AUD</p>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
             Entry pricing for personal websites with a clean one-page setup.
           </p>
         </div>
-        <div className="rounded-2xl border border-primary/30 bg-primary/5 p-5">
+        <div className="site-panel rounded-2xl border-primary/30 bg-primary/8 p-5">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-primary">Business Range</p>
           <p className="mt-3 text-3xl font-extrabold tracking-tight">$800-$1,800+</p>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
             Flexible packages for business sites, service pages, and custom builds.
           </p>
         </div>
-        <div className="rounded-2xl border border-border bg-card p-5">
+        <div className="site-panel p-5">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">What&apos;s Included</p>
           <p className="mt-3 text-xl font-bold tracking-tight">Code Provided</p>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -153,7 +153,7 @@ export default function PricingPage() {
                 <article
                   key={plan.name}
                   className={`rounded-2xl border p-6 shadow-sm transition-colors hover:border-primary/50 ${
-                    plan.badge ? 'border-primary/40 bg-primary/5' : 'border-border bg-card'
+                    plan.badge ? 'site-panel border-primary/40 bg-primary/8' : 'site-panel'
                   }`}
                 >
                   <div className="mb-4 flex items-start justify-between gap-4">
@@ -181,7 +181,7 @@ export default function PricingPage() {
           </section>
         ))}
 
-        <section className="rounded-2xl border border-border bg-card p-6">
+        <section className="site-panel p-6">
           <h2 className="mb-2 text-2xl font-bold tracking-tight">Extras</h2>
           <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
             These add-ons can be included if your project needs more content, faster turnaround, or continued help.
@@ -195,7 +195,7 @@ export default function PricingPage() {
           </ul>
         </section>
 
-        <section className="rounded-2xl border border-border bg-card p-6">
+        <section className="site-panel p-6">
           <h2 className="mb-2 text-2xl font-bold tracking-tight">Important</h2>
           <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
             Final pricing depends on your content, features, and overall project complexity.
@@ -218,13 +218,13 @@ export default function PricingPage() {
           </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center rounded-lg border border-border px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
+            className="inline-flex items-center rounded-lg border border-border bg-card/90 px-5 py-3 text-sm font-medium text-foreground backdrop-blur-md transition-colors hover:border-primary hover:text-primary"
           >
             Contact Me
           </Link>
           <Link
             href="/business"
-            className="inline-flex items-center rounded-lg border border-border px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
+            className="inline-flex items-center rounded-lg border border-border bg-card/90 px-5 py-3 text-sm font-medium text-foreground backdrop-blur-md transition-colors hover:border-primary hover:text-primary"
           >
             Back to My Business
           </Link>

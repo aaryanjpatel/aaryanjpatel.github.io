@@ -76,12 +76,12 @@ export default function BlogPostPage({ params }: Props) {
       <div className="flex gap-12">
         <article className="flex-1 min-w-0">
           <div className="mb-6">
-            <Suspense fallback={<Link href="/blog" className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:border-primary/50">Back to Blog</Link>}>
+            <Suspense fallback={<Link href="/blog" className="site-pill inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:border-primary/50">Back to Blog</Link>}>
               <PostBackLink />
             </Suspense>
           </div>
 
-          <div className="mb-10 overflow-hidden border border-border bg-card">
+          <div className="site-panel-strong mb-10 overflow-hidden">
             <div className="p-6 md:p-8">
               <h1 className="text-3xl md:text-5xl font-extrabold leading-tight mb-4">{post.title}</h1>
               <p className="max-w-3xl text-base text-muted-foreground mb-5 md:text-lg">
@@ -114,7 +114,7 @@ export default function BlogPostPage({ params }: Props) {
             </div>
 
             {post.feature_image && (
-              <div className="border-t border-border bg-muted/30">
+              <div className="border-t border-border bg-muted/20">
                 <div className="relative mx-auto w-full max-w-5xl h-[280px] sm:h-[360px] lg:h-[520px]">
                   <Image
                     src={post.feature_image}

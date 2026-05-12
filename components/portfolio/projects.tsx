@@ -24,7 +24,7 @@ function ProjectCard({ project }: { project: Project }) {
 
   return (
     <Link href={href} className={project.blogSlug ? 'group block' : ''}>
-      <div className="flex flex-col rounded-xl border border-border bg-card hover:border-primary/50 hover:shadow-md transition-all duration-200 overflow-hidden h-full">
+      <div className="site-panel flex h-full flex-col overflow-hidden rounded-xl transition-all duration-200 hover:border-primary/50 hover:shadow-[0_22px_56px_rgba(15,23,42,0.18)]">
         {/* Feature Image */}
         {featureImage && (
           <div className="relative w-full h-40 overflow-hidden rounded-t-xl bg-muted">
@@ -38,7 +38,7 @@ function ProjectCard({ project }: { project: Project }) {
         )}
         <div className="flex flex-col p-6 flex-1">
           <h3 className="font-semibold text-lg mb-2 leading-snug group-hover:text-primary transition-colors">{project.title}</h3>
-          <hr className="border-border mb-4" />
+          <hr className="site-divider mb-4" />
           <p className="text-sm text-muted-foreground mb-4 leading-relaxed flex-1">{project.description}</p>
       <div className="flex flex-wrap gap-2 mb-5">
         {project.tech.map((tech) => (
