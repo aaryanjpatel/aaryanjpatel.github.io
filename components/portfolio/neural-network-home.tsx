@@ -3,8 +3,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import "react-flow-renderer/dist/style.css";
 import ReactFlow, {
-  Background,
-  BackgroundVariant,
   Controls,
   useNodesState,
   useEdgesState,
@@ -100,8 +98,8 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
   const isDarkTheme = resolvedTheme ? DARK_THEMES.has(resolvedTheme) : true;
   const backgroundImage = isDarkTheme ? "/images/bgdark.png" : "/images/bglight.png";
   const sceneOverlay = isDarkTheme
-    ? "linear-gradient(180deg, rgba(2, 6, 23, 0.14), rgba(2, 6, 23, 0.44)), radial-gradient(circle at 50% 18%, rgba(56, 189, 248, 0.16), transparent 38%), radial-gradient(circle at 50% 18%, rgba(2, 6, 23, 0), rgba(2, 6, 23, 0.34) 78%, rgba(2, 6, 23, 0.64) 100%)"
-    : "linear-gradient(180deg, rgba(255, 255, 255, 0.36), rgba(241, 245, 249, 0.58)), radial-gradient(circle at 50% 18%, rgba(59, 130, 246, 0.12), transparent 38%), radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.12) 78%, rgba(241, 245, 249, 0.4) 100%)";
+    ? "linear-gradient(180deg, rgba(2, 6, 23, 0.06), rgba(2, 6, 23, 0.24)), radial-gradient(circle at 50% 22%, rgba(56, 189, 248, 0.22), transparent 42%), radial-gradient(circle at 50% 22%, rgba(2, 6, 23, 0), rgba(2, 6, 23, 0.18) 72%, rgba(2, 6, 23, 0.42) 100%)"
+    : "linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(241, 245, 249, 0.42)), radial-gradient(circle at 50% 22%, rgba(59, 130, 246, 0.16), transparent 42%), radial-gradient(circle at 50% 22%, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.08) 72%, rgba(241, 245, 249, 0.28) 100%)";
 
   // Initial scatter, then animate to circle
   const [nodes, setNodes, onNodesChange] = useNodesState(makeInitialNodes());
@@ -303,11 +301,11 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
               position: "absolute",
               inset: 0,
               backgroundImage: `url('${backgroundImage}')`,
-              backgroundPosition: "center 0",
+              backgroundPosition: "center center",
               backgroundRepeat: "no-repeat",
-              backgroundSize: "min(100vw, 1376px) auto",
+              backgroundSize: "cover",
               opacity: 1,
-              filter: "saturate(1.22) contrast(1.09) brightness(1.03)",
+              filter: "saturate(1.34) contrast(1.16) brightness(1.12)",
             }}
           />
           <div
@@ -338,9 +336,8 @@ export function NeuralNetworkHome({ onSkip }: { onSkip?: () => void }) {
             zoomOnScroll={false}
             panOnScroll={false}
             preventScrolling={false}
-            zoomOnDoubleClick={false}
+          zoomOnDoubleClick={false}
           >
-            <Background variant={BackgroundVariant.Dots} gap={24} size={1.2} color="rgba(148, 163, 184, 0.22)" />
             <Controls showInteractive={false} />
             {/* Hide ReactFlow attribution */}
             <style>{`.react-flow__attribution { display: none !important; }`}</style>

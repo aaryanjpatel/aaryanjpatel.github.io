@@ -41,12 +41,12 @@
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
     --site-bg-image: url('/images/bgdark.png');
-    --site-bg-size: min(100vw, 1376px) auto;
-    --site-bg-filter: saturate(1.22) contrast(1.09) brightness(1.03);
+    --site-bg-size: 122% auto;
+    --site-bg-filter: saturate(1.52) contrast(1.2) brightness(1.14);
     --site-bg-overlay:
-      linear-gradient(180deg, hsl(224 71% 6% / 0.14), hsl(222 84% 5% / 0.44)),
-      radial-gradient(circle at 50% 10%, hsl(197 85% 64% / 0.12), transparent 42%),
-      radial-gradient(circle at 50% 12%, hsl(224 71% 6% / 0), hsl(224 71% 6% / 0.06) 68%, hsl(222 84% 5% / 0.46) 100%);
+      linear-gradient(180deg, hsl(224 71% 6% / 0.04), hsl(222 84% 5% / 0.18)),
+      radial-gradient(circle at 52% 16%, hsl(190 95% 68% / 0.28), transparent 46%),
+      radial-gradient(circle at 50% 20%, hsl(224 71% 6% / 0), hsl(224 71% 6% / 0.05) 68%, hsl(222 84% 5% / 0.26) 100%);
     --card: 222 47% 11% / 0.56;
     --card-foreground: 210 40% 98%;
     --popover: 222 47% 11% / 0.82;
@@ -71,11 +71,11 @@
     --background: 240 21% 15%;
     --foreground: 226 64% 88%;
     --site-bg-image: url('/images/bgdark.png');
-    --site-bg-size: min(100vw, 1376px) auto;
-    --site-bg-filter: saturate(1.22) contrast(1.1) brightness(1.02);
+    --site-bg-size: 120% auto;
+    --site-bg-filter: saturate(1.44) contrast(1.17) brightness(1.12);
     --site-bg-overlay:
-      linear-gradient(180deg, hsl(240 21% 15% / 0.58), hsl(240 21% 15% / 0.84)),
-      radial-gradient(circle at top, hsl(267 84% 81% / 0.15), transparent 42%);
+      linear-gradient(180deg, hsl(240 21% 15% / 0.24), hsl(240 21% 15% / 0.42)),
+      radial-gradient(circle at top, hsl(267 84% 81% / 0.2), transparent 44%);
     --card: 240 21% 18% / 0.62;
     --card-foreground: 226 64% 88%;
     --popover: 240 21% 18% / 0.84;
@@ -100,11 +100,11 @@
     --background: 20 10% 13%;
     --foreground: 46 43% 82%;
     --site-bg-image: url('/images/bgdark.png');
-    --site-bg-size: min(100vw, 1376px) auto;
-    --site-bg-filter: saturate(1.22) contrast(1.1) brightness(1.02);
+    --site-bg-size: 120% auto;
+    --site-bg-filter: saturate(1.42) contrast(1.17) brightness(1.12);
     --site-bg-overlay:
-      linear-gradient(180deg, hsl(20 10% 13% / 0.62), hsl(20 10% 13% / 0.86)),
-      radial-gradient(circle at top, hsl(40 72% 58% / 0.14), transparent 42%);
+      linear-gradient(180deg, hsl(20 10% 13% / 0.28), hsl(20 10% 13% / 0.46)),
+      radial-gradient(circle at top, hsl(40 72% 58% / 0.18), transparent 44%);
     --card: 20 10% 16% / 0.62;
     --card-foreground: 46 43% 82%;
     --popover: 20 10% 16% / 0.84;
@@ -129,11 +129,11 @@
     --background: 220 13% 18%;
     --foreground: 220 14% 71%;
     --site-bg-image: url('/images/bgdark.png');
-    --site-bg-size: min(100vw, 1376px) auto;
-    --site-bg-filter: saturate(1.22) contrast(1.1) brightness(1.02);
+    --site-bg-size: 120% auto;
+    --site-bg-filter: saturate(1.44) contrast(1.17) brightness(1.12);
     --site-bg-overlay:
-      linear-gradient(180deg, hsl(220 13% 18% / 0.62), hsl(220 13% 18% / 0.86)),
-      radial-gradient(circle at top, hsl(207 82% 66% / 0.16), transparent 42%);
+      linear-gradient(180deg, hsl(220 13% 18% / 0.26), hsl(220 13% 18% / 0.44)),
+      radial-gradient(circle at top, hsl(207 82% 66% / 0.22), transparent 44%);
     --card: 220 13% 21% / 0.62;
     --card-foreground: 220 14% 71%;
     --popover: 220 13% 21% / 0.84;
@@ -158,11 +158,11 @@
     --background: 249 22% 12%;
     --foreground: 245 50% 91%;
     --site-bg-image: url('/images/bgdark.png');
-    --site-bg-size: min(100vw, 1376px) auto;
-    --site-bg-filter: saturate(1.22) contrast(1.1) brightness(1.02);
+    --site-bg-size: 120% auto;
+    --site-bg-filter: saturate(1.44) contrast(1.17) brightness(1.12);
     --site-bg-overlay:
-      linear-gradient(180deg, hsl(249 22% 12% / 0.62), hsl(249 22% 12% / 0.86)),
-      radial-gradient(circle at top, hsl(343 35% 68% / 0.15), transparent 42%);
+      linear-gradient(180deg, hsl(249 22% 12% / 0.24), hsl(249 22% 12% / 0.42)),
+      radial-gradient(circle at top, hsl(343 35% 68% / 0.22), transparent 44%);
     --card: 249 22% 16% / 0.62;
     --card-foreground: 245 50% 91%;
     --popover: 249 22% 16% / 0.84;
@@ -245,11 +245,11 @@
     --background: 210 50% 10%;
     --foreground: 200 50% 90%;
     --site-bg-image: url('/images/bgdark.png');
-    --site-bg-size: min(100vw, 1376px) auto;
-    --site-bg-filter: saturate(1.24) contrast(1.1) brightness(1.04);
+    --site-bg-size: 122% auto;
+    --site-bg-filter: saturate(1.5) contrast(1.18) brightness(1.14);
     --site-bg-overlay:
-      linear-gradient(180deg, hsl(210 50% 10% / 0.58), hsl(210 50% 10% / 0.84)),
-      radial-gradient(circle at top, hsl(195 75% 60% / 0.16), transparent 42%);
+      linear-gradient(180deg, hsl(210 50% 10% / 0.24), hsl(210 50% 10% / 0.42)),
+      radial-gradient(circle at top, hsl(195 75% 60% / 0.24), transparent 44%);
     --card: 210 50% 14% / 0.6;
     --card-foreground: 200 50% 90%;
     --popover: 210 50% 14% / 0.84;
@@ -300,12 +300,12 @@
     z-index: -2;
     background-color: hsl(var(--background));
     background-image: var(--site-bg-image);
-    background-position: center 0;
+    background-position: center 18%;
     background-repeat: no-repeat;
     background-size: var(--site-bg-size, cover);
     background-attachment: fixed;
     transform: translateZ(0);
-    filter: var(--site-bg-filter, saturate(1.18) contrast(1.08) brightness(1.02));
+    filter: var(--site-bg-filter, saturate(1.38) contrast(1.15) brightness(1.1));
     image-rendering: auto;
     will-change: transform;
   }
@@ -317,7 +317,8 @@
 
   @media (max-width: 768px) {
     body::before {
-      background-size: cover;
+      background-size: 170% auto;
+      background-position: center 12%;
       background-attachment: scroll;
     }
   }
